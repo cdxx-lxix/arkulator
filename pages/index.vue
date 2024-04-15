@@ -1,8 +1,18 @@
 <template>
-    <main class="grid grid-cols-2">
+    <main class="grid grid-cols-2 bg-mirage-950">
+        <section>
+            <fieldset class="flex flex-col gap-2">
+                <legend>Guaranteed</legend>
+
+                <VDatePicker v-model.range="range" mode="date" is-dark="true" color="pink" :first-day-of-week="2"
+                    show-iso-weeknumbers :min-date="new Date()" :max-date="new Date(2030, 1, 1)"
+                    :attributes="attributes" :columns="2" />
+
+                <ArkCheckbox label="guaranteed.monthlycard" help="guaranteed.monthlycardhelp" v-model:boxvalue="usersResources.isMonthlyCard" />
+            </fieldset>
+        </section>
         <ul class="flex flex-col gap-2">
-            <VDatePicker v-model.range="range" mode="date" is-dark="true" color="pink" :first-day-of-week="2" show-iso-weeknumbers
-                :min-date="new Date()" :max-date="new Date(2030, 1, 1)" :attributes="attributes" :columns="2" />
+
             <li>Current orundums:
                 <input type="number" min="0" v-model="usersResources.currentOrundums" />
             </li>
@@ -13,41 +23,49 @@
                 <input type="number" min="1200" max="1800" step="50" v-model="usersResources.currentAnnihilation" />
             </li>
             <li>Monthly card (yes/no)
-                <input type="checkbox" v-model="usersResources.isMonthlyCard"   :value="usersResources.isMonthlyCard" />
+                <input type="checkbox" v-model="usersResources.isMonthlyCard" :value="usersResources.isMonthlyCard" />
             </li>
             <li>This week's tasks (yes/no)
-                <input type="checkbox" v-model="usersResources.isThisWeekTasks"   :value="usersResources.isThisWeekTasks" />
+                <input type="checkbox" v-model="usersResources.isThisWeekTasks"
+                    :value="usersResources.isThisWeekTasks" />
             </li>
             <li>This week's annihilations (yes/no)
                 <input type="checkbox" v-model="usersResources.isThisWeekAnni" :value="usersResources.isThisWeekAnni" />
             </li>
             <li>Orundum farm (yes/no)
-                <input type="checkbox" v-model="usersResources.isOrundumFarming"   :value="usersResources.isOrundumFarming" />
+                <input type="checkbox" v-model="usersResources.isOrundumFarming"
+                    :value="usersResources.isOrundumFarming" />
             </li>
             <li>Orundums farmed daily
                 <label for="orundumfarmdaily">Daily farm
-                    <input id="orundumfarmdaily" type="number" min="0" step="10" v-model="usersResources.orundumFarmingDayly" :disabled="!usersResources.isOrundumFarming || usersResources.orundumFarmingStatic" />
+                    <input id="orundumfarmdaily" type="number" min="0" step="10"
+                        v-model="usersResources.orundumFarmingDayly"
+                        :disabled="!usersResources.isOrundumFarming || usersResources.orundumFarmingStatic" />
                 </label>
                 OR
                 <label for="orundumfarmsum">Single sum
-                    <input id="orundumfarmsum" type="number" min="0" step="10" v-model="usersResources.orundumFarmingStatic" :disabled="!usersResources.isOrundumFarming || usersResources.orundumFarmingDayly" />
+                    <input id="orundumfarmsum" type="number" min="0" step="10"
+                        v-model="usersResources.orundumFarmingStatic"
+                        :disabled="!usersResources.isOrundumFarming || usersResources.orundumFarmingDayly" />
                 </label>
             </li>
             <li>Are you willing to sacrifice OP? (yes/no)
-                <input type="checkbox" v-model="usersResources.isSacrificingOP"   :value="usersResources.isSacrificingOP" />
+                <input type="checkbox" v-model="usersResources.isSacrificingOP"
+                    :value="usersResources.isSacrificingOP" />
             </li>
             <li>OP Sacrifice amount
-                <input type="number" min="0" v-model="usersResources.sacrificeOPamount" :disabled="!usersResources.isSacrificingOP" />
+                <input type="number" min="0" v-model="usersResources.sacrificeOPamount"
+                    :disabled="!usersResources.isSacrificingOP" />
             </li>
             <hr>
             <li>Green shop (yes/no)
                 <input type="checkbox" v-model="usersResources.isGreenShop" :value="usersResources.isGreenShop" />
             </li>
             <li>Yellow shop (yes/no)
-                <input type="checkbox" v-model="usersResources.isYellowShop"   :value="usersResources.isYellowShop" />
+                <input type="checkbox" v-model="usersResources.isYellowShop" :value="usersResources.isYellowShop" />
             </li>
             <li>Rerun shop (yes/no)
-                <input type="checkbox" v-model="usersResources.isRerunShop"   :value="usersResources.isRerunShop" />
+                <input type="checkbox" v-model="usersResources.isRerunShop" :value="usersResources.isRerunShop" />
             </li>
             <!-- Additionals: new paradoxes, annihilations first times, hypergryph mails, Event shops, Event type -->
         </ul>
@@ -85,7 +103,7 @@ const rewards = {
     weekilyTasks: 500,
     greenShopOrundum: 600,
     greenShopPermits: 5,
-    yellowShopPermits: 37,
+    yellowShopPermits: 38,
     rerunShopOrundum: 2000, // Per rerun
     orundumsPerOP: 180,
     day17login: 1, //Permit
