@@ -10,8 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxtjs/composition-api": "^0.34.0",
     "@pinia/nuxt": "^0.5.1",
+    "@samk-dev/nuxt-vcalendar": "^1.0.3",
     "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
