@@ -2,7 +2,7 @@ export default {
     test: "test",
     guaranteed : {
         header: "Guaranteed",
-        subtext: "",
+        subtext: "This section contains rewards that are more or less 'guaranteed' as long as you login and play everyday.",
         monthlycard: "Monthly Card",
         monthlycardhelp: "If you have or plan to purchase it for the duration of set dates",
         todaytasks: "Exclude today's rewards",
@@ -15,6 +15,33 @@ export default {
         currentpermits: "Current HH permits",
         opsacrifice: "OP to spend",
         currentshards: "Current Originium Shards"
+
+    },
+    calculations: {
+        days: "Day(s): {days}",
+        weeks: "Week(s): {weeks}",
+        months: "Month(s): {months}",
+        guaranteed: {
+            header: "guaranteed",
+            orundums: "Current orundums",
+            permits: "Current permit(s)",
+            prime: "From OP exchange",
+            shards: "From originium shards",
+            daily: "From daily missions",
+            weekly: "From weekly missions",
+            subscription: "From monthly card",
+            annihilation: "From annihilation(s)",
+            loginpermit: "Every 17th day login permit",
+            todayexcluded: "Today excluded",
+            weekexcluded: "This week's annihilation excluded",
+            annihilationexcluded: "This week's missions excluded"
+        },
+        advanced: {
+
+        },
+        maybe: {
+
+        }
 
     }
 }

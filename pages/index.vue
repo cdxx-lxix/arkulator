@@ -8,7 +8,7 @@
                         :attributes="attributes" :columns="3" />
                 </ArkFrame>
 
-                <ArkFrame legend="I currently have">
+                <ArkFrame legend="guaranteed.header" description="guaranteed.subtext">
                     <div class="grid grid-cols-2 gap-2 mb-3">
                         <ArkInput id="currentorundum" min="0" v-model:inputvalue="pullStore.user_data.current_orundums"
                             label="guaranteed.currentorundum">
@@ -80,38 +80,38 @@
                 <ArkFrame legend="Calculations">
                     <div
                         class="flex flex-row flex-wrap w-full px-6 justify-between font-semibold text-gray-100 text-2xl">
-                        <h2 class="w-1/3 text-left">Day(s): {{ getDays }}</h2>
-                        <h2 class="w-1/3 text-center">Week(s): {{ getWeeks }}</h2>
-                        <h2 class="w-1/3 text-right">Month(s): {{ getMonths }}</h2>
+                        <h2 class="w-1/3 text-left">{{ $t("calculations.days", { days: getDays}) }}</h2>
+                        <h2 class="w-1/3 text-center">{{ $t("calculations.weeks", { weeks: getWeeks}) }}</h2>
+                        <h2 class="w-1/3 text-right">{{ $t("calculations.months", { months: getMonths}) }}</h2>
                         <hr class="w-full my-2">
                     </div>
                     <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
                         <div>
-                            <h2 class="font-semibold text-lg text-center">Guaranteed</h2>
-                            <ArkStat text="Current orundum(s)" :stat="pullStore.user_data.current_orundums"
+                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.guaranteed.header") }}</h2>
+                            <ArkStat text="calculations.guaranteed.orundums" :stat="pullStore.user_data.current_orundums"
                                 :condition="pullStore.user_data.current_orundums" icon="orundum" />
-                            <ArkStat text="Current permit(s)" :stat="pullStore.user_data.current_permits"
+                            <ArkStat text="calculations.guaranteed.permits" :stat="pullStore.user_data.current_permits"
                                 :condition="pullStore.user_data.current_permits" icon="permit" />
-                            <ArkStat text="From OP exchange" :stat="pullStore.getUserPrimeToOrundum()"
+                            <ArkStat text="calculations.guaranteed.prime" :stat="pullStore.getUserPrimeToOrundum()"
                                 :condition="pullStore.user_data.current_prime" icon="orundum" />
-                            <ArkStat text="From originium shards" :stat="pullStore.getUserShardsToOrundum()"
+                            <ArkStat text="calculations.guaranteed.shards" :stat="pullStore.getUserShardsToOrundum()"
                                 :condition="pullStore.user_data.current_shards" icon="orundum" />
-                            <ArkStat text="From daily missions" :stat="pullStore.getUserDailyRewards(getDays)"
+                            <ArkStat text="calculations.guaranteed.daily" :stat="pullStore.getUserDailyRewards(getDays)"
                                 :condition="getDays > 0" icon="orundum" />
-                            <ArkStat text="From weekly missions" :stat="pullStore.getUserWeeklyRewards(getWeeks)"
+                            <ArkStat text="calculations.guaranteed.weekly" :stat="pullStore.getUserWeeklyRewards(getWeeks)"
                                 :condition="getWeeks > 0" icon="orundum" />
-                            <ArkStat text="From monthly card" :stat="pullStore.getUserMonthlyCardRewards(getDays)"
+                            <ArkStat text="calculations.guaranteed.subscription" :stat="pullStore.getUserMonthlyCardRewards(getDays)"
                                 :condition="pullStore.user_data.is_monthly_card_active" icon="orundum" />
-                            <ArkStat text="From annihilation(s)" :stat="pullStore.getUserAnnihilationRewards(getWeeks)"
+                            <ArkStat text="calculations.guaranteed.annihilation" :stat="pullStore.getUserAnnihilationRewards(getWeeks)"
                                 :condition="getWeeks > 0" icon="orundum" />
-                            <ArkStat text="Every 17th day login permit"
+                            <ArkStat text="calculations.guaranteed.loginpermit"
                                 :stat="pullStore.user_data.login_permits_in_range"
                                 :condition="pullStore.user_data.login_permits_in_range" icon="permit" />
-                            <ArkStat class="text-red-700" text="Today excluded"
+                            <ArkStat class="text-red-700" text="calculations.guaranteed.todayexcluded"
                                 :condition="pullStore.user_data.is_excluded_today" />
-                            <ArkStat class="text-red-700" text="This week's annihilation excluded"
+                            <ArkStat class="text-red-700" text="calculations.guaranteed.annihilationexcluded"
                                 :condition="pullStore.user_data.is_excluded_annihilation" />
-                            <ArkStat class="text-red-700" text="This week's missions excluded"
+                            <ArkStat class="text-red-700" text="calculations.guaranteed.weekexcluded"
                                 :condition="pullStore.user_data.is_excluded_week" />
                             <hr>
                             <h2 class="font-semibold text-lg text-center">Advanced</h2>
