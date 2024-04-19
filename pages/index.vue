@@ -114,9 +114,9 @@
                             <ArkStat class="text-red-700" text="calculations.guaranteed.weekexcluded"
                                 :condition="pullStore.user_data.is_excluded_week" />
                             <hr>
-                            <h2 class="font-semibold text-lg text-center">Advanced</h2>
+                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.advanced.header") }}</h2>
                             <hr>
-                            <h2 class="font-semibold text-lg text-center">Big maybe</h2>
+                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.maybe.header") }}</h2>
                         </div>
                         <hr>
                         <div class="flex flex-row flex-wrap w-full justify-between text-lg font-bold">
@@ -126,7 +126,7 @@
                             <p class="flex flex-row gap-2 items-center justify-center">
                                 <PermitIcon class="w-6 h-6" /> {{ guaranteedPermits > 0 ? guaranteedPermits : 0 }}
                             </p>
-                            <p class="flex flex-row gap-2 items-center justify-center">Total pulls: {{ totalPulls }}</p>
+                            <p class="flex flex-row gap-2 items-center justify-center">{{ $t("calculations.total", {pulls: totalPulls}) }}</p>
                         </div>
                     </div>
                 </ArkFrame>

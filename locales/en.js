@@ -37,11 +37,11 @@ export default {
             annihilationexcluded: "This week's missions excluded"
         },
         advanced: {
-
+            header: "advanced"
         },
         maybe: {
-
-        }
-
+            header: "maybe"
+        },
+        total: "Total pulls: {pulls}"
     }
 }
