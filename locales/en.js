@@ -18,6 +18,7 @@ export default {
 
     },
     calculations: {
+        header: "Calculations",
         days: "Day(s): {days}",
         weeks: "Week(s): {weeks}",
         months: "Month(s): {months}",

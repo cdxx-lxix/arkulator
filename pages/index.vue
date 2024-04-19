@@ -77,7 +77,7 @@
 
         <section id="calculations">
             <div class="flex flex-col gap-2 p-2">
-                <ArkFrame legend="Calculations">
+                <ArkFrame legend="calculations.header">
                     <div
                         class="flex flex-row flex-wrap w-full px-6 justify-between font-semibold text-gray-100 text-2xl">
                         <h2 class="w-1/3 text-left">{{ $t("calculations.days", { days: getDays}) }}</h2>
