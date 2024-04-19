@@ -10,33 +10,37 @@
 
                 <ArkFrame legend="I currently have">
                     <div class="grid grid-cols-2 gap-2 mb-3">
-                        <ArkInput id="currentorundum" min="0" v-model:inputvalue="usersResources.currentOrundums"
+                        <ArkInput id="currentorundum" min="0" v-model:inputvalue="pullStore.user_data.current_orundums"
                             label="guaranteed.currentorundum">
                             <OrundumIcon class="w-6 h-6" />
                         </ArkInput>
-                        <ArkInput id="currenpermits" min="0" v-model:inputvalue="usersResources.currentPermits"
+                        <ArkInput id="currenpermits" min="0" v-model:inputvalue="pullStore.user_data.current_permits"
                             label="guaranteed.currentpermits">
                             <PermitIcon class="w-6 h-6" />
                         </ArkInput>
-                        <ArkInput id="opsacrifice" min="0" v-model:inputvalue="usersResources.sacrificeOPamount"
+                        <ArkInput id="opsacrifice" min="0" v-model:inputvalue="pullStore.user_data.current_prime"
                             label="guaranteed.opsacrifice">
                             <OPIcon class="w-6 h-6" />
                         </ArkInput>
-                        <ArkInput id="currentshards" min="0" v-model:inputvalue="usersResources.orundumFarmingStatic"
+                        <ArkInput id="currentshards" min="0" v-model:inputvalue="pullStore.user_data.current_shards"
                             label="guaranteed.currentshards">
                             <OShardIcon class="w-6 h-6" />
                         </ArkInput>
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-3">
                         <ArkCheckbox id="monthlycard" label="guaranteed.monthlycard" help="guaranteed.monthlycardhelp"
-                            v-model:boxvalue="usersResources.isMonthlyCard" />
+                            v-model:boxvalue="pullStore.user_data.is_monthly_card_active" />
+                        <ArkCheckbox id="todayrewards" label="guaranteed.todaytasks" help="guaranteed.todaytaskshelp"
+                            v-model:boxvalue="pullStore.user_data.is_excluded_today"
+                            :disabled="(today.getTime() === range.start.getTime() && getDays <= 1)" />
                         <ArkCheckbox id="weeklyrewards" label="guaranteed.thisweektask"
-                            help="guaranteed.thisweektaskhelp" v-model:boxvalue="usersResources.isThisWeekTasks" />
+                            help="guaranteed.thisweektaskhelp"
+                            v-model:boxvalue="pullStore.user_data.is_excluded_week" />
                         <ArkCheckbox id="annihilation" label="guaranteed.thisweekannihilation"
                             help="guaranteed.thisweekannihilationhelp"
-                            v-model:boxvalue="usersResources.isThisWeekAnni" />
-                        <ArkRange v-model:rangevalue="usersResources.currentAnnihilation" label="Annihilation"
-                            min="1200" max="1800" step="50" />
+                            v-model:boxvalue="pullStore.user_data.is_excluded_annihilation" />
+                        <ArkRange v-model:rangevalue="pullStore.user_data.current_annihilation_reward"
+                            label="Annihilation" min="1200" max="1800" step="50" />
                     </div>
                 </ArkFrame>
 
@@ -78,34 +82,37 @@
                         class="flex flex-row flex-wrap w-full px-6 justify-between font-semibold text-gray-100 text-2xl">
                         <h2 class="w-1/3 text-left">Day(s): {{ getDays }}</h2>
                         <h2 class="w-1/3 text-center">Week(s): {{ getWeeks }}</h2>
-                        <h2 class="w-1/3 text-right">Month(s): 0</h2>
+                        <h2 class="w-1/3 text-right">Month(s): {{ getMonths }}</h2>
                         <hr class="w-full my-2">
                     </div>
                     <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
                         <div>
                             <h2 class="font-semibold text-lg text-center">Guaranteed</h2>
-                            <ArkStat text="Current orundum(s)" :stat="usersResources.currentOrundums"
-                                :condition="usersResources.currentOrundums" icon="orundum" />
-                            <ArkStat text="Current permit(s)" :stat="usersResources.currentPermits"
-                                :condition="usersResources.currentPermits" icon="permit" />
-                            <ArkStat text="From OP exchange"
-                                :stat="usersResources.sacrificeOPamount * rewards.orundumsPerOP"
-                                :condition="usersResources.sacrificeOPamount" icon="orundum" />
-                            <ArkStat text="From originium shards"
-                                :stat="((usersResources.orundumFarmingStatic - (usersResources.orundumFarmingStatic % 2)) * rewards.orundumPerShard) / 2"
-                                :condition="usersResources.orundumFarmingStatic" icon="orundum" />
-                            <ArkStat text="From daily missions" :stat="getDays * rewards.dailyTasks"
+                            <ArkStat text="Current orundum(s)" :stat="pullStore.user_data.current_orundums"
+                                :condition="pullStore.user_data.current_orundums" icon="orundum" />
+                            <ArkStat text="Current permit(s)" :stat="pullStore.user_data.current_permits"
+                                :condition="pullStore.user_data.current_permits" icon="permit" />
+                            <ArkStat text="From OP exchange" :stat="pullStore.getUserPrimeToOrundum()"
+                                :condition="pullStore.user_data.current_prime" icon="orundum" />
+                            <ArkStat text="From originium shards" :stat="pullStore.getUserShardsToOrundum()"
+                                :condition="pullStore.user_data.current_shards" icon="orundum" />
+                            <ArkStat text="From daily missions" :stat="pullStore.getUserDailyRewards(getDays)"
                                 :condition="getDays > 0" icon="orundum" />
-                            <ArkStat text="From weekly missions" :stat="getWeeks * rewards.weekilyTasks"
+                            <ArkStat text="From weekly missions" :stat="pullStore.getUserWeeklyRewards(getWeeks)"
                                 :condition="getWeeks > 0" icon="orundum" />
-                            <ArkStat text="From monthly card" :stat="getDays * rewards.monthlyCard"
-                                :condition="usersResources.isMonthlyCard" icon="orundum" />
-                            <ArkStat text="From annihilation(s)" :stat="usersResources.currentAnnihilation * getWeeks"
-                                :condition="usersResources.currentAnnihilation" icon="orundum" />
+                            <ArkStat text="From monthly card" :stat="pullStore.getUserMonthlyCardRewards(getDays)"
+                                :condition="pullStore.user_data.is_monthly_card_active" icon="orundum" />
+                            <ArkStat text="From annihilation(s)" :stat="pullStore.getUserAnnihilationRewards(getWeeks)"
+                                :condition="getWeeks > 0" icon="orundum" />
+                            <ArkStat text="Every 17th day login permit"
+                                :stat="pullStore.user_data.login_permits_in_range"
+                                :condition="pullStore.user_data.login_permits_in_range" icon="permit" />
+                            <ArkStat class="text-red-700" text="Today excluded"
+                                :condition="pullStore.user_data.is_excluded_today" />
                             <ArkStat class="text-red-700" text="This week's annihilation excluded"
-                                :condition="usersResources.isThisWeekAnni" />
+                                :condition="pullStore.user_data.is_excluded_annihilation" />
                             <ArkStat class="text-red-700" text="This week's missions excluded"
-                                :condition="usersResources.isThisWeekTasks" />
+                                :condition="pullStore.user_data.is_excluded_week" />
                             <hr>
                             <h2 class="font-semibold text-lg text-center">Advanced</h2>
                             <hr>
@@ -119,8 +126,7 @@
                             <p class="flex flex-row gap-2 items-center justify-center">
                                 <PermitIcon class="w-6 h-6" /> {{ guaranteedPermits > 0 ? guaranteedPermits : 0 }}
                             </p>
-                            <p class="flex flex-row gap-2 items-center justify-center">Total pulls: {{ guaranteedPermits
-                                + Math.floor(guaranteedOrundums / 600) || 0 }}</p>
+                            <p class="flex flex-row gap-2 items-center justify-center">Total pulls: {{ totalPulls }}</p>
                         </div>
                     </div>
                 </ArkFrame>
@@ -133,8 +139,12 @@
 <script setup>
 import events from '~/data/events';
 import annihilations from '~/data/annihilations';
+import { usePullsStore } from '#imports';
+
+const pullStore = usePullsStore()
 
 const importantDates = ref([...events, ...annihilations])
+const today = new Date()
 const range = ref({
     start: new Date(),
     end: new Date()
@@ -142,88 +152,76 @@ const range = ref({
 
 const attributes = ref(importantDates)
 
-const rewards = {
-    dailyTasks: 100,
-    monthlyCard: 200,
-    weekilyTasks: 500,
-    greenShopOrundum: 600,
-    greenShopPermits: 5,
-    yellowShopPermits: 38,
-    rerunShopOrundum: 2000, // Per rerun
-    orundumsPerOP: 180, // For 1
-    day17login: 1, // Permit
-    orundumPerShard: 20 // For 2
+// milliseconds / 1000 to get secodns / 60 to get minutes / 60 to get hours / 24 to get days
+const getDays = computed(() => {
+    // +1 makes it return 1 even when one day is selected. By default calendar ignores starting day.
+    return ((range.value.end.getTime() - range.value.start.getTime()) / 1000 / 60 / 60 / 24) + 1
+})
+function getWeekNumber(date) {
+    // Copy date so don't modify original
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    // Set to nearest Thursday: current date + 4 - current day number
+    // Make Sunday's day number 7
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+    // Get first day of year
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    // Calculate full weeks to nearest Thursday
+    const weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    // Return array of year and week number
+    return [d.getUTCFullYear(), weekNo];
 }
 
-const usersResources = reactive({
-    currentOrundums: 0,
-    currentPermits: 0,
-    currentAnnihilation: 1800,
-    isThisWeekTasks: false,
-    isThisWeekAnni: false,
-    isMonthlyCard: false,
-    isGreenShop: false,
-    isYellowShop: false,
-    isRerunShop: false,
-    isOrundumFarming: false,
-    isSacrificingOP: false,
-    orundumFarmingStatic: 0,
-    sacrificeOPamount: 0,
-})
-
-// milliseconds / 1000 to get secodns / 60 to get minutes / 60 to get hours / 24 to get days
-const getDays = computed(() => (range.value.end.getTime() - range.value.start.getTime()) / 1000 / 60 / 60 / 24) // TODO: Include today & option to exclude it
-// days / 7 in ceil to get WHOLE weeks
-const getWeeks = computed(() => Math.ceil(getDays.value / 7)) // TODO: More accurate based on days of the week
-// TODO: Months (with accuracy) for other sections
-
-const guaranteedOrundums = computed(() => {
-    // Initial
-    let temp = usersResources.currentOrundums
-    // Daily tasks
-    temp += getDays.value * rewards.dailyTasks
-    // Originium shards farming (It looks like this because it crafts only 2 for 20, so I've made a formula like this for consistency)
-    // Simplyfied is usersResources.orundumFarmingStatic - (usersResources.orundumFarmingStatic % 2) * 10 (need to change rewards.orundumPerShard to 10)
-    temp += ((usersResources.orundumFarmingStatic - (usersResources.orundumFarmingStatic % 2)) * rewards.orundumPerShard) / 2
-    // OP Sacrifice 
-    temp += usersResources.sacrificeOPamount * rewards.orundumsPerOP
-    // Monthly card
-    if (usersResources.isMonthlyCard) {
-        temp += getDays.value * rewards.monthlyCard
-        if (usersResources.isTodayTasks) {
-            temp -= rewards.monthlyCard
+const getWeeks = computed(() => {
+    let startWeek = getWeekNumber(range.value.start);
+    let endWeek = getWeekNumber(range.value.end);
+    let weeks = [];
+    for (let year = startWeek[0]; year <= endWeek[0]; year++) {
+        let startWeekOfYear = year === startWeek[0] ? startWeek[1] : 1;
+        let endWeekOfYear = year === endWeek[0] ? endWeek[1] : 52 + (year % 4 === 0 ? 1 : 0); // 52 or 53 weeks in a year
+        for (let week = startWeekOfYear; week <= endWeekOfYear; week++) {
+            weeks.push([year, week]);
         }
     }
-    // Weekly tasks
-    temp += getWeeks.value * rewards.weekilyTasks
-    if (usersResources.isThisWeekTasks) {
-        temp -= rewards.weekilyTasks
-    }
+    return weeks.length;
+});
 
-    // Annihilations
-    temp += getWeeks.value * usersResources.currentAnnihilation
-    if (usersResources.isThisWeekAnni) {
-        temp -= usersResources.currentAnnihilation
-    }
+const getMonths = computed(() => {
+    const day = 86400000; // milliseconds in a day
+    let temp = [];
+    let loop_time = new Date(range.value.start.getTime() + (pullStore.user_data.is_excluded_today ? day : 0));
+    // do-while is used because if the start & end are the same day the other loops won't trigger
+    do {
+        temp.push(loop_time.getMonth());
+        loop_time.setTime(loop_time.getTime() + day);
+    } while (loop_time <= range.value.end);
+    // spread+Set to remove duplicates
+    return [...new Set(temp)].length;
+});
+
+const guaranteedOrundums = computed(() => {
+    let temp = pullStore.user_data.current_orundums
+    temp += pullStore.getUserDailyRewards(getDays.value)
+    temp += pullStore.getUserMonthlyCardRewards(getDays.value)
+    temp += pullStore.getUserWeeklyRewards(getWeeks.value)
+    temp += pullStore.getUserAnnihilationRewards(getWeeks.value)
+    temp += pullStore.getUserPrimeToOrundum()
+    temp += pullStore.getUserShardsToOrundum()
     return temp
 })
 
 const guaranteedPermits = computed(() => {
-    let temp = usersResources.currentPermits
-    // Loops through the range of dates and adds 1 permit for daily login reward of every 17th day of the month.
-    // +86400000 <- this addition is needed to exclude the first day in the range and include the last one
-    for (let loopTime = range.value.start.getTime() + 86400000; loopTime < range.value.end.getTime() + 86400000; loopTime += 86400000) {
-        let loopDay = new Date(loopTime)
-        if (loopDay.getDate() == 17) {
-            temp += rewards.day17login;
-
-        }
-    }
+    let temp = pullStore.user_data.current_permits
+    pullStore.user_data.login_permits_in_range = pullStore.getUserPermitsForLogin(range.value.start.getTime(), range.value.end.getTime())
+    temp += pullStore.user_data.login_permits_in_range
     return temp
 })
 
 const totalPulls = computed(() => {
-
+    if ((Math.floor(guaranteedOrundums.value / 600) + guaranteedPermits.value) < 0) {
+        return 0
+    } else {
+        return Math.floor(guaranteedOrundums.value / 600) + guaranteedPermits.value
+    }
 })
 
 </script>
