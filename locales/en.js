@@ -1,3 +1,5 @@
+import annihilations from "~/data/annihilations";
+
 export default {
     test: "test",
     guaranteed : {
@@ -14,7 +16,8 @@ export default {
         currentorundum: "Current Orundum",
         currentpermits: "Current HH permits",
         opsacrifice: "OP to spend",
-        currentshards: "Current Originium Shards"
+        currentshards: "Current Originium Shards",
+        annihilation: "Annihilation reward"
 
     },
     calculations: {

@@ -1,8 +1,7 @@
-import { ref, computed, reactive } from "vue";
+import { reactive } from "vue";
 import { defineStore } from "pinia";
 
 export const usePullsStore = defineStore("pulls", () => {
-  const TODAY = new Date();
   const REWARDS_GUARANTEED = {
     daily_missions_orundum: 100, // Orundum
     monthly_card_orundum: 200, // Orundum

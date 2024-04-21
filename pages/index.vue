@@ -40,7 +40,7 @@
                             help="guaranteed.thisweekannihilationhelp"
                             v-model:boxvalue="pullStore.user_data.is_excluded_annihilation" />
                         <ArkRange v-model:rangevalue="pullStore.user_data.current_annihilation_reward"
-                            label="Annihilation" min="1200" max="1800" step="50" />
+                            label="guaranteed.annihilation" min="1200" max="1800" step="50" />
                     </div>
                 </ArkFrame>
 
