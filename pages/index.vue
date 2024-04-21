@@ -8,39 +8,46 @@
                         :attributes="attributes" :columns="3" />
                 </ArkFrame>
 
-                <ArkFrame legend="guaranteed.header" description="guaranteed.subtext">
-                    <div class="grid grid-cols-2 gap-2 mb-3">
-                        <ArkInput id="currentorundum" min="0" v-model:inputvalue="pullStore.user_data.current_orundums"
-                            label="guaranteed.currentorundum">
-                            <OrundumIcon class="w-6 h-6" />
-                        </ArkInput>
-                        <ArkInput id="currenpermits" min="0" v-model:inputvalue="pullStore.user_data.current_permits"
-                            label="guaranteed.currentpermits">
-                            <PermitIcon class="w-6 h-6" />
-                        </ArkInput>
-                        <ArkInput id="opsacrifice" min="0" v-model:inputvalue="pullStore.user_data.current_prime"
-                            label="guaranteed.opsacrifice">
-                            <OPIcon class="w-6 h-6" />
-                        </ArkInput>
-                        <ArkInput id="currentshards" min="0" v-model:inputvalue="pullStore.user_data.current_shards"
-                            label="guaranteed.currentshards">
-                            <OShardIcon class="w-6 h-6" />
-                        </ArkInput>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2 mb-3">
-                        <ArkCheckbox id="monthlycard" label="guaranteed.monthlycard" help="guaranteed.monthlycardhelp"
-                            v-model:boxvalue="pullStore.user_data.is_monthly_card_active" />
-                        <ArkCheckbox id="todayrewards" label="guaranteed.todaytasks" help="guaranteed.todaytaskshelp"
-                            v-model:boxvalue="pullStore.user_data.is_excluded_today"
-                            :disabled="(today.getTime() === range.start.getTime() && getDays <= 1)" />
-                        <ArkCheckbox id="weeklyrewards" label="guaranteed.thisweektask"
-                            help="guaranteed.thisweektaskhelp"
-                            v-model:boxvalue="pullStore.user_data.is_excluded_week" />
-                        <ArkCheckbox id="annihilation" label="guaranteed.thisweekannihilation"
-                            help="guaranteed.thisweekannihilationhelp"
-                            v-model:boxvalue="pullStore.user_data.is_excluded_annihilation" />
-                        <ArkRange v-model:rangevalue="pullStore.user_data.current_annihilation_reward"
-                            label="guaranteed.annihilation" min="1200" max="1800" step="50" />
+                <ArkFrame legend="guaranteed.header">
+                    <ArkFrameHelp description="guaranteed.subtext" :isbutton="true" />
+                    <div class="grid grid-cols-4 px-6 gap-4 flex-grow-1">
+                        <div class="col-span-1">
+                            <ArkCheckboxListGroup>
+                                <ArkCheckboxListElement id="monthlycard" label="guaranteed.monthlycard"
+                                    v-model:boxvalue="pullStore.user_data.is_monthly_card_active" />
+                                <ArkCheckboxListElement id="todayrewards" label="guaranteed.todaytasks"
+                                    v-model:boxvalue="pullStore.user_data.is_excluded_today"
+                                    :disabled="(today.getTime() === range.start.getTime() && getDays <= 1)" />
+                                <ArkCheckboxListElement id="weeklyrewards" label="guaranteed.thisweektask"
+                                    v-model:boxvalue="pullStore.user_data.is_excluded_week" />
+                                <ArkCheckboxListElement id="annihilation" label="guaranteed.thisweekannihilation"
+                                    v-model:boxvalue="pullStore.user_data.is_excluded_annihilation" />
+                            </ArkCheckboxListGroup>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mb-3 col-span-3">
+                            <ArkInput class="w-full" id="currentorundum" min="0"
+                                v-model:inputvalue="pullStore.user_data.current_orundums"
+                                label="guaranteed.currentorundum">
+                                <OrundumIcon class="w-6 h-6" />
+                            </ArkInput>
+                            <ArkInput class="w-full" id="currenpermits" min="0"
+                                v-model:inputvalue="pullStore.user_data.current_permits"
+                                label="guaranteed.currentpermits">
+                                <PermitIcon class="w-6 h-6" />
+                            </ArkInput>
+                            <ArkInput class="w-full" id="opsacrifice" min="0"
+                                v-model:inputvalue="pullStore.user_data.current_prime" label="guaranteed.opsacrifice">
+                                <OPIcon class="w-6 h-6" />
+                            </ArkInput>
+                            <ArkInput class="w-full" id="currentshards" min="0"
+                                v-model:inputvalue="pullStore.user_data.current_shards"
+                                label="guaranteed.currentshards">
+                                <OShardIcon class="w-6 h-6" />
+                            </ArkInput>
+                            <ArkRange class="col-span-2"
+                                v-model:rangevalue="pullStore.user_data.current_annihilation_reward"
+                                label="guaranteed.annihilation" min="1200" max="1800" step="50" />
+                        </div>
                     </div>
                 </ArkFrame>
 
@@ -80,15 +87,17 @@
                 <ArkFrame legend="calculations.header">
                     <div
                         class="flex flex-row flex-wrap w-full px-6 justify-between font-semibold text-gray-100 text-2xl">
-                        <h2 class="w-1/3 text-left">{{ $t("calculations.days", { days: getDays}) }}</h2>
-                        <h2 class="w-1/3 text-center">{{ $t("calculations.weeks", { weeks: getWeeks}) }}</h2>
-                        <h2 class="w-1/3 text-right">{{ $t("calculations.months", { months: getMonths}) }}</h2>
+                        <h2 class="w-1/3 text-left">{{ $t("calculations.days", { days: getDays }) }}</h2>
+                        <h2 class="w-1/3 text-center">{{ $t("calculations.weeks", { weeks: getWeeks }) }}</h2>
+                        <h2 class="w-1/3 text-right">{{ $t("calculations.months", { months: getMonths }) }}</h2>
                         <hr class="w-full my-2">
                     </div>
                     <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
                         <div>
-                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.guaranteed.header") }}</h2>
-                            <ArkStat text="calculations.guaranteed.orundums" :stat="pullStore.user_data.current_orundums"
+                            <h2 class="font-semibold text-lg text-center uppercase">{{
+                                $t("calculations.guaranteed.header") }}</h2>
+                            <ArkStat text="calculations.guaranteed.orundums"
+                                :stat="pullStore.user_data.current_orundums"
                                 :condition="pullStore.user_data.current_orundums" icon="orundum" />
                             <ArkStat text="calculations.guaranteed.permits" :stat="pullStore.user_data.current_permits"
                                 :condition="pullStore.user_data.current_permits" icon="permit" />
@@ -98,12 +107,15 @@
                                 :condition="pullStore.user_data.current_shards" icon="orundum" />
                             <ArkStat text="calculations.guaranteed.daily" :stat="pullStore.getUserDailyRewards(getDays)"
                                 :condition="getDays > 0" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.weekly" :stat="pullStore.getUserWeeklyRewards(getWeeks)"
-                                :condition="getWeeks > 0" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.subscription" :stat="pullStore.getUserMonthlyCardRewards(getDays)"
+                            <ArkStat text="calculations.guaranteed.weekly"
+                                :stat="pullStore.getUserWeeklyRewards(getWeeks)" :condition="getWeeks > 0"
+                                icon="orundum" />
+                            <ArkStat text="calculations.guaranteed.subscription"
+                                :stat="pullStore.getUserMonthlyCardRewards(getDays)"
                                 :condition="pullStore.user_data.is_monthly_card_active" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.annihilation" :stat="pullStore.getUserAnnihilationRewards(getWeeks)"
-                                :condition="getWeeks > 0" icon="orundum" />
+                            <ArkStat text="calculations.guaranteed.annihilation"
+                                :stat="pullStore.getUserAnnihilationRewards(getWeeks)" :condition="getWeeks > 0"
+                                icon="orundum" />
                             <ArkStat text="calculations.guaranteed.loginpermit"
                                 :stat="pullStore.user_data.login_permits_in_range"
                                 :condition="pullStore.user_data.login_permits_in_range" icon="permit" />
@@ -114,9 +126,11 @@
                             <ArkStat class="text-red-700" text="calculations.guaranteed.weekexcluded"
                                 :condition="pullStore.user_data.is_excluded_week" />
                             <hr>
-                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.advanced.header") }}</h2>
+                            <h2 class="font-semibold text-lg text-center uppercase">{{
+                                $t("calculations.advanced.header") }}</h2>
                             <hr>
-                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.maybe.header") }}</h2>
+                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.maybe.header")
+                                }}</h2>
                         </div>
                         <hr>
                         <div class="flex flex-row flex-wrap w-full justify-between text-lg font-bold">
@@ -126,7 +140,8 @@
                             <p class="flex flex-row gap-2 items-center justify-center">
                                 <PermitIcon class="w-6 h-6" /> {{ guaranteedPermits > 0 ? guaranteedPermits : 0 }}
                             </p>
-                            <p class="flex flex-row gap-2 items-center justify-center">{{ $t("calculations.total", {pulls: totalPulls}) }}</p>
+                            <p class="flex flex-row gap-2 items-center justify-center">{{ $t("calculations.total",
+                                { pulls: totalPulls }) }}</p>
                         </div>
                     </div>
                 </ArkFrame>
@@ -162,11 +177,11 @@ function getWeekNumber(date) {
     const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
     // Set to nearest Thursday: current date + 4 - current day number
     // Make Sunday's day number 7
-    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
     // Get first day of year
-    const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
     // Calculate full weeks to nearest Thursday
-    const weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
     // Return array of year and week number
     return [d.getUTCFullYear(), weekNo];
 }

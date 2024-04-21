@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col mb-4">
-        <label :for="id" class="flex flex-row mb-3 text-sm font-medium text-white">{{ $t(label) }}:<span
+    <div class="flex flex-col">
+        <label :for="id" class="flex flex-row text-sm font-medium text-white">{{ $t(label) }}:<span
                 class="font-bold ml-1">{{ rangeValue }}</span></label>
         <input :id :min :max :step type="range" class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-sky-900"
             v-model="rangeValue">
-        <div class="flex flex-row justify-between mt-2">
+        <div class="flex flex-row justify-between">
             <span class="text-sm text-gray-400">Min: 1200</span>
             <span class="text-sm text-gray-400">Max: 1800</span>
         </div>
@@ -33,7 +33,7 @@ input {
     --s: 30px;
     /* thumb size*/
 
-    width: 400px;
+    width: 100%;
     height: var(--s);
     /* needed for Firefox*/
     --_c: color-mix(in srgb, var(--c), #000 var(--p, 0%));
