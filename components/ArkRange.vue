@@ -24,8 +24,8 @@ const rangeValue = defineModel('rangevalue', { required: true })
 
 <style scoped>
 input {
-    --c: rgb(0, 102, 255);
-    /* active color */
+    --c: rgb(0, 102, 255); 
+    /* active color == tailwind blue-ribbon-700 */
     --g: 8px;
     /* the gap */
     --l: 5px;

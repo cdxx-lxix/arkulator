@@ -9,7 +9,7 @@
                 </ArkFrame>
 
                 <ArkFrame legend="guaranteed.header">
-                    <ArkFrameHelp description="guaranteed.subtext" :isbutton="true" />
+                    <ArkFrameHelp description="guaranteed.subtext" :isbutton="true" modalid="guaranteed-help" />
                     <div class="grid grid-cols-4 px-6 gap-4 flex-grow-1">
                         <div class="col-span-1">
                             <ArkCheckboxListGroup>
@@ -53,6 +53,7 @@
 
                 <fieldset class="border-2 border-gray-100 rounded-lg p-2">
                     <legend class="ml-4 px-2 text-white font-semibold uppercase">Advanced: </legend>
+                    <ArkFrameHelp description="guaranteed.subtext" :isbutton="true" modalid="advanced-help" />
                     <p class="text-white mb-2 ml-4">This section consists of resources that can't be taken for granted
                         and most likely out of your control but it's still possible to calculate with some degree of
                         accuracy.</p>

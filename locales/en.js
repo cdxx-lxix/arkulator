@@ -1,18 +1,12 @@
-import annihilations from "~/data/annihilations";
-
 export default {
     test: "test",
     guaranteed : {
         header: "Guaranteed",
         subtext: "This section contains rewards that are more or less 'guaranteed' as long as you login and play everyday.",
         monthlycard: "Monthly Card",
-        monthlycardhelp: "If you have or plan to purchase it for the duration of set dates",
         todaytasks: "Exclude today's rewards",
-        todaytaskshelp: "Check if you've already collected rewards today",
         thisweektask: "Exclude this week's rewards",
-        thisweektaskhelp: "Check if you've already collected this rewards for this week",
         thisweekannihilation: "Exclude this week's annihilation",
-        thisweekannihilationhelp: "Check if you've already farmed annihilation this week",
         currentorundum: "Current Orundum",
         currentpermits: "Current HH permits",
         opsacrifice: "OP to spend",
@@ -47,5 +41,20 @@ export default {
             header: "maybe"
         },
         total: "Total pulls: {pulls}"
+    },
+    help: {
+        modaltitle: "Help",
+        guaranteed: {
+            full: "This section contains rewards that are more or less 'guaranteed' as long as you login and play everyday. All of the calculation are pure math. That's why it is called 'guaranteed' section. Just be a good boy/girl and play everyday then these calculation will be correct 100%.",
+            monthlycard: "Check it if you have it already or willing to purchase FOR THE DURATION OF SET DATES.",
+            excludetoday: "Excludes today's rewards from calculations. Affects all of the rewards for today: missions, monthly card, recruits, sign-in.",
+            excludeweek: "Excludes current week's missions rewards: orundum, green certificates.",
+            excludeannihilation: "Excludes current week's orundum reward from annihilation.",
+            currentorundum: "Includes orundum that you have now into calculations. Just leave it empty if it's unnessesary.",
+            currentpermits: "Includes permit(s) that you have now into calculations. Just leave it empty if it's unnessesary.",
+            currentprime: "If you are willing to spend originium prime for pulls then write the amount you are willing to sacrifice to the Gacha God. Just leave it empty if it's unnessesary.",
+            currentshards: "If you have originium shards and willing to convert them into orundum write the amount you are willing to convert. Just leave it empty if it's unnessesary.",
+            annihilationreward: "Sets your current annihilation reward for weekly farm. Affects week-based calculation and exclusion of current week."
+        }
     }
 }
