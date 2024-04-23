@@ -57,6 +57,7 @@ export const usePullsStore = defineStore("pulls", () => {
   };
 
   const user_data = reactive({
+    // Guaranteed section
     current_orundums: 0,
     current_permits: 0,
     current_annihilation_reward: 1800, // 1200 - 1800 with step 50, 1800 default
@@ -67,7 +68,24 @@ export const usePullsStore = defineStore("pulls", () => {
     is_excluded_annihilation: false,
     is_monthly_card_active: false,
     login_permits_in_range: 0,
+    // Advanced section
+    is_included_gcs: false,
+    is_phase_three: false,
+    gcs_current_certs: 0,
+    gcs_recruitment: 0,
+
+
   });
+
+  const user_recruitment_strategies = [
+    { name: "advanced.strategies.minimum", value: "min"},
+    { name: "advanced.strategies.average", value: "avg"},
+    { name: "advanced.strategies.maximum", value: "max"}
+  ]
+  const user_gcs_phases = [
+    { name: "advanced.gcs_phases.budget", value: 10 },
+    { name: "advanced.gcs_phases.normal", value: 20 }
+  ]
 
   const preventNegative = (target) => {
     return target < 0 ? 0 : target;
@@ -158,6 +176,8 @@ export const usePullsStore = defineStore("pulls", () => {
 
   return {
     user_data,
+    user_recruitment_strategies,
+    user_gcs_phases,
     getUserDailyRewards,
     getUserMonthlyCardRewards,
     getUserWeeklyRewards,

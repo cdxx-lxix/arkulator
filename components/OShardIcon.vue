@@ -11,7 +11,7 @@
     </svg>
 </template>
 
-<style>
+<style scoped>
 .st0 {
     fill: #0f0a09
 }

@@ -14,6 +14,25 @@ export default {
         annihilation: "Annihilation reward"
 
     },
+    advanced: {
+        header: "Advanced",
+        subtext: "This section consists of resources that can't be taken for granted and most likely out of your control but it's still possible to calculate with some degree of accuracy.",
+        gcs: "Green Cert Shop",
+        greens: "Current GC amount",
+        recruits: "Recruitments daily",
+        strategy: "Choose recruitment outcome",
+        strategies: {
+            minimum: "Minimum",
+            average: "Average",
+            maximum: "Maximum"
+        },
+        phase: "Target shop page",
+        gcs_phases: {
+            budget: "Page 1",
+            normal: "Page 2"
+        },
+        infinite: "Infinite buyout"
+    },
     calculations: {
         header: "Calculations",
         days: "Day(s): {days}",
@@ -55,6 +74,9 @@ export default {
             currentprime: "If you are willing to spend originium prime for pulls then write the amount you are willing to sacrifice to the Gacha God. Just leave it empty if it's unnessesary.",
             currentshards: "If you have originium shards and willing to convert them into orundum write the amount you are willing to convert. Just leave it empty if it's unnessesary.",
             annihilationreward: "Sets your current annihilation reward for weekly farm. Affects week-based calculation and exclusion of current week."
+        },
+        advanced: {
+
         }
     }
 }

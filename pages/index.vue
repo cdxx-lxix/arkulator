@@ -51,13 +51,33 @@
                     </div>
                 </ArkFrame>
 
-                <fieldset class="border-2 border-gray-100 rounded-lg p-2">
-                    <legend class="ml-4 px-2 text-white font-semibold uppercase">Advanced: </legend>
-                    <ArkFrameHelp description="guaranteed.subtext" :isbutton="true" modalid="advanced-help" />
-                    <p class="text-white mb-2 ml-4">This section consists of resources that can't be taken for granted
-                        and most likely out of your control but it's still possible to calculate with some degree of
-                        accuracy.</p>
-                </fieldset>
+                <ArkFrame legend="advanced.header">
+                    <ArkFrameHelp description="advanced.subtext" :isbutton="true" modalid="advanced-help" />
+                    <div class="grid grid-cols-4 px-6 gap-4">
+                        <ArkFancyCheckbox label="advanced.gcs" id="green-shop"
+                            v-model:boxvalue="pullStore.user_data.is_included_gcs">
+                            <GreenCertIcon />
+                        </ArkFancyCheckbox>
+                        <div class="flex flex-col justify-between">
+                            <ArkInput class="w-full" id="currentgreencerts" min="0"
+                                v-model:inputvalue="pullStore.user_data.gcs_current_certs" label="advanced.greens">
+                                <GreenCertIcon class="w-6 h-6" />
+                            </ArkInput>
+                            <ArkInput class="w-full" id="currentrecruits" min="0"
+                                v-model:inputvalue="pullStore.user_data.gcs_recruitment" label="advanced.recruits">
+                                <RecruitPermitIcon class="w-6 h-6" />
+                            </ArkInput>
+                        </div>
+                        <div class="flex flex-col justify-between">
+                            <ArkDropdown label="advanced.strategy" :options="pullStore.user_recruitment_strategies" />
+                            <ArkDropdown label="advanced.phase" :options="pullStore.user_gcs_phases" />
+                        </div>
+                        <ArkFancyCheckbox label="advanced.infinite" id="green-infinity"
+                            v-model:boxvalue="pullStore.user_data.is_phase_three">
+                            <InfinityIcon class="fill-[#a9cf38]" />
+                        </ArkFancyCheckbox>
+                    </div>
+                </ArkFrame>
 
                 <fieldset class="border-2 border-gray-100 rounded-lg p-2">
                     <legend class="ml-4 px-2 text-white font-semibold uppercase">This might happen: </legend>
