@@ -50,14 +50,7 @@
                         <div>
                             <ArkGuarantStats :days="getDays" :weeks="getWeeks" />
                             <hr>
-                            <h2 class="font-semibold text-lg text-center uppercase">{{
-                                $t("calculations.advanced.header") }}</h2>
-                            <!-- <ArkStat text="calculations.advanced.infinite"
-                                :stat="pullStore.getUserOrundumInfiniteBuyout()"
-                                :condition="pullStore.user_data.is_phase_three" icon="orundum" /> -->
-                            <!-- <ArkStat text="calculations.advanced.greenshop"
-                                :stat="pullStore.getUserPullsFromGreenShopStrategy(getMonths, getWeeks, getDays, range.start, range.end)"
-                                :condition="!pullStore.user_data.is_included_gcs" icon="orundum" /> -->
+                            <ArkAdvancedStats />
                             <hr>
                             <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.maybe.header")
                                 }}</h2>
@@ -85,6 +78,7 @@
 import events from '~/data/events';
 import annihilations from '~/data/annihilations';
 import { usePullsStore } from '#imports';
+import ArkAdvancedStats from '~/components/sections/ArkAdvancedStats.vue';
 
 const pullStore = usePullsStore()
 

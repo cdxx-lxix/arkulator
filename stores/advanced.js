@@ -103,5 +103,6 @@ export const useAdvancedStore = defineStore("advanced", () => {
 
   return {
     user_data,
+    getUserOrundumInfiniteBuyout,
   };
 });
