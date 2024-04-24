@@ -13,5 +13,11 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: 'locales',
     defaultLocale: 'en'
-  }
+  },
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false, // [!code ++]
+    },
+  ],
 })

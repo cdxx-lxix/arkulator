@@ -54,7 +54,9 @@ export default {
             annihilationexcluded: "This week's missions excluded"
         },
         advanced: {
-            header: "advanced"
+            header: "advanced",
+            infinite: "From Infinite buyout",
+            greenshop: "From Green cert shop"
         },
         maybe: {
             header: "maybe"

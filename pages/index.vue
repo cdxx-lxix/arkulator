@@ -8,76 +8,9 @@
                         :attributes="attributes" :columns="3" />
                 </ArkFrame>
 
-                <ArkFrame legend="guaranteed.header">
-                    <ArkFrameHelp description="guaranteed.subtext" :isbutton="true" modalid="guaranteed-help" />
-                    <div class="grid grid-cols-4 px-6 gap-4 flex-grow-1">
-                        <div class="col-span-1">
-                            <ArkCheckboxListGroup>
-                                <ArkCheckboxListElement id="monthlycard" label="guaranteed.monthlycard"
-                                    v-model:boxvalue="pullStore.user_data.is_monthly_card_active" />
-                                <ArkCheckboxListElement id="todayrewards" label="guaranteed.todaytasks"
-                                    v-model:boxvalue="pullStore.user_data.is_excluded_today"
-                                    :disabled="(today.getTime() === range.start.getTime() && getDays <= 1)" />
-                                <ArkCheckboxListElement id="weeklyrewards" label="guaranteed.thisweektask"
-                                    v-model:boxvalue="pullStore.user_data.is_excluded_week" />
-                                <ArkCheckboxListElement id="annihilation" label="guaranteed.thisweekannihilation"
-                                    v-model:boxvalue="pullStore.user_data.is_excluded_annihilation" />
-                            </ArkCheckboxListGroup>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 mb-3 col-span-3">
-                            <ArkInput class="w-full" id="currentorundum" min="0"
-                                v-model:inputvalue="pullStore.user_data.current_orundums"
-                                label="guaranteed.currentorundum">
-                                <OrundumIcon class="w-6 h-6" />
-                            </ArkInput>
-                            <ArkInput class="w-full" id="currenpermits" min="0"
-                                v-model:inputvalue="pullStore.user_data.current_permits"
-                                label="guaranteed.currentpermits">
-                                <PermitIcon class="w-6 h-6" />
-                            </ArkInput>
-                            <ArkInput class="w-full" id="opsacrifice" min="0"
-                                v-model:inputvalue="pullStore.user_data.current_prime" label="guaranteed.opsacrifice">
-                                <OPIcon class="w-6 h-6" />
-                            </ArkInput>
-                            <ArkInput class="w-full" id="currentshards" min="0"
-                                v-model:inputvalue="pullStore.user_data.current_shards"
-                                label="guaranteed.currentshards">
-                                <OShardIcon class="w-6 h-6" />
-                            </ArkInput>
-                            <ArkRange class="col-span-2"
-                                v-model:rangevalue="pullStore.user_data.current_annihilation_reward"
-                                label="guaranteed.annihilation" min="1200" max="1800" step="50" />
-                        </div>
-                    </div>
-                </ArkFrame>
+                <ArkGuarantCalc :days="getDays" :start="range.start" />
 
-                <ArkFrame legend="advanced.header">
-                    <ArkFrameHelp description="advanced.subtext" :isbutton="true" modalid="advanced-help" />
-                    <div class="grid grid-cols-4 px-6 gap-4">
-                        <ArkFancyCheckbox label="advanced.gcs" id="green-shop"
-                            v-model:boxvalue="pullStore.user_data.is_included_gcs">
-                            <GreenCertIcon />
-                        </ArkFancyCheckbox>
-                        <div class="flex flex-col justify-between">
-                            <ArkInput class="w-full" id="currentgreencerts" min="0"
-                                v-model:inputvalue="pullStore.user_data.gcs_current_certs" label="advanced.greens">
-                                <GreenCertIcon class="w-6 h-6" />
-                            </ArkInput>
-                            <ArkInput class="w-full" id="currentrecruits" min="0"
-                                v-model:inputvalue="pullStore.user_data.gcs_recruitment" label="advanced.recruits">
-                                <RecruitPermitIcon class="w-6 h-6" />
-                            </ArkInput>
-                        </div>
-                        <div class="flex flex-col justify-between">
-                            <ArkDropdown label="advanced.strategy" :options="pullStore.user_recruitment_strategies" />
-                            <ArkDropdown label="advanced.phase" :options="pullStore.user_gcs_phases" />
-                        </div>
-                        <ArkFancyCheckbox label="advanced.infinite" id="green-infinity"
-                            v-model:boxvalue="pullStore.user_data.is_phase_three">
-                            <InfinityIcon class="fill-[#a9cf38]" />
-                        </ArkFancyCheckbox>
-                    </div>
-                </ArkFrame>
+                <ArkAdvancedCalc />
 
                 <fieldset class="border-2 border-gray-100 rounded-lg p-2">
                     <legend class="ml-4 px-2 text-white font-semibold uppercase">This might happen: </legend>
@@ -115,40 +48,16 @@
                     </div>
                     <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
                         <div>
-                            <h2 class="font-semibold text-lg text-center uppercase">{{
-                                $t("calculations.guaranteed.header") }}</h2>
-                            <ArkStat text="calculations.guaranteed.orundums"
-                                :stat="pullStore.user_data.current_orundums"
-                                :condition="pullStore.user_data.current_orundums" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.permits" :stat="pullStore.user_data.current_permits"
-                                :condition="pullStore.user_data.current_permits" icon="permit" />
-                            <ArkStat text="calculations.guaranteed.prime" :stat="pullStore.getUserPrimeToOrundum()"
-                                :condition="pullStore.user_data.current_prime" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.shards" :stat="pullStore.getUserShardsToOrundum()"
-                                :condition="pullStore.user_data.current_shards" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.daily" :stat="pullStore.getUserDailyRewards(getDays)"
-                                :condition="getDays > 0" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.weekly"
-                                :stat="pullStore.getUserWeeklyRewards(getWeeks)" :condition="getWeeks > 0"
-                                icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.subscription"
-                                :stat="pullStore.getUserMonthlyCardRewards(getDays)"
-                                :condition="pullStore.user_data.is_monthly_card_active" icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.annihilation"
-                                :stat="pullStore.getUserAnnihilationRewards(getWeeks)" :condition="getWeeks > 0"
-                                icon="orundum" />
-                            <ArkStat text="calculations.guaranteed.loginpermit"
-                                :stat="pullStore.user_data.login_permits_in_range"
-                                :condition="pullStore.user_data.login_permits_in_range" icon="permit" />
-                            <ArkStat class="text-red-700" text="calculations.guaranteed.todayexcluded"
-                                :condition="pullStore.user_data.is_excluded_today" />
-                            <ArkStat class="text-red-700" text="calculations.guaranteed.annihilationexcluded"
-                                :condition="pullStore.user_data.is_excluded_annihilation" />
-                            <ArkStat class="text-red-700" text="calculations.guaranteed.weekexcluded"
-                                :condition="pullStore.user_data.is_excluded_week" />
+                            <ArkGuarantStats :days="getDays" :weeks="getWeeks" />
                             <hr>
                             <h2 class="font-semibold text-lg text-center uppercase">{{
                                 $t("calculations.advanced.header") }}</h2>
+                            <!-- <ArkStat text="calculations.advanced.infinite"
+                                :stat="pullStore.getUserOrundumInfiniteBuyout()"
+                                :condition="pullStore.user_data.is_phase_three" icon="orundum" /> -->
+                            <!-- <ArkStat text="calculations.advanced.greenshop"
+                                :stat="pullStore.getUserPullsFromGreenShopStrategy(getMonths, getWeeks, getDays, range.start, range.end)"
+                                :condition="!pullStore.user_data.is_included_gcs" icon="orundum" /> -->
                             <hr>
                             <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.maybe.header")
                                 }}</h2>
@@ -191,7 +100,7 @@ const attributes = ref(importantDates)
 // milliseconds / 1000 to get secodns / 60 to get minutes / 60 to get hours / 24 to get days
 const getDays = computed(() => {
     // +1 makes it return 1 even when one day is selected. By default calendar ignores starting day.
-    return ((range.value.end.getTime() - range.value.start.getTime()) / 1000 / 60 / 60 / 24) + 1
+    return Math.floor(((range.value.end.getTime() - range.value.start.getTime()) / 1000 / 60 / 60 / 24) + 1)
 })
 function getWeekNumber(date) {
     // Copy date so don't modify original

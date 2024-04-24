@@ -1,5 +1,6 @@
 import { reactive } from "vue";
 import { defineStore } from "pinia";
+import { preventNegative, getRewardsForSpecificDate } from "./commonactions";
 
 export const usePullsStore = defineStore("pulls", () => {
   const REWARDS_GUARANTEED = {
@@ -9,42 +10,6 @@ export const usePullsStore = defineStore("pulls", () => {
     orundum_for_originium_prime: 180, // For 1 OP
     orundum_for_originium_shards: 10, // You have to craft 2 to get 20
     login_on_day_17: 1, // Permit
-  };
-  const REWARDS_ADVANCED = {
-    // gcs- green certificate shop
-    gcs_phaseone_orundums: 600, // 240 GC (40*6)
-    gcs_phaseone_permits: 2, // 480 GC (240*2)
-    gcs_phaseone_budget_cost: 720, // Orundums and permits only
-    gcs_phaseone_total_cost: 1490, // Total amount to unlock P2
-    gcs_phasetwo_permits: 2, // P2 contains only 2 permits
-    gcs_phasetwo_permits_cost: 900, // 2 permits for 450 each on P2
-    gcs_phasetwo_total_cost: 8000, // In addition to 1490 for P1 you need this much to unlock P3
-    gcs_phasethree_orundum_cost: 50,
-    gcs_phasethree_orundum_gain: 30, // 30 orundums for 50 GC in unlimited store on P3
-    gcs_monthly_login_11th: 10, // Obtain 10 GC for 11 days login streak
-    gcs_weekly_mission_rewards: 20, // Obtain 20 GC from weekly missions
-    gcs_threestar_recruitment: 5, // GC per 3*
-    gcs_fourstar_recruitment: 30, // GC per 4*
-    // ycs - yellow certificate shop
-    ycs_lvlone_permits: 1,
-    ycs_lvlone_price: 10,
-    ycs_lvltwo_permits: 2,
-    ycs_lvltwo_price: 18,
-    ycs_lvlthree_permits: 5,
-    ycs_lvlthree_price: 40,
-    ycs_lvlfour_permits: 10,
-    ycs_lvlfour_price: 70,
-    ycs_lvlfive_permits: 20,
-    ycs_lvlfive_price: 120,
-    ycs_full_permits: 38,
-    ycs_full_price: 258,
-    ycs_monthly_login_25th: 5, // Obtain 10 YC for 25 days login streak
-    ycs_fourstar_recruitment: 1, // YC per 4*
-    // rcs - rerun certificate shop
-    rcs_price_per_orundum: 20, // 20 RC per 20 orundums
-    rcs_orundums_gain_per_purchase: 100, // 100 orundums per 20 RC
-    rcs_stock_update_per_rerun: 20, // They add +20 (2000 orundums) every rerun event
-    rcs_minimal_event_currency_gain: 1700, // They amount of Intellegence Certificates given per rerun isn't stable. So this is the minimum instead.
   };
   const REWARDS_MAYBE = {
     // mini events that last a week have nothing of value
@@ -57,7 +22,6 @@ export const usePullsStore = defineStore("pulls", () => {
   };
 
   const user_data = reactive({
-    // Guaranteed section
     current_orundums: 0,
     current_permits: 0,
     current_annihilation_reward: 1800, // 1200 - 1800 with step 50, 1800 default
@@ -68,28 +32,7 @@ export const usePullsStore = defineStore("pulls", () => {
     is_excluded_annihilation: false,
     is_monthly_card_active: false,
     login_permits_in_range: 0,
-    // Advanced section
-    is_included_gcs: false,
-    is_phase_three: false,
-    gcs_current_certs: 0,
-    gcs_recruitment: 0,
-
-
   });
-
-  const user_recruitment_strategies = [
-    { name: "advanced.strategies.minimum", value: "min"},
-    { name: "advanced.strategies.average", value: "avg"},
-    { name: "advanced.strategies.maximum", value: "max"}
-  ]
-  const user_gcs_phases = [
-    { name: "advanced.gcs_phases.budget", value: 10 },
-    { name: "advanced.gcs_phases.normal", value: 20 }
-  ]
-
-  const preventNegative = (target) => {
-    return target < 0 ? 0 : target;
-  };
 
   const getUserDailyRewards = (days) => {
     // Yes, I've used casting to convert bool into number
@@ -126,58 +69,19 @@ export const usePullsStore = defineStore("pulls", () => {
       user_data.current_prime * REWARDS_GUARANTEED.orundum_for_originium_prime;
     return preventNegative(temp);
   };
-  const getRewardsForSpecificDate = (start, end, specific_date, reward) => {
-    const day = 86400000; // milliseconds
-    // Loops through the range of dates and adds 1 permit for daily login reward of every 17th day of the month.
-    // +86400000 <- this addition is needed to exclude the first day in the range and include the last one
-    let temp = 0;
-    for (
-      let loopTime = start + (user_data.is_excluded_today ? day : 0);
-      loopTime < end + day;
-      loopTime += day
-    ) {
-      let loopDay = new Date(loopTime);
-      if (loopDay.getDate() == specific_date) {
-        temp += reward;
-      }
-    }
-    return preventNegative(temp);
-  };
+
   const getUserPermitsForLogin = (start, end) => {
     return getRewardsForSpecificDate(
       start,
       end,
       17,
-      REWARDS_GUARANTEED.login_on_day_17
-    );
-  };
-  const getUserGreenCertsForLogin = (start, end) => {
-    return getRewardsForSpecificDate(
-      start,
-      end,
-      11,
-      REWARDS_ADVANCED.gcs_monthly_login_11th
-    );
-  };
-  const getUserYellowCertsForLogin = (start, end) => {
-    return getRewardsForSpecificDate(
-      start,
-      end,
-      25,
-      REWARDS_ADVANCED.ycs_monthly_login_25th
-    );
-  };
-  const getUserGreenCertsWeekly = (weeks) => {
-    return preventNegative(
-      (weeks - Number(user_data.is_excluded_week)) *
-        REWARDS_ADVANCED.gcs_weekly_mission_rewards
+      REWARDS_GUARANTEED.login_on_day_17,
+      user_data.is_excluded_today
     );
   };
 
   return {
     user_data,
-    user_recruitment_strategies,
-    user_gcs_phases,
     getUserDailyRewards,
     getUserMonthlyCardRewards,
     getUserWeeklyRewards,
