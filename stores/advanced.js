@@ -103,6 +103,8 @@ export const useAdvancedStore = defineStore("advanced", () => {
 
   return {
     user_data,
+    user_recruitment_strategies,
+    user_gcs_phases,
     getUserOrundumInfiniteBuyout,
   };
 });

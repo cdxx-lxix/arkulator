@@ -1,8 +1,10 @@
 import { reactive } from "vue";
 import { defineStore } from "pinia";
 import { preventNegative, getRewardsForSpecificDate } from "./commonactions";
+import { useCalendarStore } from "./calendar";
 
 export const usePullsStore = defineStore("pulls", () => {
+  const calendarStore = useCalendarStore();
   const REWARDS_GUARANTEED = {
     daily_missions_orundum: 100, // Orundum
     monthly_card_orundum: 200, // Orundum
@@ -37,25 +39,25 @@ export const usePullsStore = defineStore("pulls", () => {
   const getUserDailyRewards = (days) => {
     // Yes, I've used casting to convert bool into number
     return preventNegative(
-      (days - Number(user_data.is_excluded_today)) *
+      (days - Number(calendarStore.calendar_data.is_excluded_today)) *
         REWARDS_GUARANTEED.daily_missions_orundum
     );
   };
   const getUserWeeklyRewards = (weeks) => {
     return preventNegative(
-      (weeks - Number(user_data.is_excluded_week)) *
+      (weeks - Number(calendarStore.calendar_data.is_excluded_week)) *
         REWARDS_GUARANTEED.weekily_missions_orundum
     );
   };
   const getUserMonthlyCardRewards = (days) => {
     return preventNegative(
-      (days - Number(user_data.is_excluded_today)) *
+      (days - Number(calendarStore.calendar_data.is_excluded_today)) *
         REWARDS_GUARANTEED.monthly_card_orundum
     );
   };
   const getUserAnnihilationRewards = (weeks) => {
     return preventNegative(
-      (weeks - Number(user_data.is_excluded_annihilation)) *
+      (weeks - Number(calendarStore.calendar_data.is_excluded_annihilation)) *
         user_data.current_annihilation_reward
     );
   };
@@ -76,7 +78,7 @@ export const usePullsStore = defineStore("pulls", () => {
       end,
       17,
       REWARDS_GUARANTEED.login_on_day_17,
-      user_data.is_excluded_today
+      calendarStore.calendar_data.is_excluded_today
     );
   };
 

@@ -1,5 +1,6 @@
 export default {
     test: "test",
+    calendar: "Magic calendar",
     guaranteed : {
         header: "Guaranteed",
         subtext: "This section contains rewards that are more or less 'guaranteed' as long as you login and play everyday.",

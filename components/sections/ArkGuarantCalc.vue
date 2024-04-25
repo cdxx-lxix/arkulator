@@ -7,12 +7,12 @@
                     <ArkCheckboxListElement id="monthlycard" label="guaranteed.monthlycard"
                         v-model:boxvalue="pullStore.user_data.is_monthly_card_active" />
                     <ArkCheckboxListElement id="todayrewards" label="guaranteed.todaytasks"
-                        v-model:boxvalue="pullStore.user_data.is_excluded_today"
-                        :disabled="(today.getTime() === start.getTime() && days <= 1)" />
+                        v-model:boxvalue="calendarStore.calendar_data.is_excluded_today"
+                        :disabled="(calendarStore.today.getTime() === calendarStore.range.start.getTime() && calendarStore.getDays <= 1)" />
                     <ArkCheckboxListElement id="weeklyrewards" label="guaranteed.thisweektask"
-                        v-model:boxvalue="pullStore.user_data.is_excluded_week" />
+                        v-model:boxvalue="calendarStore.calendar_data.is_excluded_week" />
                     <ArkCheckboxListElement id="annihilation" label="guaranteed.thisweekannihilation"
-                        v-model:boxvalue="pullStore.user_data.is_excluded_annihilation" />
+                        v-model:boxvalue="calendarStore.calendar_data.is_excluded_annihilation" />
                 </ArkCheckboxListGroup>
             </div>
             <div class="grid grid-cols-2 gap-2 mb-3 col-span-3">
@@ -41,11 +41,8 @@
 
 <script setup>
 import { usePullsStore } from '#imports';
+import { useCalendarStore } from '~/stores/calendar';
 
-const today = new Date()
 const pullStore = usePullsStore()
-const props = defineProps([
-    'days',
-    'start'
-])
+const calendarStore = useCalendarStore()
 </script>

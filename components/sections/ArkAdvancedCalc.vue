@@ -8,19 +8,27 @@
             </ArkFancyCheckbox>
             <div class="flex flex-col justify-between">
                 <ArkInput class="w-full" id="currentgreencerts" min="0"
-                    v-model:inputvalue="advancedStore.user_data.gcs_current_certs" label="advanced.greens" :disabled="!advancedStore.user_data.is_included_gcs">
+                    v-model:inputvalue="advancedStore.user_data.gcs_current_certs" label="advanced.greens"
+                    :disabled="!advancedStore.user_data.is_included_gcs">
                     <GreenCertIcon class="w-6 h-6" />
                 </ArkInput>
                 <ArkInput class="w-full" id="currentrecruits" min="0"
-                    v-model:inputvalue="advancedStore.user_data.gcs_recruitment" label="advanced.recruits" :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three">
+                    v-model:inputvalue="advancedStore.user_data.gcs_recruitment" label="advanced.recruits"
+                    :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three">
                     <RecruitPermitIcon class="w-6 h-6" />
                 </ArkInput>
             </div>
             <div class="flex flex-col justify-between">
-                <ArkDropdown label="advanced.strategy" :options="advancedStore.user_recruitment_strategies" :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three"/>
-                <ArkDropdown label="advanced.phase" :options="advancedStore.user_gcs_phases" :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three"/>
+                <ArkDropdown label="advanced.strategy"
+                    v-model:selectvalue="advancedStore.user_data.gcs_selected_strategy"
+                    :options="advancedStore.user_recruitment_strategies"
+                    :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three" />
+                <ArkDropdown label="advanced.phase" v-model:selectvalue="advancedStore.user_data.gcs_selected_plan"
+                    :options="advancedStore.user_gcs_phases"
+                    :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three" />
             </div>
-            <ArkFancyCheckbox label="advanced.infinite" id="green-infinity" :disabled="!advancedStore.user_data.is_included_gcs"
+            <ArkFancyCheckbox label="advanced.infinite" id="green-infinity"
+                :disabled="!advancedStore.user_data.is_included_gcs"
                 v-model:boxvalue="advancedStore.user_data.is_phase_three">
                 <InfinityIcon class="fill-[#a9cf38]" />
             </ArkFancyCheckbox>
