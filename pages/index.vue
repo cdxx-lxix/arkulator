@@ -3,9 +3,9 @@
         <section id="calculationform">
             <div class="flex flex-col gap-2 p-2">
                 <ArkFrame legend="calendar">
-                    <VDatePicker v-model.range="calendarStore.range" mode="date" is-dark="true" color="pink" :first-day-of-week="2"
-                        show-iso-weeknumbers :min-date="new Date()" :max-date="new Date(2030, 1, 1)"
-                        :attributes="attributes" :columns="3" />
+                    <VDatePicker v-model.range="calendarStore.range" mode="date" is-dark="true" color="pink"
+                        :first-day-of-week="2" show-iso-weeknumbers :min-date="new Date()"
+                        :max-date="new Date(2030, 1, 1)" :attributes="attributes" :columns="3" />
                 </ArkFrame>
 
                 <ArkGuarantCalc />
@@ -42,8 +42,10 @@
                     <div
                         class="flex flex-row flex-wrap w-full px-6 justify-between font-semibold text-gray-100 text-2xl">
                         <h2 class="w-1/3 text-left">{{ $t("calculations.days", { days: calendarStore.getDays }) }}</h2>
-                        <h2 class="w-1/3 text-center">{{ $t("calculations.weeks", { weeks: calendarStore.getWeeks }) }}</h2>
-                        <h2 class="w-1/3 text-right">{{ $t("calculations.months", { months: calendarStore.getMonths }) }}</h2>
+                        <h2 class="w-1/3 text-center">{{ $t("calculations.weeks", { weeks: calendarStore.getWeeks }) }}
+                        </h2>
+                        <h2 class="w-1/3 text-right">{{ $t("calculations.months", { months: calendarStore.getMonths })
+                            }}</h2>
                         <hr class="w-full my-2">
                     </div>
                     <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
@@ -89,7 +91,9 @@ const attributes = ref(importantDates)
 const guaranteedOrundums = computed(() => {
     let temp = pullStore.user_data.current_orundums
     temp += pullStore.getUserDailyRewards(calendarStore.getDays)
-    temp += pullStore.getUserMonthlyCardRewards(calendarStore.getDays)
+    if (pullStore.user_data.is_monthly_card_active) {
+        temp += pullStore.getUserMonthlyCardRewards(calendarStore.getDays)
+    }
     temp += pullStore.getUserWeeklyRewards(calendarStore.getDays)
     temp += pullStore.getUserAnnihilationRewards(calendarStore.getWeeks)
     temp += pullStore.getUserPrimeToOrundum()
