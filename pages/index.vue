@@ -60,10 +60,10 @@
                         <hr>
                         <div class="flex flex-row flex-wrap w-full justify-between text-lg font-bold">
                             <p class="flex flex-row gap-2 items-center justify-center">
-                                <OrundumIcon class="w-6 h-6" /> {{ guaranteedOrundums > 0 ? guaranteedOrundums : 0 }}
+                                <OrundumIcon class="w-6 h-6" /> {{ pullStore.getGuaranteedOrundums }}
                             </p>
                             <p class="flex flex-row gap-2 items-center justify-center">
-                                <PermitIcon class="w-6 h-6" /> {{ guaranteedPermits > 0 ? guaranteedPermits : 0 }}
+                                <PermitIcon class="w-6 h-6" /> {{ pullStore.getGuaranteedPermits }}
                             </p>
                             <p class="flex flex-row gap-2 items-center justify-center">{{ $t("calculations.total",
                                 { pulls: totalPulls }) }}</p>
@@ -88,31 +88,11 @@ const calendarStore = useCalendarStore()
 const importantDates = ref([...events, ...annihilations])
 const attributes = ref(importantDates)
 
-const guaranteedOrundums = computed(() => {
-    let temp = pullStore.user_data.current_orundums
-    temp += pullStore.getUserDailyRewards(calendarStore.getDays)
-    if (pullStore.user_data.is_monthly_card_active) {
-        temp += pullStore.getUserMonthlyCardRewards(calendarStore.getDays)
-    }
-    temp += pullStore.getUserWeeklyRewards(calendarStore.getDays)
-    temp += pullStore.getUserAnnihilationRewards(calendarStore.getWeeks)
-    temp += pullStore.getUserPrimeToOrundum()
-    temp += pullStore.getUserShardsToOrundum()
-    return temp
-})
-
-const guaranteedPermits = computed(() => {
-    let temp = pullStore.user_data.current_permits
-    pullStore.user_data.login_permits_in_range = pullStore.getUserPermitsForLogin(calendarStore.range.start.getTime(), calendarStore.range.end.getTime())
-    temp += pullStore.user_data.login_permits_in_range
-    return temp
-})
-
 const totalPulls = computed(() => {
-    if ((Math.floor(guaranteedOrundums.value / 600) + guaranteedPermits.value) < 0) {
+    if ((Math.floor(pullStore.getGuaranteedOrundums / 600) + pullStore.getGuaranteedPermits) < 0) {
         return 0
     } else {
-        return Math.floor(guaranteedOrundums.value / 600) + guaranteedPermits.value
+        return Math.floor(pullStore.getGuaranteedOrundums / 600) + pullStore.getGuaranteedPermits
     }
 })
 

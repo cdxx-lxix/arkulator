@@ -82,6 +82,29 @@ export const usePullsStore = defineStore("pulls", () => {
     );
   };
 
+  const getGuaranteedOrundums = computed(() => {
+    let temp = user_data.current_orundums;
+    temp += getUserDailyRewards(calendarStore.getDays);
+    if (user_data.is_monthly_card_active) {
+      temp += getUserMonthlyCardRewards(calendarStore.getDays);
+    }
+    temp += getUserWeeklyRewards(calendarStore.getDays);
+    temp += getUserAnnihilationRewards(calendarStore.getWeeks);
+    temp += getUserPrimeToOrundum();
+    temp += getUserShardsToOrundum();
+    return preventNegative(temp);
+  });
+
+  const getGuaranteedPermits = computed(() => {
+    let temp = user_data.current_permits;
+    user_data.login_permits_in_range = getUserPermitsForLogin(
+      calendarStore.range.start.getTime(),
+      calendarStore.range.end.getTime()
+    );
+    temp += user_data.login_permits_in_range;
+    return preventNegative(temp);
+  });
+
   return {
     user_data,
     getUserDailyRewards,
@@ -91,5 +114,7 @@ export const usePullsStore = defineStore("pulls", () => {
     getUserShardsToOrundum,
     getUserPrimeToOrundum,
     getUserPermitsForLogin,
+    getGuaranteedOrundums,
+    getGuaranteedPermits,
   };
 });
