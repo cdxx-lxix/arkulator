@@ -38,28 +38,16 @@ export const usePullsStore = defineStore("pulls", () => {
 
   const getUserDailyRewards = (days) => {
     // Yes, I've used casting to convert bool into number
-    return preventNegative(
-      (days - Number(calendarStore.calendar_data.is_excluded_today)) *
-        REWARDS_GUARANTEED.daily_missions_orundum
-    );
+    return preventNegative((days - Number(calendarStore.calendar_data.is_excluded_today)) * REWARDS_GUARANTEED.daily_missions_orundum);
   };
   const getUserWeeklyRewards = (weeks) => {
-    return preventNegative(
-      (weeks - Number(calendarStore.calendar_data.is_excluded_week)) *
-        REWARDS_GUARANTEED.weekily_missions_orundum
-    );
+    return preventNegative((weeks - Number(calendarStore.calendar_data.is_excluded_week)) * REWARDS_GUARANTEED.weekily_missions_orundum);
   };
   const getUserMonthlyCardRewards = (days) => {
-    return preventNegative(
-      (days - Number(calendarStore.calendar_data.is_excluded_today)) *
-        REWARDS_GUARANTEED.monthly_card_orundum
-    );
+    return preventNegative((days - Number(calendarStore.calendar_data.is_excluded_today)) * REWARDS_GUARANTEED.monthly_card_orundum);
   };
   const getUserAnnihilationRewards = (weeks) => {
-    return preventNegative(
-      (weeks - Number(calendarStore.calendar_data.is_excluded_annihilation)) *
-        user_data.current_annihilation_reward
-    );
+    return preventNegative((weeks - Number(calendarStore.calendar_data.is_excluded_annihilation)) * user_data.current_annihilation_reward);
   };
   const getUserShardsToOrundum = () => {
     let temp = user_data.current_shards - (user_data.current_shards % 2); // Removes oddity because shards crafting is 2 for 20
@@ -67,19 +55,12 @@ export const usePullsStore = defineStore("pulls", () => {
     return preventNegative(temp);
   };
   const getUserPrimeToOrundum = () => {
-    let temp =
-      user_data.current_prime * REWARDS_GUARANTEED.orundum_for_originium_prime;
+    let temp = user_data.current_prime * REWARDS_GUARANTEED.orundum_for_originium_prime;
     return preventNegative(temp);
   };
 
   const getUserPermitsForLogin = (start, end) => {
-    return getRewardsForSpecificDate(
-      start,
-      end,
-      17,
-      REWARDS_GUARANTEED.login_on_day_17,
-      calendarStore.calendar_data.is_excluded_today
-    );
+    return getRewardsForSpecificDate(start, end, 17, REWARDS_GUARANTEED.login_on_day_17, calendarStore.calendar_data.is_excluded_today);
   };
 
   const getGuaranteedOrundums = computed(() => {
@@ -97,10 +78,7 @@ export const usePullsStore = defineStore("pulls", () => {
 
   const getGuaranteedPermits = computed(() => {
     let temp = user_data.current_permits;
-    user_data.login_permits_in_range = getUserPermitsForLogin(
-      calendarStore.range.start.getTime(),
-      calendarStore.range.end.getTime()
-    );
+    user_data.login_permits_in_range = getUserPermitsForLogin(calendarStore.range.start.getTime(), calendarStore.range.end.getTime());
     temp += user_data.login_permits_in_range;
     return preventNegative(temp);
   });

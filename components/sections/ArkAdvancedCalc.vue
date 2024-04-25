@@ -33,14 +33,12 @@
                 <InfinityIcon class="fill-[#a9cf38]" />
             </ArkFancyCheckbox>
         </div>
+        <button type="button" @click="advancedStore.getStats" class="bg-red-500 p-4">STATS</button>
     </ArkFrame>
 </template>
 
 <script setup>
 import { useAdvancedStore } from '~/stores/advanced';
 const advancedStore = useAdvancedStore();
-const props = defineProps([
-    'days',
-    'start'
-])
+
 </script>

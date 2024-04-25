@@ -61,13 +61,14 @@
 <script setup>
 import events from '~/data/events';
 import annihilations from '~/data/annihilations';
+import login from '~/data/login';
 import { usePullsStore } from '#imports';
 import { useCalendarStore } from '~/stores/calendar';
 
 const pullStore = usePullsStore()
 const calendarStore = useCalendarStore()
 
-const importantDates = ref([...events, ...annihilations])
+const importantDates = ref([...events, ...annihilations, ...login])
 const attributes = ref(importantDates)
 
 const totalPulls = computed(() => {
