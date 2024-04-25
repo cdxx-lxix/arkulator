@@ -12,26 +12,9 @@
 
                 <ArkAdvancedCalc />
 
-                <fieldset class="border-2 border-gray-100 rounded-lg p-2">
-                    <legend class="ml-4 px-2 text-white font-semibold uppercase">This might happen: </legend>
-                    <p class="text-white mb-2 ml-4">This section consists of something personal, rare, unpredictable,
-                        etc. Inaccurate and speculative, just something that you want to throw into the pool for some
-                        reason.</p>
-                </fieldset>
+                <ArkMaybeCalc />
 
-                <fieldset class="border-2 border-gray-100 rounded-lg p-2">
-                    <legend class="ml-4 px-2 text-white font-semibold uppercase">Additional hope: </legend>
-                    <p class="text-white mb-2 ml-4">This section consists of random stuff that may occur and give you
-                        some extra pulls. Just info because it's impossible to predict the amount and occurance.</p>
-                    <ul class="text-white list-disc ml-8">
-                        <li>Maintanance compensation</li>
-                        <li>Mail delivery (For some achievements or events)</li>
-                        <li>Codes (They have a system but no one uses it. At least for now.)</li>
-                        <li>Web events</li>
-                        <li>Discord events and competitions rewards (if you participate of course)</li>
-                        <li>Your donates (Thank you for your service mr. Whale)</li>
-                    </ul>
-                </fieldset>
+                <ArkHopium />
 
             </div>
         </section>

@@ -34,6 +34,14 @@ export default {
         },
         infinite: "Infinite buyout"
     },
+    maybe: {
+        header: "Maybe",
+        subtext: "This section consists of something personal, rare, unpredictable, etc. Inaccurate and speculative, just something that you want to throw into the pool for some reason.",
+    },
+    hopium: {
+        header: "Additional hope",
+        subtext: "This section consists of random stuff that may occur and give you some extra pulls. Just info because it's impossible to predict the amount and occurance.",
+    },
     calculations: {
         header: "Calculations",
         days: "Day(s): {days}",
