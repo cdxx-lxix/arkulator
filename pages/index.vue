@@ -54,8 +54,7 @@
                             <hr>
                             <ArkAdvancedStats />
                             <hr>
-                            <h2 class="font-semibold text-lg text-center uppercase">{{ $t("calculations.maybe.header")
-                                }}</h2>
+                            <ArkMaybeStats />
                         </div>
                         <hr>
                         <div class="flex flex-row flex-wrap w-full justify-between text-lg font-bold">
