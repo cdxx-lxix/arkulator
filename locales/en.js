@@ -32,7 +32,22 @@ export default {
             budget: "Page 1",
             normal: "Page 2"
         },
-        infinite: "Infinite buyout"
+        infinite: "Infinite buyout",
+        ycs: "Yellow Cert Shop",
+        yellows: "Current YC amount",
+        ycsrecs: "Include recruitment?",
+        ycsbuys: "Purchase strategy",
+        permitphases: {
+            one: "Phase 1",
+            two: "Phase 2 Greedy",
+            twos: "Phase 2 Strict",
+            three: "Phase 3 Greedy",
+            threes: "Phase 3 Strict",
+            four: "Phase 4 Greedy",
+            fours: "Phase 4 Strict",
+            five: "Phase 5 Greedy",
+            fives: "Phase 5 Strict"
+        }
     },
     maybe: {
         header: "Maybe",
@@ -65,7 +80,9 @@ export default {
         advanced: {
             header: "advanced",
             infinite: "From Infinite buyout",
-            greenshop: "From Green cert shop"
+            greenshoporundum: "From Green cert shop (orundum)",
+            greenshoppermits: "From Green cert shop (permits)",
+            yellowshoppermits: "From Yellow cert shop"
         },
         maybe: {
             header: "maybe"

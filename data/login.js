@@ -13,7 +13,7 @@ const login = [
       },
     ],
     popover: {
-      label: "Login Reward | 5 Yellow Certificats",
+      label: "Login Reward | 5 Yellow Certificates",
     },
   },
   {
@@ -29,7 +29,7 @@ const login = [
       },
     ],
     popover: {
-      label: "Login Reward | 10 Green Certificats",
+      label: "Login Reward | 10 Green Certificates",
     },
   },
   {
@@ -45,7 +45,7 @@ const login = [
       },
     ],
     popover: {
-      label: "Login Reward | 1 Headhunt permit",
+      label: "Login Reward | 1 Headhunting permit",
     },
   },
 ];

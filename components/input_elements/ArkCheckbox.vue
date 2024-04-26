@@ -1,12 +1,14 @@
 <template>
-    <div class="flex mb-4">
-        <div class="flex items-center h-5">
-            <input :id type="checkbox" v-model="boxValue" :disabled
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
-        </div>
-        <div class="ms-2 text-sm">
-            <label :for="id" class="font-semibold text-gray-300">{{ $t(label) }}</label>
-            <p v-if="help" :id="`${id}-help`" class="text-xs font-normal text-gray-500">{{ $t(help) }}</p>
+    <div class="max-w-sm mx-auto">
+        <label class="block mb-2 text-sm font-medium text-transparent outline-none select-none">Nope</label>
+        <div class="flex">
+            <span
+                class="inline-flex items-center px-3 text-sm border border-e-0 rounded-s-md bg-gray-600 text-gray-400 border-gray-600">
+                <input :id type="checkbox" v-model="boxValue" :disabled class="w-6 h-6">
+            </span>
+            <label :for="id"
+                class="rounded-none rounded-e-lg block flex-1 min-w-0 w-full text-sm p-2.5 bg-gray-700 border-gray-600 text-white outline-none select-none">{{
+                $t(label) }}</label>
         </div>
     </div>
 </template>

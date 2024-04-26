@@ -1,9 +1,9 @@
 <template>
     <ArkFrame legend="advanced.header">
         <ArkFrameHelp description="advanced.subtext" :isbutton="true" modalid="advanced-help" />
-        <div class="grid grid-cols-4 px-6 gap-4">
+        <div class="grid grid-cols-4 px-6 gap-4 mb-4">
             <ArkFancyCheckbox label="advanced.gcs" id="green-shop"
-                v-model:boxvalue="advancedStore.user_data.is_included_gcs">
+                v-model:boxvalue="advancedStore.user_data.is_included_gcs" variant="sqr">
                 <GreenCertIcon />
             </ArkFancyCheckbox>
             <div class="flex flex-col justify-between">
@@ -29,11 +29,26 @@
             </div>
             <ArkFancyCheckbox label="advanced.infinite" id="green-infinity"
                 :disabled="!advancedStore.user_data.is_included_gcs"
-                v-model:boxvalue="advancedStore.user_data.is_phase_three">
+                v-model:boxvalue="advancedStore.user_data.is_phase_three" variant="sqr" >
                 <InfinityIcon class="fill-[#a9cf38]" />
             </ArkFancyCheckbox>
         </div>
-        <button type="button" @click="advancedStore.getStats" class="bg-red-500 p-4">STATS</button>
+        <div class="grid grid-cols-4 px-6 gap-4 items-center">
+            <ArkFancyCheckbox label="advanced.ycs" id="yellow-shop"
+                v-model:boxvalue="advancedStore.user_data.is_included_ycs" variant="rect">
+                <YellowCertIcon class="w-8 h-8" />
+            </ArkFancyCheckbox>
+            <ArkInput class="w-full" id="currentyellowcerts" min="0"
+                v-model:inputvalue="advancedStore.user_data.ycs_current_certs" label="advanced.yellows"
+                :disabled="!advancedStore.user_data.is_included_ycs">
+                <YellowCertIcon class="w-6 h-6" />
+            </ArkInput>
+            <ArkCheckbox label="advanced.ycsrecs" id="yellow-recruitment"
+                :disabled="!advancedStore.user_data.is_included_ycs || !advancedStore.user_data.gcs_selected_strategy"
+                v-model:boxvalue="advancedStore.user_data.is_included_ycs_recruitment" />
+            <ArkDropdown label="advanced.ycsbuys" v-model:selectvalue="advancedStore.user_data.ycs_phase"
+                :options="advancedStore.user_ycs_phases" :disabled="!advancedStore.user_data.is_included_ycs" />
+        </div>
     </ArkFrame>
 </template>
 
@@ -41,4 +56,11 @@
 import { useAdvancedStore } from '~/stores/advanced';
 const advancedStore = useAdvancedStore();
 
+// const clearDataOnInfinite = () => {
+//     return (
+//         advancedStore.user_data.gcs_selected_strategy = 0,
+//         advancedStore.user_data.gcs_recruitment = 0,
+//         advancedStore.user_data.gcs_selected_plan = 0
+//     )
+// }
 </script>

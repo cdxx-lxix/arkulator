@@ -37,11 +37,12 @@
                             <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums" :permits="pullStore.getGuaranteedPermits" variant="subtotal" />
                             <hr>
                             <ArkAdvancedStats />
+                            <ArkResourcesOutput :orundum="advancedStore.getAdvancedOrundum()" :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
                             <hr>
                             <ArkMaybeStats />
                         </div>
                         <hr>
-                        <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums" :permits="pullStore.getGuaranteedPermits" variant="total" />
+                        <ArkResourcesOutput :orundum="total_orundum" :permits="total_permits" variant="total" />
                     </div>
                 </ArkFrame>
             </div>
@@ -55,12 +56,22 @@ import events from '~/data/events';
 import annihilations from '~/data/annihilations';
 import login from '~/data/login';
 import { usePullsStore } from '#imports';
+import { useAdvancedStore } from '#imports';
 import { useCalendarStore } from '~/stores/calendar';
 
 const pullStore = usePullsStore()
+const advancedStore = useAdvancedStore()
 const calendarStore = useCalendarStore()
 
 const importantDates = ref([...events, ...annihilations, ...login])
 const attributes = ref(importantDates)
+
+const total_orundum = computed(() => {
+    return pullStore.getGuaranteedOrundums + advancedStore.getAdvancedOrundum()
+})
+
+const total_permits = computed(() => {
+    return pullStore.getGuaranteedPermits + advancedStore.getAdvancedPermits()
+})
 
 </script>

@@ -10,7 +10,7 @@
     </svg>
 </template>
 
-<style>
+<style scoped>
 .st0 {
     fill: #f9ed24
 }

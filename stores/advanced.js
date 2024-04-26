@@ -21,16 +21,16 @@ export const useAdvancedStore = defineStore("advanced", () => {
     gcs_threestar_recruitment: 5, // GC per 3*
     gcs_fourstar_recruitment: 30, // GC per 4*
     // ycs - yellow certificate shop
-    ycs_lvlone_permits: 1,
-    ycs_lvlone_price: 10,
-    ycs_lvltwo_permits: 2,
-    ycs_lvltwo_price: 18,
-    ycs_lvlthree_permits: 5,
-    ycs_lvlthree_price: 40,
-    ycs_lvlfour_permits: 10,
-    ycs_lvlfour_price: 70,
-    ycs_lvlfive_permits: 20,
-    ycs_lvlfive_price: 120,
+    ycs_lvl1_permits: 1,
+    ycs_lvl1_price: 10,
+    ycs_lvl2_permits: 2,
+    ycs_lvl2_price: 18,
+    ycs_lvl3_permits: 5,
+    ycs_lvl3_price: 40,
+    ycs_lvl4_permits: 10,
+    ycs_lvl4_price: 70,
+    ycs_lvl5_permits: 20,
+    ycs_lvl5_price: 120,
     ycs_full_permits: 38,
     ycs_full_price: 258,
     ycs_monthly_login_25th: 5, // Obtain 10 YC for 25 days login streak
@@ -43,13 +43,18 @@ export const useAdvancedStore = defineStore("advanced", () => {
   };
 
   const user_data = reactive({
-    // Advanced section
+    // Green shop
     is_included_gcs: false,
     is_phase_three: false,
     gcs_current_certs: 0,
     gcs_recruitment: 0,
     gcs_selected_strategy: 0,
     gcs_selected_plan: 0,
+    // Yellow shop
+    is_included_ycs: false,
+    is_included_ycs_recruitment: false,
+    ycs_current_certs: 0,
+    ycs_phase: 0,
   });
 
   const user_recruitment_strategies = [
@@ -60,6 +65,17 @@ export const useAdvancedStore = defineStore("advanced", () => {
   const user_gcs_phases = [
     { name: "advanced.gcs_phases.budget", value: 10 },
     { name: "advanced.gcs_phases.normal", value: 20 },
+  ];
+  const user_ycs_phases = [
+    { name: "advanced.permitphases.one", value: 10 },
+    { name: "advanced.permitphases.two", value: 20 },
+    { name: "advanced.permitphases.twos", value: 25 },
+    { name: "advanced.permitphases.three", value: 30 },
+    { name: "advanced.permitphases.threes", value: 35 },
+    { name: "advanced.permitphases.four", value: 40 },
+    { name: "advanced.permitphases.fours", value: 45 },
+    { name: "advanced.permitphases.five", value: 50 },
+    { name: "advanced.permitphases.fives", value: 55 },
   ];
 
   watch(
@@ -115,7 +131,7 @@ export const useAdvancedStore = defineStore("advanced", () => {
     }
   };
 
-  const getPermitsAndOrundumByPage = () => { 
+  const getPermitsAndOrundumByPage = () => {
     let total_gc_in_range = getUserGreenCertsForLogin() + getUserGreenCertsWeekly() + getGreenCertsForRecruitment() + user_data.gcs_current_certs;
     let times_can_buy = 0;
     let duration = calendarStore.getMonths - Number(calendarStore.calendar_data.is_excluded_month);
@@ -174,20 +190,109 @@ export const useAdvancedStore = defineStore("advanced", () => {
         };
     }
   };
-  const getTotalGreenCertsForRange = () => {
-    return getUserGreenCertsForLogin() + getUserGreenCertsWeekly();
+
+  const getYellowCertsForRecruitment = () => {
+    switch (user_data.gcs_selected_strategy) {
+      // Strategy - Absolute minimum is ignored. It yields no yellow certs.
+      case 20:
+        // Strategy - Predicted average. Counts 3\4 as 3* and 1\4 as 4*
+        let fourstars = Math.floor((user_data.gcs_recruitment * calendarStore.getDays) / 4);
+        return preventNegative(fourstars * REWARDS_ADVANCED.ycs_fourstar_recruitment);
+      case 30:
+        // Strategy - Delusional maximum. Counts every recruitment as 4*
+        return preventNegative(user_data.gcs_recruitment * REWARDS_ADVANCED.ycs_fourstar_recruitment * calendarStore.getDays);
+      default:
+        // Prevents errors and NaN
+        return 0;
+    }
   };
 
-  const getStats = () => {
-    getPermitsAndOrundumByPage();
-    console.log(getPermitsAndOrundumByPage());
+  const tryPurchasePermits = (max_phase, yc_amount, months, isGreedy) => {
+    /** This function is simillar to getPermitsAndOrundumByPage() but deeper and more complex.
+     * In isGreedy=true mode it will try to purchase as much permits as possible in a set amount of time and YC.
+     * In isGreedy=false (Strict mode) it will try to purchase phase to its full extent and if it fails the whole purchase fails.
+     * Examples:
+     * GREEDY -> tryPurchasePermits(max_phase = 5, yc_amount = 544, months = 3, isGreedy = true) -> 79 Permits ->
+     * 1 month - full set 258YC\38HHs, 2 month - full set 258YC(516YC)\76HHs, 3 month - phase 1 10YC(526YC)\77HHs + phase 2 18YC(544YC)\79HHs -> failed to buy more
+     * STRICT -> tryPurchasePermits(max_phase = 5, yc_amount = 544, months = 3, isGreedy = true) -> 76 Permits ->
+     * 1 month - full set 258YC\38HHs, 2 month - full set 258YC(516YC)\76HHs, 3 month - failed to buy more and accumulated permits for this iteration doesn't apply
+     */
+    let times_can_buy = 0;
+    let permits_purchased = 0;
+    do {
+      let temp_permits = 0;
+      let phase;
+      for (phase = 1; phase <= max_phase; phase++) {
+        const price = REWARDS_ADVANCED[`ycs_lvl${phase}_price`];
+        const permits = REWARDS_ADVANCED[`ycs_lvl${phase}_permits`];
+        if (yc_amount - price >= 0) {
+          yc_amount -= price;
+          temp_permits += permits;
+        } else {
+          break;
+        }
+      }
+      if (!isGreedy && phase <= max_phase) {
+        break;
+      }
+      permits_purchased += temp_permits;
+      times_can_buy++;
+    } while (times_can_buy < months);
+
+    return permits_purchased;
+  };
+
+  const getPermitsByYellowShopPhase = () => {
+    let total_yc_in_range = user_data.ycs_current_certs + getUserYellowCertsForLogin();
+    if (user_data.is_included_ycs_recruitment) {
+      console.log(`Recruitment: ${getYellowCertsForRecruitment()}`);
+      total_yc_in_range += getYellowCertsForRecruitment();
+    }
+    switch (user_data.ycs_phase) {
+      case 10:
+        return tryPurchasePermits(1, total_yc_in_range, calendarStore.getMonths, true);
+      case 20:
+        return tryPurchasePermits(2, total_yc_in_range, calendarStore.getMonths, true);
+      case 25:
+        return tryPurchasePermits(2, total_yc_in_range, calendarStore.getMonths, false); // Strict
+      case 30:
+        return tryPurchasePermits(3, total_yc_in_range, calendarStore.getMonths, true);
+      case 35:
+        return tryPurchasePermits(3, total_yc_in_range, calendarStore.getMonths, false); // Strict
+      case 40:
+        return tryPurchasePermits(4, total_yc_in_range, calendarStore.getMonths, true);
+      case 45:
+        return tryPurchasePermits(4, total_yc_in_range, calendarStore.getMonths, false); // Strict
+      case 50:
+        return tryPurchasePermits(5, total_yc_in_range, calendarStore.getMonths, true);
+      case 55:
+        return tryPurchasePermits(5, total_yc_in_range, calendarStore.getMonths, false); // Strict
+      default:
+        return 0;
+    }
+  };
+
+  const getAdvancedOrundum = () => {
+    let green_shop = getPermitsAndOrundumByPage();
+    let temp = green_shop.orundum;
+    return temp;
+  };
+
+  const getAdvancedPermits = () => {
+    let green_shop = getPermitsAndOrundumByPage();
+    let temp = green_shop.permits;
+    return preventNegative(temp);
   };
 
   return {
     user_data,
     user_recruitment_strategies,
     user_gcs_phases,
+    user_ycs_phases,
     getUserOrundumInfiniteBuyout,
-    getStats,
+    getPermitsAndOrundumByPage,
+    getPermitsByYellowShopPhase,
+    getAdvancedOrundum,
+    getAdvancedPermits,
   };
 });
