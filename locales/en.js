@@ -70,6 +70,7 @@ export default {
         maybe: {
             header: "maybe"
         },
+        subtotal: "Subtotal: {pulls}",
         total: "Total pulls: {pulls}"
     },
     help: {

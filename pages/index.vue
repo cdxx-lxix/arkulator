@@ -34,22 +34,14 @@
                     <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
                         <div>
                             <ArkGuarantStats :days="calendarStore.getDays" :weeks="calendarStore.getWeeks" />
+                            <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums" :permits="pullStore.getGuaranteedPermits" variant="subtotal" />
                             <hr>
                             <ArkAdvancedStats />
                             <hr>
                             <ArkMaybeStats />
                         </div>
                         <hr>
-                        <div class="flex flex-row flex-wrap w-full justify-between text-lg font-bold">
-                            <p class="flex flex-row gap-2 items-center justify-center">
-                                <OrundumIcon class="w-6 h-6" /> {{ pullStore.getGuaranteedOrundums }}
-                            </p>
-                            <p class="flex flex-row gap-2 items-center justify-center">
-                                <PermitIcon class="w-6 h-6" /> {{ pullStore.getGuaranteedPermits }}
-                            </p>
-                            <p class="flex flex-row gap-2 items-center justify-center">{{ $t("calculations.total",
-                                { pulls: totalPulls }) }}</p>
-                        </div>
+                        <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums" :permits="pullStore.getGuaranteedPermits" variant="total" />
                     </div>
                 </ArkFrame>
             </div>
@@ -70,13 +62,5 @@ const calendarStore = useCalendarStore()
 
 const importantDates = ref([...events, ...annihilations, ...login])
 const attributes = ref(importantDates)
-
-const totalPulls = computed(() => {
-    if ((Math.floor(pullStore.getGuaranteedOrundums / 600) + pullStore.getGuaranteedPermits) < 0) {
-        return 0
-    } else {
-        return Math.floor(pullStore.getGuaranteedOrundums / 600) + pullStore.getGuaranteedPermits
-    }
-})
 
 </script>

@@ -115,7 +115,7 @@ export const useAdvancedStore = defineStore("advanced", () => {
     }
   };
 
-  const getPermitsAndOrundumByPage = () => {
+  const getPermitsAndOrundumByPage = () => { 
     let total_gc_in_range = getUserGreenCertsForLogin() + getUserGreenCertsWeekly() + getGreenCertsForRecruitment() + user_data.gcs_current_certs;
     let times_can_buy = 0;
     let duration = calendarStore.getMonths - Number(calendarStore.calendar_data.is_excluded_month);
