@@ -47,7 +47,11 @@ export default {
             fours: "Phase 4 Strict",
             five: "Phase 5 Greedy",
             fives: "Phase 5 Strict"
-        }
+        },
+        rerun: "Rerun Shop",
+        reruncerts: "Current IC amount",
+        rerunstock: "Orundum in stock",
+        rerunencounters: "Expected reruns"
     },
     maybe: {
         header: "Maybe",
@@ -82,7 +86,8 @@ export default {
             infinite: "From Infinite buyout",
             greenshoporundum: "From Green cert shop (orundum)",
             greenshoppermits: "From Green cert shop (permits)",
-            yellowshoppermits: "From Yellow cert shop"
+            yellowshoppermits: "From Yellow cert shop",
+            rerunshop: "From Rerun(s)"
         },
         maybe: {
             header: "maybe"

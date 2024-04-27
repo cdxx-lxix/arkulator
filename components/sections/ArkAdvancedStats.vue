@@ -6,10 +6,15 @@
     <ArkStat text="calculations.advanced.greenshoporundum" :stat="advancedStore.getPermitsAndOrundumByPage().orundum"
         :condition="advancedStore.user_data.is_included_gcs && !advancedStore.user_data.is_phase_three"
         icon="orundum" />
-    <ArkStatDetailed text="calculations.advanced.greenshoppermits" :stat="advancedStore.getPermitsAndOrundumByPage().permits"
-        :condition="advancedStore.user_data.is_included_gcs && !advancedStore.user_data.is_phase_three" icon="permit" :details="greenShopDetails" />
+    <ArkStatDetailed text="calculations.advanced.greenshoppermits"
+        :stat="advancedStore.getPermitsAndOrundumByPage().permits"
+        :condition="advancedStore.user_data.is_included_gcs && !advancedStore.user_data.is_phase_three" icon="permit"
+        :details="greenShopDetails" />
     <ArkStatDetailed text="calculations.advanced.yellowshoppermits" :stat="advancedStore.getPermitsByYellowShopPhase"
         :condition="advancedStore.user_data.is_included_ycs" icon="permit" :details="yellowShopDetails" />
+    <ArkStat text="calculations.advanced.rerunshop" :stat="advancedStore.getOrundumForReruns"
+        :condition="advancedStore.user_data.is_included_rerun"
+        icon="orundum" />
 </template>
 
 <script setup>

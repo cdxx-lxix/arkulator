@@ -55,6 +55,11 @@ export const useAdvancedStore = defineStore("advanced", () => {
     is_included_ycs_recruitment: false,
     ycs_current_certs: 0,
     ycs_phase: 0,
+    // Rerun shop
+    is_included_rerun: false,
+    rerun_current_certs: 0,
+    rerun_orundum_stock: 0,
+    rerun_encounters: 0,
   });
 
   const user_recruitment_strategies = [
@@ -247,7 +252,7 @@ export const useAdvancedStore = defineStore("advanced", () => {
     if (user_data.is_included_ycs_recruitment) {
       total_yc_in_range += getYellowCertsForRecruitment();
     }
-    console.log(total_yc_in_range)
+    console.log(total_yc_in_range);
     switch (user_data.ycs_phase) {
       case 10:
         return tryPurchasePermits(1, total_yc_in_range, calendarStore.getMonths, true);
@@ -272,16 +277,25 @@ export const useAdvancedStore = defineStore("advanced", () => {
     }
   });
 
+  const getOrundumForReruns = computed(() => {
+    let ic = user_data.rerun_current_certs + REWARDS_ADVANCED.rcs_minimal_event_currency_gain
+    let stock = user_data.rerun_orundum_stock + (REWARDS_ADVANCED.rcs_stock_update_per_rerun * user_data.rerun_encounters)
+    let purchase = ic / REWARDS_ADVANCED.rcs_price_per_orundum
+    // If you can purchase less than stock returns maximum purchase and if you can buy more than in stock just return stock. Always maximun. Pretty logical, eh?
+    return purchase < stock ? (purchase * REWARDS_ADVANCED.rcs_orundums_gain_per_purchase) : (stock * REWARDS_ADVANCED.rcs_orundums_gain_per_purchase)
+  })
+
   const getAdvancedOrundum = () => {
     let green_shop = getPermitsAndOrundumByPage();
     let temp = green_shop.orundum;
-    return temp;
+    temp += getOrundumForReruns.value
+    return preventNegative(temp);
   };
 
   const getAdvancedPermits = () => {
     let green_shop = getPermitsAndOrundumByPage();
     let temp = green_shop.permits;
-    temp += getPermitsByYellowShopPhase.value
+    temp += getPermitsByYellowShopPhase.value;
     return preventNegative(temp);
   };
 
@@ -298,6 +312,7 @@ export const useAdvancedStore = defineStore("advanced", () => {
     getPermitsByYellowShopPhase,
     getYellowCertsForRecruitment,
     getUserYellowCertsForLogin,
+    getOrundumForReruns,
     getAdvancedOrundum,
     getAdvancedPermits,
   };

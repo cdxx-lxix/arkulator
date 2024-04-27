@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-sm mx-auto">
+    <div class="max-w-sm mx-auto w-full">
         <label class="block mb-2 text-sm font-medium text-transparent outline-none select-none">Nope</label>
         <div class="flex">
             <span

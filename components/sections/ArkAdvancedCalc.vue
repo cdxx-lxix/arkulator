@@ -33,7 +33,7 @@
                 <InfinityIcon class="fill-[#a9cf38]" />
             </ArkFancyCheckbox>
         </div>
-        <div class="grid grid-cols-4 px-6 gap-4 items-center">
+        <div class="grid grid-cols-4 px-6 gap-4 items-center mb-4">
             <ArkFancyCheckbox label="advanced.ycs" id="yellow-shop"
                 v-model:boxvalue="advancedStore.user_data.is_included_ycs" variant="rect">
                 <YellowCertIcon class="w-8 h-8" />
@@ -48,6 +48,27 @@
                 v-model:boxvalue="advancedStore.user_data.is_included_ycs_recruitment" />
             <ArkDropdown label="advanced.ycsbuys" v-model:selectvalue="advancedStore.user_data.ycs_phase"
                 :options="advancedStore.user_ycs_phases" :disabled="!advancedStore.user_data.is_included_ycs" />
+        </div>
+        <div class="grid grid-cols-4 px-6 gap-4 items-center">
+            <ArkFancyCheckbox label="advanced.rerun" id="rerun-shop"
+                v-model:boxvalue="advancedStore.user_data.is_included_rerun" variant="rect">
+                <RerunCertIcon class="w-8 h-8" />
+            </ArkFancyCheckbox>
+            <ArkInput class="w-full" id="currentreruncerts" min="0"
+                v-model:inputvalue="advancedStore.user_data.rerun_current_certs" label="advanced.reruncerts"
+                :disabled="!advancedStore.user_data.is_included_rerun">
+                <RerunCertIcon class="w-6 h-6" />
+            </ArkInput>
+            <ArkInput class="w-full" id="currentstock" min="0"
+                v-model:inputvalue="advancedStore.user_data.rerun_orundum_stock" label="advanced.rerunstock"
+                :disabled="!advancedStore.user_data.is_included_rerun">
+                <OrundumIcon class="w-6 h-6" />
+            </ArkInput>
+            <ArkInput class="w-full" id="rerunsexpected" min="0"
+                v-model:inputvalue="advancedStore.user_data.rerun_encounters" label="advanced.rerunencounters"
+                :disabled="!advancedStore.user_data.is_included_rerun">
+                <RerunIcon class="w-6 h-6" />
+            </ArkInput>
         </div>
     </ArkFrame>
 </template>
