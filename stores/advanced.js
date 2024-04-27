@@ -242,12 +242,12 @@ export const useAdvancedStore = defineStore("advanced", () => {
     return permits_purchased;
   };
 
-  const getPermitsByYellowShopPhase = () => {
+  const getPermitsByYellowShopPhase = computed(() => {
     let total_yc_in_range = user_data.ycs_current_certs + getUserYellowCertsForLogin();
     if (user_data.is_included_ycs_recruitment) {
-      console.log(`Recruitment: ${getYellowCertsForRecruitment()}`);
       total_yc_in_range += getYellowCertsForRecruitment();
     }
+    console.log(total_yc_in_range)
     switch (user_data.ycs_phase) {
       case 10:
         return tryPurchasePermits(1, total_yc_in_range, calendarStore.getMonths, true);
@@ -270,7 +270,7 @@ export const useAdvancedStore = defineStore("advanced", () => {
       default:
         return 0;
     }
-  };
+  });
 
   const getAdvancedOrundum = () => {
     let green_shop = getPermitsAndOrundumByPage();
@@ -281,6 +281,7 @@ export const useAdvancedStore = defineStore("advanced", () => {
   const getAdvancedPermits = () => {
     let green_shop = getPermitsAndOrundumByPage();
     let temp = green_shop.permits;
+    temp += getPermitsByYellowShopPhase.value
     return preventNegative(temp);
   };
 
@@ -291,7 +292,12 @@ export const useAdvancedStore = defineStore("advanced", () => {
     user_ycs_phases,
     getUserOrundumInfiniteBuyout,
     getPermitsAndOrundumByPage,
+    getGreenCertsForRecruitment,
+    getUserGreenCertsForLogin,
+    getUserGreenCertsWeekly,
     getPermitsByYellowShopPhase,
+    getYellowCertsForRecruitment,
+    getUserYellowCertsForLogin,
     getAdvancedOrundum,
     getAdvancedPermits,
   };
