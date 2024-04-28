@@ -26,18 +26,18 @@ export const usePullsStore = defineStore("pulls", () => {
     login_permits_in_range: 0,
   });
 
-  const getUserDailyRewards = (days) => {
+  const getUserDailyRewards = () => {
     // Yes, I've used casting to convert bool into number
-    return preventNegative((days - Number(calendarStore.calendar_data.is_excluded_today)) * REWARDS_GUARANTEED.daily_missions_orundum);
+    return preventNegative((calendarStore.getDays - Number(calendarStore.calendar_data.is_excluded_today)) * REWARDS_GUARANTEED.daily_missions_orundum);
   };
-  const getUserWeeklyRewards = (weeks) => {
-    return preventNegative((weeks - Number(calendarStore.calendar_data.is_excluded_week)) * REWARDS_GUARANTEED.weekily_missions_orundum);
+  const getUserWeeklyRewards = () => {
+    return preventNegative((calendarStore.getWeeks - Number(calendarStore.calendar_data.is_excluded_week)) * REWARDS_GUARANTEED.weekily_missions_orundum);
   };
-  const getUserMonthlyCardRewards = (days) => {
-    return preventNegative((days - Number(calendarStore.calendar_data.is_excluded_today)) * REWARDS_GUARANTEED.monthly_card_orundum);
+  const getUserMonthlyCardRewards = () => {
+    return preventNegative((calendarStore.getDays - Number(calendarStore.calendar_data.is_excluded_today)) * REWARDS_GUARANTEED.monthly_card_orundum);
   };
-  const getUserAnnihilationRewards = (weeks) => {
-    return preventNegative((weeks - Number(calendarStore.calendar_data.is_excluded_annihilation)) * user_data.current_annihilation_reward);
+  const getUserAnnihilationRewards = () => {
+    return preventNegative((calendarStore.getWeeks - Number(calendarStore.calendar_data.is_excluded_annihilation)) * user_data.current_annihilation_reward);
   };
   const getUserShardsToOrundum = () => {
     let temp = user_data.current_shards - (user_data.current_shards % 2); // Removes oddity because shards crafting is 2 for 20
@@ -55,12 +55,12 @@ export const usePullsStore = defineStore("pulls", () => {
 
   const getGuaranteedOrundums = computed(() => {
     let temp = user_data.current_orundums;
-    temp += getUserDailyRewards(calendarStore.getDays);
+    temp += getUserDailyRewards();
     if (user_data.is_monthly_card_active) {
-      temp += getUserMonthlyCardRewards(calendarStore.getDays);
+      temp += getUserMonthlyCardRewards();
     }
-    temp += getUserWeeklyRewards(calendarStore.getDays);
-    temp += getUserAnnihilationRewards(calendarStore.getWeeks);
+    temp += getUserWeeklyRewards();
+    temp += getUserAnnihilationRewards();
     temp += getUserPrimeToOrundum();
     temp += getUserShardsToOrundum();
     return preventNegative(temp);
