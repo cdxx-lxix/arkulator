@@ -1,19 +1,23 @@
 export default {
     test: "test",
     calendar: "Magic calendar",
+    controls: {
+        header: "Controls",
+        subtext: "This settings affects most of the calculations. You may call them global.",
+        today: "Today",
+        week: "Week",
+        annih: "Annih.",
+        month: "Month"
+    },
     guaranteed : {
         header: "Guaranteed",
         subtext: "This section contains rewards that are more or less 'guaranteed' as long as you login and play everyday.",
         monthlycard: "Monthly Card",
-        todaytasks: "Exclude today's rewards",
-        thisweektask: "Exclude this week's rewards",
-        thisweekannihilation: "Exclude this week's annihilation",
         currentorundum: "Current Orundum",
         currentpermits: "Current HH permits",
         opsacrifice: "OP to spend",
         currentshards: "Current Originium Shards",
         annihilation: "Annihilation reward"
-
     },
     advanced: {
         header: "Advanced",

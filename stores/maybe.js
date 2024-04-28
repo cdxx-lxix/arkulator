@@ -27,6 +27,18 @@ export const useMaybeStore = defineStore("maybe", () => {
   });
 
   watch(
+    // Unchecks everything to update calculations
+    () => user_data.is_limited,
+    (limited) => {
+      if (!limited) {
+        user_data.is_anniversary = false;
+        user_data.is_collab = false;
+        user_data.is_lottery = false;
+      }
+    }
+  );
+
+  watch(
     // Unchecks collab
     () => user_data.is_anniversary,
     (anni) => {
