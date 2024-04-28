@@ -8,6 +8,8 @@
                         :max-date="new Date(2030, 1, 1)" :attributes="attributes" :columns="3" />
                 </ArkFrame>
 
+                <ArkControls />
+
                 <ArkGuarantCalc />
 
                 <ArkAdvancedCalc />
@@ -40,6 +42,8 @@
                             <ArkResourcesOutput :orundum="advancedStore.getAdvancedOrundum()" :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
                             <hr>
                             <ArkMaybeStats />
+                            <hr>
+                            <ArkControlInfo />
                         </div>
                         <hr>
                         <ArkResourcesOutput :orundum="total_orundum" :permits="total_permits" variant="total" />

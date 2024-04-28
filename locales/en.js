@@ -66,6 +66,12 @@ export default {
         days: "Day(s): {days}",
         weeks: "Week(s): {weeks}",
         months: "Month(s): {months}",
+        controls: {
+            todayexcluded: "Today's rewards excluded",
+            annihilationexcluded: "This week's annihilation rewards excluded",
+            weekexcluded: "This week's rewards excluded",
+            monthexcluded: "This month's rewards & shops excluded"
+        },
         guaranteed: {
             header: "guaranteed",
             orundums: "Current orundums",
@@ -77,9 +83,6 @@ export default {
             subscription: "From monthly card",
             annihilation: "From annihilation(s)",
             loginpermit: "Every 17th day login permit",
-            todayexcluded: "Today excluded",
-            weekexcluded: "This week's annihilation excluded",
-            annihilationexcluded: "This week's missions excluded"
         },
         advanced: {
             header: "advanced",

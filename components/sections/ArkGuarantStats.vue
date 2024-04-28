@@ -19,12 +19,6 @@
         :condition="weeks > 0" icon="orundum" />
     <ArkStat text="calculations.guaranteed.loginpermit" :stat="pullStore.user_data.login_permits_in_range"
         :condition="pullStore.user_data.login_permits_in_range" icon="permit" />
-    <ArkStat class="text-red-700" text="calculations.guaranteed.todayexcluded"
-        :condition="pullStore.user_data.is_excluded_today" />
-    <ArkStat class="text-red-700" text="calculations.guaranteed.annihilationexcluded"
-        :condition="pullStore.user_data.is_excluded_annihilation" />
-    <ArkStat class="text-red-700" text="calculations.guaranteed.weekexcluded"
-        :condition="pullStore.user_data.is_excluded_week" />
 </template>
 
 <script setup>

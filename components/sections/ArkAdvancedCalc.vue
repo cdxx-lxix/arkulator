@@ -77,11 +77,4 @@
 import { useAdvancedStore } from '~/stores/advanced';
 const advancedStore = useAdvancedStore();
 
-// const clearDataOnInfinite = () => {
-//     return (
-//         advancedStore.user_data.gcs_selected_strategy = 0,
-//         advancedStore.user_data.gcs_recruitment = 0,
-//         advancedStore.user_data.gcs_selected_plan = 0
-//     )
-// }
 </script>
