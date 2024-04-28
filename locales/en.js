@@ -56,6 +56,14 @@ export default {
     maybe: {
         header: "Maybe",
         subtext: "This section consists of something personal, rare, unpredictable, etc. Inaccurate and speculative, just something that you want to throw into the pool for some reason.",
+        limitedevent: "Limited event",
+        lottery: "Orundum lottery",
+        anniversary: "is it Anniversary?",
+        collab: "is it Collaboration?",
+        paradox: "Paradox Simulations",
+        newannih: "New Annihilations",
+        normalevents: "Normal Events",
+        shards: "Originium Shards Daily"
     },
     hopium: {
         header: "Additional hope",
@@ -93,7 +101,13 @@ export default {
             rerunshop: "From Rerun(s)"
         },
         maybe: {
-            header: "maybe"
+            header: "maybe",
+            limited: "LIMITED PERMITS",
+            lottery: "Orundum lottery",
+            paradox: "Paradox Simulation(s) reward",
+            events: "Event shop permits",
+            newannih: "Annihilation first time reward",
+            shards: "Origium shards farming"
         },
         subtotal: "Subtotal: {pulls}",
         total: "Total pulls: {pulls}"

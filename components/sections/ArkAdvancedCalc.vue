@@ -49,7 +49,7 @@
             <ArkDropdown label="advanced.ycsbuys" v-model:selectvalue="advancedStore.user_data.ycs_phase"
                 :options="advancedStore.user_ycs_phases" :disabled="!advancedStore.user_data.is_included_ycs" />
         </div>
-        <div class="grid grid-cols-4 px-6 gap-4 items-center">
+        <div class="grid grid-cols-4 px-6 gap-4 items-center mb-3">
             <ArkFancyCheckbox label="advanced.rerun" id="rerun-shop"
                 v-model:boxvalue="advancedStore.user_data.is_included_rerun" variant="rect">
                 <RerunCertIcon class="w-8 h-8" />

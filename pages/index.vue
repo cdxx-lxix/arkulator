@@ -42,6 +42,7 @@
                             <ArkResourcesOutput :orundum="advancedStore.getAdvancedOrundum()" :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
                             <hr>
                             <ArkMaybeStats />
+                            <ArkResourcesOutput :orundum="maybeStore.getMaybeOrundum" :permits="maybeStore.getMaybePermits" variant="subtotal" />
                             <hr>
                             <ArkControlInfo />
                         </div>
@@ -62,20 +63,22 @@ import login from '~/data/login';
 import { usePullsStore } from '#imports';
 import { useAdvancedStore } from '#imports';
 import { useCalendarStore } from '~/stores/calendar';
+import { useMaybeStore } from '~/stores/maybe';
 
 const pullStore = usePullsStore()
 const advancedStore = useAdvancedStore()
 const calendarStore = useCalendarStore()
+const maybeStore = useMaybeStore();
 
 const importantDates = ref([...events, ...annihilations, ...login])
 const attributes = ref(importantDates)
 
 const total_orundum = computed(() => {
-    return pullStore.getGuaranteedOrundums + advancedStore.getAdvancedOrundum()
+    return pullStore.getGuaranteedOrundums + advancedStore.getAdvancedOrundum() + maybeStore.getMaybeOrundum
 })
 
 const total_permits = computed(() => {
-    return pullStore.getGuaranteedPermits + advancedStore.getAdvancedPermits()
+    return pullStore.getGuaranteedPermits + advancedStore.getAdvancedPermits() + maybeStore.getMaybePermits
 })
 
 </script>
