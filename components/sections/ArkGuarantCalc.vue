@@ -34,8 +34,5 @@
 
 <script setup>
 import { usePullsStore } from '#imports';
-import { useCalendarStore } from '~/stores/calendar';
-
 const pullStore = usePullsStore()
-const calendarStore = useCalendarStore()
 </script>

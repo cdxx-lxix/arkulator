@@ -3,7 +3,7 @@ export default {
     calendar: "Magic calendar",
     controls: {
         header: "Controls",
-        subtext: "This settings affects most of the calculations. You may call them global.",
+        subtext: "This settings affects most of the calculations. These buttons are responsible for EXCLUSION of stated entities.",
         today: "Today",
         week: "Week",
         annih: "Annih.",
@@ -132,6 +132,16 @@ export default {
         },
         advanced: {
 
+        },
+        maybe: {
+
+        },
+        controls: {
+            full: "These settings affects most of the calculations. These buttons are responsible for EXCLUSION of stated entities.",
+            day: "This option excludes today from calculations. Affects both guaranteed and advanced calculations. Removes daily missions, login rewards, recruitment. If today is the last day of the month/week other calculations will be affected accordingly.",
+            week: "Excludes weekly mission rewards only and doesn't affect any other calculations",
+            annihilation: "Excludes annihilation rewards for current week. Annihilation rewards only, nothing else is afftected",
+            month: "Excludes the whole current month from calculation. Affects only advanced calculations related to green and yellow certificate shops."
         }
     }
 }

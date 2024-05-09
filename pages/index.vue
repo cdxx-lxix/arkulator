@@ -16,8 +16,6 @@
 
                 <ArkMaybeCalc />
 
-                <ArkHopium />
-
             </div>
         </section>
 
@@ -36,13 +34,16 @@
                     <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
                         <div>
                             <ArkGuarantStats :days="calendarStore.getDays" :weeks="calendarStore.getWeeks" />
-                            <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums" :permits="pullStore.getGuaranteedPermits" variant="subtotal" />
+                            <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums"
+                                :permits="pullStore.getGuaranteedPermits" variant="subtotal" />
                             <hr>
                             <ArkAdvancedStats />
-                            <ArkResourcesOutput :orundum="advancedStore.getAdvancedOrundum()" :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
+                            <ArkResourcesOutput :orundum="advancedStore.getAdvancedOrundum()"
+                                :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
                             <hr>
                             <ArkMaybeStats />
-                            <ArkResourcesOutput :orundum="maybeStore.getMaybeOrundum" :permits="maybeStore.getMaybePermits" variant="subtotal" />
+                            <ArkResourcesOutput :orundum="maybeStore.getMaybeOrundum"
+                                :permits="maybeStore.getMaybePermits" variant="subtotal" />
                             <hr>
                             <ArkControlInfo />
                         </div>
@@ -50,6 +51,7 @@
                         <ArkResourcesOutput :orundum="total_orundum" :permits="total_permits" variant="total" />
                     </div>
                 </ArkFrame>
+                <ArkHopium />
             </div>
         </section>
 
@@ -82,3 +84,11 @@ const total_permits = computed(() => {
 })
 
 </script>
+
+<style>
+* {
+    /* blue-ribbon-700, mirage-950 */
+    scrollbar-color: #0066ff #0f172a;
+    scrollbar-width: thin;
+}
+</style>
