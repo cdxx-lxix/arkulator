@@ -1,4 +1,4 @@
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, watch } from "vue";
 import { defineStore } from "pinia";
 
 export const useCalendarStore = defineStore("calendar", () => {
@@ -6,13 +6,29 @@ export const useCalendarStore = defineStore("calendar", () => {
     start: new Date(),
     end: new Date(),
   });
-  const today = new Date();
+  const today = ref(new Date());
   const calendar_data = reactive({
     is_excluded_today: false,
     is_excluded_week: false,
     is_excluded_annihilation: false,
     is_excluded_month: false,
+    is_today_locked: false,
+    is_week_locked: false,
+    is_month_locked: false,
   });
+
+  watch(range, (newRange) => {
+    /** This watcher disables checkboxes in the ArkControls component when statement is true.
+     * You can't exclude today's rewards and missions if the starting date is not today.
+     * You can't exclude annihilation rewards and weekly missions if the starting week isn't current week.
+     * You can't exclude monthly shop purchases if the starting month is a current one.
+     */
+    return(
+      calendar_data.is_today_locked = newRange.start.getTime() !== today.value.getTime(),
+      calendar_data.is_week_locked = getWeekNumber(today.value)[1] !== getWeekNumber(newRange.start)[1],
+      calendar_data.is_month_locked = today.value.getMonth() !== newRange.start.getMonth()
+    )
+  })
   // milliseconds / 1000 to get secodns / 60 to get minutes / 60 to get hours / 24 to get days
   const getDays = computed(() => {
     // +1 makes it return 1 even when one day is selected. By default calendar ignores starting day.
@@ -58,6 +74,7 @@ export const useCalendarStore = defineStore("calendar", () => {
     // spread+Set to remove duplicates
     return [...new Set(temp)].length;
   });
+
   return {
     range,
     calendar_data,

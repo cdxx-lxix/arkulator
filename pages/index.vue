@@ -4,7 +4,7 @@
             <div class="flex flex-col gap-2 p-2">
                 <ArkFrame legend="calendar">
                     <VDatePicker v-model.range="calendarStore.range" mode="date" is-dark="true" color="pink"
-                        :first-day-of-week="2" show-iso-weeknumbers :min-date="new Date()"
+                        :first-day-of-week="2" show-iso-weeknumbers :min-date="calendarStore.today"
                         :max-date="new Date(2030, 1, 1)" :attributes="attributes" :columns="3" />
                 </ArkFrame>
 
