@@ -252,7 +252,6 @@ export const useAdvancedStore = defineStore("advanced", () => {
     if (user_data.is_included_ycs_recruitment) {
       total_yc_in_range += getYellowCertsForRecruitment();
     }
-    console.log(total_yc_in_range);
     switch (user_data.ycs_phase) {
       case 10:
         return tryPurchasePermits(1, total_yc_in_range, calendarStore.getMonths, true);
