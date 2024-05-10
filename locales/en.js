@@ -52,7 +52,7 @@ export default {
             five: "Phase 5 Greedy",
             fives: "Phase 5 Strict"
         },
-        rerun: "Rerun Shop",
+        rerun: "Rerun Cert Shop",
         reruncerts: "Current IC amount",
         rerunstock: "Orundum in stock",
         rerunencounters: "Expected reruns"
@@ -135,10 +135,29 @@ export default {
             green: {
                 toggle: "Toggle this checkbox to include Green Certificate Shop into your calculations.",
                 buyout: "Toggle this to calculate Green Certificates DIRECTLY into ORUNDUM. This option WON'T include your path to the third page. It needs you to be on the third page already.",
-                current: "Input your current Green Certificate possetion. If 'INFINITE BUYOUT' - mandatory, else - optional.",
+                current: "Input your current Green Certificates possetion. If 'INFINITE BUYOUT' - mandatory, else - optional.",
                 recruit: "Input the amount of recruitments you do DAILY. It's not capped but if you do it daily, it's impossible to do more than 6 a day.",
                 strategy: "Responsible for the outcome of your recruitment. Minimal - counts ALL of the recruitments as 3* ops. (predicted) Average - counts every 4th op as 4* and others as 3*. Maximum - counts ALL of the recruitments as 4*. My condolences if you waste your recruitments on 1* and 2*. 5* and 6* are not included because they are too random and unrelyable for calculations.",
                 target: "Your purchasing goal for the duration of set dates. Page 1 - simulates purchase of ONLY orundum and permits of the first page. Page 2 - simulates purchase of WHOLE page 1 and HH permits on the second page ONLY."
+            },
+            yellow: {
+                toggle: "Toggle this checkbox to include Yellow Certificate Shop into your calculations.",
+                current: "Input your current Yellow Certificates possetion. OPTIONAL",
+                recruit: "Works only in pair with toggled Green Shop and chosen strategy. Yeilds certificates only with 'average' and 'maximum' strategies. Adds potential Yellow Certificates from recruitment to your possetion and uses it for calculations. OPTIONAL",
+                strategy: "GREEDY - tries to purchase as much as possible in a SINGLE period of time. STRICT - or 'smart' strategy tries to purchase only the set phase.",
+                condition: "EXAMPLE // Condition: 3 month duration, starting YC - 546, no recruitment.",
+                exampleone: "GREEDY + Phase 5 will result in 79 HH permits. Because it will purchase full set in the first month, full set in the second month and 3 on the third month. It tries to buy as much as possible for given amount without regard for the future.",
+                exampletwo: "STRICT + Phase 5 will result in 76 HH permits. Because it will purchase full set in the first month, full set in the second month and nothing on the third month because YC is insufficient to obtain full set of 5 (38 HHs). Remaining YC are left alone for the future use.",
+                phases: "Phase 1 - 1 HH for 10 YC, \n Phase 2 - 3 HH for 28 YC, \n Phase 3 - 8 HH for 68 YC, \n Phase 4 - 18 HH for 138 YC, \n Phase 5 - 38 HH (full set) for 258 YC.",
+                gcs: "Green Shop",
+                ycs: "Yellow Shop",
+                rcs: "Rerun Shop"
+            },
+            rerun: {
+                toggle: "Toggle this checkbox to include Intelligence Certificate Shop into your calculations. This option always calculates FULL EVENT COVERAGE (1700 IC arithmetical average). So if you miss something it won't be accounted for. If you are a veteran player with 0 stock it's not much of a problem because HG adds orundums equal to 400 IC with each rerun. That's super cheap and it's almost a 100% purchase anyway even if you ignore EX-8 CM and some furniture in the shop. If you have some stock left or a somewhat new player with unstable ICs per rerun it is better to avoid this option at all.",
+                current: "Input your current Intelligence Certificates possetion. OPTIONAL",
+                stock: "Input amount of PURCHASABLE UNITS of orundum that is left in your Rerun shop. Purchasable units is a number in top-right corner 'remaining: ##'.",
+                reruns: "Input the number of reruns you expect or know for sure that will occur along your set dates."
             }
         },
         maybe: {
