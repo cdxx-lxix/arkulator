@@ -131,17 +131,32 @@ export default {
             annihilationreward: "Sets your current annihilation reward for weekly farm. Affects week-based calculation and exclusion of current week."
         },
         advanced: {
-
+            full: "This section consists of resources that can't be taken for granted and most likely out of your control but it's still possible to calculate with some degree of accuracy. Some values may vary (the cause maybe you or just random), for example recruitment.",
+            green: {
+                toggle: "Toggle this checkbox to include Green Certificate Shop into your calculations.",
+                buyout: "Toggle this to calculate Green Certificates DIRECTLY into ORUNDUM. This option WON'T include your path to the third page. It needs you to be on the third page already.",
+                current: "Input your current Green Certificate possetion. If 'INFINITE BUYOUT' - mandatory, else - optional.",
+                recruit: "Input the amount of recruitments you do DAILY. It's not capped but if you do it daily, it's impossible to do more than 6 a day.",
+                strategy: "Responsible for the outcome of your recruitment. Minimal - counts ALL of the recruitments as 3* ops. (predicted) Average - counts every 4th op as 4* and others as 3*. Maximum - counts ALL of the recruitments as 4*. My condolences if you waste your recruitments on 1* and 2*. 5* and 6* are not included because they are too random and unrelyable for calculations.",
+                target: "Your purchasing goal for the duration of set dates. Page 1 - simulates purchase of ONLY orundum and permits of the first page. Page 2 - simulates purchase of WHOLE page 1 and HH permits on the second page ONLY."
+            }
         },
         maybe: {
-
+            full: "This section consists of something personal, rare, unpredictable, etc. Inaccurate and speculative, just something that you want to throw into the pool for some reason.",
+            limited: "Activates fields and includes 'limited event' type into calculations.",
+            lottery: "Adds 7000 orundums into calculations. It counts every encounter as 500 orundums which is an arithmetic mean of possible rewards.",
+            annicolab: "Adds 24 LIMITED HH permits if ANNIVERSARY. Adds 10 LIMITED HH permits if COLLAB. Collabs are shorter and rewards are lower because hard pity on 120th pull.",
+            paradox: "Enter an amount of paradoxes that you'll be able to complete and get rewards for during the set period of time.",
+            annih: "Enter an amount of new annihilations that will be released during the set period of time. If you want to add that into the calculations. Some of the annihilation release dates are in the calendar. Look for purple underscores.",
+            events: "Enter an amount of possible new events along your set period. Don't add STORY events, only normal two weeks long events.",
+            shards: "If you farm shards here is the place to add your DAILY harvest."
         },
         controls: {
             full: "These settings affects most of the calculations. These buttons are responsible for EXCLUSION of stated entities.",
             day: "This option excludes today from calculations. Affects both guaranteed and advanced calculations. Removes daily missions, login rewards, recruitment. If today is the last day of the month/week other calculations will be affected accordingly.",
-            week: "Excludes weekly mission rewards only and doesn't affect any other calculations",
-            annihilation: "Excludes annihilation rewards for current week. Annihilation rewards only, nothing else is afftected",
-            month: "Excludes the whole current month from calculation. Affects only advanced calculations related to green and yellow certificate shops."
+            week: "EXCLUDES CURRENT week's missions rewards ONLY and doesn't affect any other calculations",
+            annihilation: "EXCLUDES annihilation rewards for CURRENT WEEK. Annihilation rewards ONLY, nothing else is afftected",
+            month: "EXCLUDES the whole CURRENT month from calculations. Affects ONLY advanced calculations related to green and yellow certificate shops."
         }
     }
 }

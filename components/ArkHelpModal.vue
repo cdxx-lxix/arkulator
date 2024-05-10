@@ -17,6 +17,9 @@
 
                 <div class="p-4 md:p-5 space-y-4">
                     <ModalHelpGuarant v-if="modalid == 'guaranteed-help'" />
+                    <ModalHelpControls v-if="modalid == 'controls-help'" />
+                    <ModalHelpAdvanced v-if="modalid =='advanced-help'" />
+                    <ModalHelpMaybe v-if="modalid == 'maybe-help'" />
                 </div>
 
                 <div class="flex justify-center p-4 md:p-5 border-t rounded-b border-gray-600">
