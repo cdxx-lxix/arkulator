@@ -1,6 +1,6 @@
 <template>
     <p class="text-base leading-relaxed text-gray-400">
-        {{ $t("help.advanced.full") }}
+        {{ $t("advanced.help.full") }}
     </p>
     <div class="mb-4 border-b border-gray-700">
         <ul class="flex flex-row flex-nowrap text-lg font-semibold text-center justify-between w-full">
@@ -9,7 +9,7 @@
                     class="flex flex-row gap-2 items-center justify-center w-full py-2 border-b-2 text-gray-300 hover:text-blue-ribbon-700"
                     type="button" @click="changeActive('gcs')">
                     <GreenCertIcon class="w-6 h-6" /><span :class="activeTab === 'gcs' ? 'text-blue-ribbon-400' : ''">{{
-                        $t("help.advanced.yellow.gcs") }}</span>
+                        $t("advanced.help.greentab") }}</span>
                 </button>
             </li>
             <li class="me-2 w-full">
@@ -18,7 +18,7 @@
                     type="button" @click="changeActive('ycs')">
 
                     <YellowCertIcon class="w-6 h-6" /><span :class="activeTab === 'ycs' ? 'text-blue-ribbon-400' : ''">{{
-                        $t("help.advanced.yellow.ycs") }}</span>
+                        $t("advanced.help.yellowtab") }}</span>
 
                 </button>
             </li>
@@ -27,7 +27,7 @@
                     class="flex flex-row gap-2 items-center justify-center w-full py-2 border-b-2 text-gray-300 hover:text-blue-ribbon-700"
                     type="button" @click="changeActive('rcs')">
                     <RerunCertIcon class="w-6 h-6" /><span :class="activeTab === 'rcs' ? 'text-blue-ribbon-400' : ''">{{
-                        $t("help.advanced.yellow.rcs") }}</span>
+                        $t("advanced.help.reruntab") }}</span>
                 </button>
             </li>
         </ul>
@@ -35,43 +35,43 @@
 
     <ul v-if="activeTab === 'gcs'">
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.gcs")
-                }}</span> - {{ $t("help.advanced.green.toggle") }}</li>
+                }}</span> - {{ $t("advanced.help.green.toggle") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.infinite")
-                }}</span> - {{ $t("help.advanced.green.buyout") }}</li>
+                }}</span> - {{ $t("advanced.help.green.buyout") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.greens")
-                }}</span> - {{ $t("help.advanced.green.current") }}</li>
+                }}</span> - {{ $t("advanced.help.green.current") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.strategy")
-                }}</span> - {{ $t("help.advanced.green.strategy") }}</li>
+                }}</span> - {{ $t("advanced.help.green.strategy") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.recruits")
-                }}</span> - {{ $t("help.advanced.green.recruit") }}</li>
+                }}</span> - {{ $t("advanced.help.green.recruit") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.phase")
-                }}</span> - {{ $t("help.advanced.green.target") }}</li>
+                }}</span> - {{ $t("advanced.help.green.target") }}</li>
     </ul>
 
     <ul v-if="activeTab === 'ycs'">
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.ycs")
-                }}</span> - {{ $t("help.advanced.yellow.toggle") }}</li>
+                }}</span> - {{ $t("advanced.help.yellow.toggle") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.yellows")
-                }}</span> - {{ $t("help.advanced.yellow.current") }}</li>
+                }}</span> - {{ $t("advanced.help.yellow.current") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.ycsrecs")
-                }}</span> - {{ $t("help.advanced.yellow.recruit") }}</li>
+                }}</span> - {{ $t("advanced.help.yellow.recruit") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.ycsbuys")
-                }}</span> - {{ $t("help.advanced.yellow.strategy") }}</li>
-        <li class="text-gray-400 font-light mb-2">{{ $t("help.advanced.yellow.condition") }}</li>
-        <li class="text-gray-400 font-light mb-2">{{ $t("help.advanced.yellow.exampleone") }}</li>
-        <li class="text-gray-400 font-light mb-2">{{ $t("help.advanced.yellow.exampletwo") }}</li>
-        <li class="text-gray-400 font-light mb-2">{{ $t("help.advanced.yellow.phases") }}</li>
+                }}</span> - {{ $t("advanced.help.yellow.strategy") }}</li>
+        <li class="text-gray-400 font-light mb-2">{{ $t("advanced.help.yellow.condition") }}</li>
+        <li class="text-gray-400 font-light mb-2">{{ $t("advanced.help.yellow.exampleone") }}</li>
+        <li class="text-gray-400 font-light mb-2">{{ $t("advanced.help.yellow.exampletwo") }}</li>
+        <li class="text-gray-400 font-light mb-2">{{ $t("advanced.help.yellow.phases") }}</li>
     </ul>
 
     <ul v-if="activeTab === 'rcs'">
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.rerun")
-                }}</span> - {{ $t("help.advanced.rerun.toggle") }}</li>
+                }}</span> - {{ $t("advanced.help.rerun.toggle") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.reruncerts")
-                }}</span> - {{ $t("help.advanced.rerun.current") }}</li>
+                }}</span> - {{ $t("advanced.help.rerun.current") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.rerunstock")
-                }}</span> - {{ $t("help.advanced.rerun.stock") }}</li>
+                }}</span> - {{ $t("advanced.help.rerun.stock") }}</li>
         <li class="text-gray-400 font-light mb-2"><span class="font-semibold text-gray-50">{{ $t("advanced.rerunencounters")
-                }}</span> - {{ $t("help.advanced.rerun.reruns") }}</li>
+                }}</span> - {{ $t("advanced.help.rerun.reruns") }}</li>
     </ul>
 </template>
 

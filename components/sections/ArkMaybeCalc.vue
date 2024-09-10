@@ -5,7 +5,7 @@
             <ArkCheckbox label="maybe.limitedevent" id="limited-event"
                 v-model:boxvalue="maybeStore.user_data.is_limited" />
             <ArkCheckbox label="maybe.lottery" id="orundum-lottery" v-model:boxvalue="maybeStore.user_data.is_lottery"
-                :disabled="!maybeStore.user_data.is_limited" />
+                :disabled="!maybeStore.user_data.is_limited || maybeStore.user_data.is_collab" />
             <ArkCheckbox label="maybe.anniversary" id="is-anniversary"
                 v-model:boxvalue="maybeStore.user_data.is_anniversary" :disabled="!maybeStore.user_data.is_limited" />
             <ArkCheckbox label="maybe.collab" id="is-collab" v-model:boxvalue="maybeStore.user_data.is_collab"

@@ -1,5 +1,5 @@
 <template>
-    <main class="grid grid-cols-2 bg-mirage-950">
+    <main class="grid lg:grid-cols-2 bg-mirage-950">
         <section id="calculationform">
             <div class="flex flex-col gap-2 p-2">
                 <ArkFrame legend="calendar">

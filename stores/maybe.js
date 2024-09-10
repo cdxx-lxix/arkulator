@@ -7,7 +7,7 @@ export const useMaybeStore = defineStore("maybe", () => {
     // mini events that last a week have nothing of value
     event_purchasable_permits: 3, // Normal, reruns and limited give you an option to buy 3 permits
     event_limited_permits: 24, // 1 HH on login and 1 everyday for 2 weeks
-    event_collab_permits: 10, // Collabs like MH and R6 gave us 10 permits on login
+    event_collab_permits: 20, // Collabs like MH and R6 gave us 10 permits on login and 10 on 8th day
     event_orundum_lottery: 7000, // 14 * 500. 500 is an arithmetic mean of 200 ... 800 * 14 days of lottery. Pity isn't accounted for.
     orundum_per_paradox_completed: 200, // They often add some paradoxes with events which may give you an additional pull
     orundum_per_annihilations_firsttime: 1500, // Except for the first 2 anni's every new one gives you a 1.5k orundums for a first time full clear 400\400
@@ -54,6 +54,7 @@ export const useMaybeStore = defineStore("maybe", () => {
     (collab) => {
       if (collab) {
         user_data.is_anniversary = false;
+        user_data.is_lottery = false;
       }
     }
   );

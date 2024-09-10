@@ -18,7 +18,7 @@
                     <PermitIcon class="w-6 h-6" />
                 </ArkInput>
                 <ArkInput class="w-full" id="opsacrifice" min="0" v-model:inputvalue="pullStore.user_data.current_prime"
-                    label="guaranteed.opsacrifice">
+                    label="guaranteed.currentprime">
                     <OPIcon class="w-6 h-6" />
                 </ArkInput>
                 <ArkInput class="w-full" id="currentshards" min="0"
