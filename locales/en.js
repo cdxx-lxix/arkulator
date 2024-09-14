@@ -61,7 +61,7 @@ export default {
     gcs: "Green Cert Shop",
     greens: "Current GC amount",
     recruits: "Recruitments daily",
-    strategy: "Choose recruitment outcome",
+    strategy: "Recruitment strategy",
     strategies: {
       minimum: "Minimum",
       average: "Average",

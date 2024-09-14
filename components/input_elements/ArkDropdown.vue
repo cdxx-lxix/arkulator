@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex flex-col h-full justify-end">
         <label :for="id" class="block mb-2 text-sm font-medium text-white">{{ $t(label) }}</label>
         <select :id v-model="selectValue" :disabled
             class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">

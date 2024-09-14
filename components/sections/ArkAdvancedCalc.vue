@@ -1,7 +1,7 @@
 <template>
     <ArkFrame legend="advanced.header">
         <ArkFrameHelp description="advanced.subtext" :isbutton="true" modalid="advanced-help" />
-        <div class="grid grid-cols-1 md:grid-cols-4 px-6 gap-4 mb-4 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-6 gap-4 mb-8 md:mb-4 w-full">
             <ArkFancyCheckbox label="advanced.gcs" id="green-shop"
                 v-model:boxvalue="advancedStore.user_data.is_included_gcs" variant="sqr">
                 <GreenCertIcon />
@@ -33,8 +33,8 @@
                 <InfinityIcon class="fill-[#a9cf38]" />
             </ArkFancyCheckbox>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-1 w-full">
-            <div class="grid md:grid-cols-4 px-6 gap-4 items-center mb-4">
+        <div class="w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 px-6 gap-4 items-center mb-8 md:mb-4">
                 <ArkFancyCheckbox label="advanced.ycs" id="yellow-shop"
                     v-model:boxvalue="advancedStore.user_data.is_included_ycs" variant="rect">
                     <YellowCertIcon class="w-8 h-8" />
@@ -44,13 +44,13 @@
                     :disabled="!advancedStore.user_data.is_included_ycs">
                     <YellowCertIcon class="w-6 h-6" />
                 </ArkInput>
-                <ArkCheckbox label="advanced.ycsrecs" id="yellow-recruitment"
+                <ArkCheckbox label="advanced.ycsrecs" id="yellow-recruitment" :integrate="true"
                     :disabled="!advancedStore.user_data.is_included_ycs || !advancedStore.user_data.gcs_selected_strategy"
                     v-model:boxvalue="advancedStore.user_data.is_included_ycs_recruitment" />
                 <ArkDropdown label="advanced.ycsbuys" v-model:selectvalue="advancedStore.user_data.ycs_phase"
                     :options="advancedStore.user_ycs_phases" :disabled="!advancedStore.user_data.is_included_ycs" />
             </div>
-            <div class="grid md:grid-cols-4 px-6 gap-4 items-center mb-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 px-6 gap-4 items-center mb-3">
                 <ArkFancyCheckbox label="advanced.rerun" id="rerun-shop"
                     v-model:boxvalue="advancedStore.user_data.is_included_rerun" variant="rect">
                     <RerunCertIcon class="w-8 h-8" />

@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-sm mx-auto">
+    <div class="mx-auto flex flex-col h-full justify-end">
         <label :for="id" class="block mb-2 text-sm font-medium text-white">{{ $t(label) }}</label>
         <div class="flex">
             <span
