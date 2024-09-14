@@ -1,12 +1,12 @@
 <template>
     <ArkFrame legend="advanced.header">
         <ArkFrameHelp description="advanced.subtext" :isbutton="true" modalid="advanced-help" />
-        <div class="grid grid-cols-4 px-6 gap-4 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 px-6 gap-4 mb-4 w-full">
             <ArkFancyCheckbox label="advanced.gcs" id="green-shop"
                 v-model:boxvalue="advancedStore.user_data.is_included_gcs" variant="sqr">
                 <GreenCertIcon />
             </ArkFancyCheckbox>
-            <div class="flex flex-col justify-between">
+            <div class="flex md:flex-col gap-2 justify-between">
                 <ArkInput class="w-full" id="currentgreencerts" min="0"
                     v-model:inputvalue="advancedStore.user_data.gcs_current_certs" label="advanced.greens"
                     :disabled="!advancedStore.user_data.is_included_gcs">
@@ -29,46 +29,48 @@
             </div>
             <ArkFancyCheckbox label="advanced.infinite" id="green-infinity"
                 :disabled="!advancedStore.user_data.is_included_gcs"
-                v-model:boxvalue="advancedStore.user_data.is_phase_three" variant="sqr" >
+                v-model:boxvalue="advancedStore.user_data.is_phase_three" variant="sqr">
                 <InfinityIcon class="fill-[#a9cf38]" />
             </ArkFancyCheckbox>
         </div>
-        <div class="grid grid-cols-4 px-6 gap-4 items-center mb-4">
-            <ArkFancyCheckbox label="advanced.ycs" id="yellow-shop"
-                v-model:boxvalue="advancedStore.user_data.is_included_ycs" variant="rect">
-                <YellowCertIcon class="w-8 h-8" />
-            </ArkFancyCheckbox>
-            <ArkInput class="w-full" id="currentyellowcerts" min="0"
-                v-model:inputvalue="advancedStore.user_data.ycs_current_certs" label="advanced.yellows"
-                :disabled="!advancedStore.user_data.is_included_ycs">
-                <YellowCertIcon class="w-6 h-6" />
-            </ArkInput>
-            <ArkCheckbox label="advanced.ycsrecs" id="yellow-recruitment"
-                :disabled="!advancedStore.user_data.is_included_ycs || !advancedStore.user_data.gcs_selected_strategy"
-                v-model:boxvalue="advancedStore.user_data.is_included_ycs_recruitment" />
-            <ArkDropdown label="advanced.ycsbuys" v-model:selectvalue="advancedStore.user_data.ycs_phase"
-                :options="advancedStore.user_ycs_phases" :disabled="!advancedStore.user_data.is_included_ycs" />
-        </div>
-        <div class="grid grid-cols-4 px-6 gap-4 items-center mb-3">
-            <ArkFancyCheckbox label="advanced.rerun" id="rerun-shop"
-                v-model:boxvalue="advancedStore.user_data.is_included_rerun" variant="rect">
-                <RerunCertIcon class="w-8 h-8" />
-            </ArkFancyCheckbox>
-            <ArkInput class="w-full" id="currentreruncerts" min="0"
-                v-model:inputvalue="advancedStore.user_data.rerun_current_certs" label="advanced.reruncerts"
-                :disabled="!advancedStore.user_data.is_included_rerun">
-                <RerunCertIcon class="w-6 h-6" />
-            </ArkInput>
-            <ArkInput class="w-full" id="currentstock" min="0"
-                v-model:inputvalue="advancedStore.user_data.rerun_orundum_stock" label="advanced.rerunstock"
-                :disabled="!advancedStore.user_data.is_included_rerun">
-                <OrundumIcon class="w-6 h-6" />
-            </ArkInput>
-            <ArkInput class="w-full" id="rerunsexpected" min="0"
-                v-model:inputvalue="advancedStore.user_data.rerun_encounters" label="advanced.rerunencounters"
-                :disabled="!advancedStore.user_data.is_included_rerun">
-                <RerunIcon class="w-6 h-6" />
-            </ArkInput>
+        <div class="grid grid-cols-2 md:grid-cols-1 w-full">
+            <div class="grid md:grid-cols-4 px-6 gap-4 items-center mb-4">
+                <ArkFancyCheckbox label="advanced.ycs" id="yellow-shop"
+                    v-model:boxvalue="advancedStore.user_data.is_included_ycs" variant="rect">
+                    <YellowCertIcon class="w-8 h-8" />
+                </ArkFancyCheckbox>
+                <ArkInput class="w-full" id="currentyellowcerts" min="0"
+                    v-model:inputvalue="advancedStore.user_data.ycs_current_certs" label="advanced.yellows"
+                    :disabled="!advancedStore.user_data.is_included_ycs">
+                    <YellowCertIcon class="w-6 h-6" />
+                </ArkInput>
+                <ArkCheckbox label="advanced.ycsrecs" id="yellow-recruitment"
+                    :disabled="!advancedStore.user_data.is_included_ycs || !advancedStore.user_data.gcs_selected_strategy"
+                    v-model:boxvalue="advancedStore.user_data.is_included_ycs_recruitment" />
+                <ArkDropdown label="advanced.ycsbuys" v-model:selectvalue="advancedStore.user_data.ycs_phase"
+                    :options="advancedStore.user_ycs_phases" :disabled="!advancedStore.user_data.is_included_ycs" />
+            </div>
+            <div class="grid md:grid-cols-4 px-6 gap-4 items-center mb-3">
+                <ArkFancyCheckbox label="advanced.rerun" id="rerun-shop"
+                    v-model:boxvalue="advancedStore.user_data.is_included_rerun" variant="rect">
+                    <RerunCertIcon class="w-8 h-8" />
+                </ArkFancyCheckbox>
+                <ArkInput class="w-full" id="currentreruncerts" min="0"
+                    v-model:inputvalue="advancedStore.user_data.rerun_current_certs" label="advanced.reruncerts"
+                    :disabled="!advancedStore.user_data.is_included_rerun">
+                    <RerunCertIcon class="w-6 h-6" />
+                </ArkInput>
+                <ArkInput class="w-full" id="currentstock" min="0"
+                    v-model:inputvalue="advancedStore.user_data.rerun_orundum_stock" label="advanced.rerunstock"
+                    :disabled="!advancedStore.user_data.is_included_rerun">
+                    <OrundumIcon class="w-6 h-6" />
+                </ArkInput>
+                <ArkInput class="w-full" id="rerunsexpected" min="0"
+                    v-model:inputvalue="advancedStore.user_data.rerun_encounters" label="advanced.rerunencounters"
+                    :disabled="!advancedStore.user_data.is_included_rerun">
+                    <RerunIcon class="w-6 h-6" />
+                </ArkInput>
+            </div>
         </div>
     </ArkFrame>
 </template>

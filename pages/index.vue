@@ -1,5 +1,5 @@
 <template>
-    <main class="grid lg:grid-cols-2 bg-mirage-950">
+    <main class="grid grid-cols-1 xl:grid-cols-2 bg-mirage-950">
         <section id="calculationform">
             <div class="flex flex-col gap-2 p-2">
                 <ArkFrame legend="calendar">
@@ -52,6 +52,9 @@
                     </div>
                 </ArkFrame>
                 <ArkHopium />
+                <div>
+                    {{ calculated_width }}
+                </div>
             </div>
         </section>
 
@@ -81,6 +84,18 @@ const total_orundum = computed(() => {
 
 const total_permits = computed(() => {
     return pullStore.getGuaranteedPermits + advancedStore.getAdvancedPermits() + maybeStore.getMaybePermits
+})
+
+const calculated_width = computed(() => {
+    if (process.client) {
+        let width = window.innerWidth
+        watch(width, async (the_width_new, the_width_old) => {
+            if (the_width_old !== the_width_new) {
+                return width = the_width_new
+            }
+        })
+        return width
+    }
 })
 
 </script>
