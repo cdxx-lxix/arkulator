@@ -1,0 +1,36 @@
+<template>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 512 512" xml:space="preserve">
+        <path
+            d="M435.5 448h-360c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h360c6.6 0 12 5.4 12 12v360c0 6.6-5.4 12-12 12"
+            style="fill:#90a4ae" />
+        <path d="M447.5 160.5h-384v-84c0-6.6 5.4-12 12-12h360c6.6 0 12 5.4 12 12z" style="fill:#ef4438" />
+        <path class="st2"
+            d="M80.5 178h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40z" />
+        <g>
+            <path
+                d="M126.1 219.8h-15.2l-10.4-12.9-10.4 12.9H74.9l18.6-21.5-18.6-20.5h15.2l10.4 12 10.4-12h15.2l-18.6 20.5z"
+                style="fill:#690d0d" />
+        </g>
+        <path class="st2"
+            d="M80.5 230h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40z" />
+        <path class="st2"
+            d="M80.5 282h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40z" />
+        <path class="st2"
+            d="M80.5 334h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40zm52.2 0h40v40h-40zm52.1 0h40v40h-40zm52.2 0h40v40h-40z" />
+        <path class="st2" d="M80.5 386h40v40h-40zm54 0h40v40h-40z" />
+    </svg>
+</template>
+
+<style scoped>
+.st2 {
+    fill: #b0bec5
+}
+
+.st3 {
+    fill: #690d0d
+}
+
+.st4 {
+    fill: #fff
+}
+</style>

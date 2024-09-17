@@ -4,7 +4,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 px-6 gap-4 w-full mb-3">
             <ArkFancyCheckbox label="controls.today" id="exclude-today"
                 v-model:boxvalue="calendarStore.calendar_data.is_excluded_today" variant="rect" :disabled="calendarStore.calendar_data.is_today_locked">
-                <CalendarIcon class="w-6 h-6" variant="day" />
+                <CalendarDayIcon class="w-6 h-6" />
             </ArkFancyCheckbox>
             <ArkFancyCheckbox label="controls.week" id="exclude-week"
                 v-model:boxvalue="calendarStore.calendar_data.is_excluded_week" variant="rect" :disabled="calendarStore.calendar_data.is_week_locked">
