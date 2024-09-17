@@ -236,6 +236,7 @@
 </template>
 
 <script setup>
+// Shitty iOS can't display dynamic svgs so I have to use separate elements
 const props = defineProps([
     'variant'
 ])
