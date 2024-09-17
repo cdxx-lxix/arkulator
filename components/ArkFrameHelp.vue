@@ -1,7 +1,7 @@
 <template>
     <template v-if="isbutton">
-        <div class="mb-4 px-6 w-full flex flex-row justify-between">
-            <p class="text-white">{{ $t(description) }}</p>
+        <div class="mb-4 px-2 sm:px-6 w-full flex flex-row justify-between">
+            <p class="text-white pr-4">{{ $t(description) }}</p>
             <button @click="showModal">
                 <HelpButtonIcon class="w-6 h-6 fill-blue-ribbon-700" />
             </button>

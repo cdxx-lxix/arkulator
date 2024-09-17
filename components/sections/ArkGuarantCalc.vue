@@ -1,7 +1,7 @@
 <template>
     <ArkFrame legend="guaranteed.header">
         <ArkFrameHelp description="guaranteed.subtext" :isbutton="true" modalid="guaranteed-help" />
-        <div class="grid grid-cols-1 sm:grid-cols-4 px-6 gap-4 mb-3 flex-grow-1">
+        <div class="grid grid-cols-1 sm:grid-cols-4 px-2 sm:px-6 gap-4 mb-3 flex-grow-1">
             <div class="col-span-1">
                 <ArkFancyCheckbox label="guaranteed.monthlycard" id="monthlycard"
                     v-model:boxvalue="pullStore.user_data.is_monthly_card_active" variant="sqr">

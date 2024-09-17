@@ -23,7 +23,7 @@
             <div class="flex flex-col gap-2 p-2">
                 <ArkFrame legend="calculations.header">
                     <div
-                        class="flex flex-row flex-wrap w-full px-6 justify-between font-semibold text-gray-100 text-2xl">
+                        class="flex flex-row flex-wrap w-full px-2 sm:px-6 justify-between font-semibold text-gray-100 text-2xl">
                         <h2 class="w-1/3 text-sm sm:text-lg text-left">{{ $t("calculations.days", { days: calendarStore.getDays }) }}</h2>
                         <h2 class="w-1/3 text-sm sm:text-lg text-center">{{ $t("calculations.weeks", { weeks: calendarStore.getWeeks }) }}
                         </h2>
@@ -31,7 +31,7 @@
                             }}</h2>
                         <hr class="w-full my-2">
                     </div>
-                    <div class="flex flex-col gap-2 w-full px-6 justify-start font-light text-gray-100 text-md">
+                    <div class="flex flex-col gap-2 w-full px-2 sm:px-6 justify-start font-light text-gray-100 text-md">
                         <div>
                             <ArkGuarantStats :days="calendarStore.getDays" :weeks="calendarStore.getWeeks" />
                             <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums"

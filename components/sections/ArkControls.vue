@@ -1,7 +1,7 @@
 <template>
     <ArkFrame legend="controls.header">
         <ArkFrameHelp description="controls.subtext" :isbutton="true" modalid="controls-help" />
-        <div class="grid grid-cols-2 sm:grid-cols-4 px-6 gap-4 w-full mb-3 max-h-28 sm:max-h-16">
+        <div class="grid grid-cols-2 sm:grid-cols-4 px-2 sm:px-6 gap-4 w-full mb-3 max-h-28 sm:max-h-16">
             <ArkFancyCheckbox label="controls.today" id="exclude-today"
                 v-model:boxvalue="calendarStore.calendar_data.is_excluded_today" variant="rect" :disabled="calendarStore.calendar_data.is_today_locked">
                 <CalendarDayIcon class="w-12 h-12" />
