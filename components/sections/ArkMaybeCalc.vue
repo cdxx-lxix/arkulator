@@ -1,7 +1,7 @@
 <template>
     <ArkFrame legend="maybe.header">
         <ArkFrameHelp description="maybe.subtext" :isbutton="true" modalid="maybe-help" />
-        <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 px-6 gap-4 mb-3 w-full">
+        <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 px-6 gap-4 mb-3 w-full max-h-64">
             <ArkCheckbox label="maybe.limitedevent" id="limited-event"
                 v-model:boxvalue="maybeStore.user_data.is_limited" />
             <ArkCheckbox label="maybe.lottery" id="orundum-lottery" v-model:boxvalue="maybeStore.user_data.is_lottery"

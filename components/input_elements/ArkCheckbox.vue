@@ -9,7 +9,7 @@
         </span>
         <label
           :for="id"
-          class="rounded-none rounded-e-lg flex items-center flex-1 min-w-0 w-full text-sm p-2.5 bg-gray-700 border-gray-600 text-white outline-none select-none"
+          class="rounded-none rounded-e-lg truncate flex items-center flex-1 min-w-0 w-full text-xs lg:text-sm p-2.5 bg-gray-700 border-gray-600 text-white outline-none select-none"
         >
           {{ $t(label) }}
         </label>
