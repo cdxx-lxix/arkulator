@@ -175,7 +175,22 @@ export default {
     textthree: "Codes (They have a system but no one uses it. At least for now.)",
     textfour: "Web events",
     textfive: "Discord events and competitions rewards (if you participate of course)",
-    textsix: "Your donations (Thank you for your service Doctor Whale)"
+    textsix: "Your donations (Thank you for your service Doctor Whale)",
+    textseven: "YC from duplicates to purchase HH permits"
+  },
+
+  budget: {
+    header: "Budget",
+    subtext: "Distribute your budget",
+    operator_field: "Operator",
+    banner_type: "Banner type",
+    banner_standard: "Standard/Kernel",
+    banner_collab: "Collaboration",
+    banner_anniversary: "Anniversary",
+    banner_joint: "Joint Operation",
+    banner_debut: "Debut",
+    banner_special: "Special",
+    pulls_expected: "Pulls"
   },
 
   calculations: {

@@ -51,6 +51,7 @@
                         <ArkResourcesOutput :orundum="total_orundum" :permits="total_permits" variant="total" />
                     </div>
                 </ArkFrame>
+                <ArkBudgetCalc :orundum="total_orundum" :permits="total_permits" />
                 <ArkHopium />
             </div>
         </section>

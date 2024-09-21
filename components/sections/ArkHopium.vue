@@ -8,6 +8,7 @@
             <li>{{ $t('hopium.textfour') }}</li>
             <li>{{ $t('hopium.textfive') }}</li>
             <li>{{ $t('hopium.textsix') }}</li>
+            <li>{{ $t('hopium.textseven') }}</li>
         </ul>
     </ArkFrame>
 </template>
