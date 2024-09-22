@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   site: { 
     // SEO (Lang setting inferred from i18n integration, no need to setup)
     // https://nuxtseo.com/site-config/integrations/i18n
-    url: 'https://example.com',
+    url: 'https://arkulator.vercel.app/',
     name: 'Arkulator',
     description: 'A tool to calculate your resources up to a certain date and budget your pulls in Arknights'
   },
