@@ -11,18 +11,18 @@
             <hr>
             <div v-for="entry, index in budget_entries" :key="entry" v-show="entry.operator"
                 class="grid grid-cols-3 w-full justify-between border-b border-gray-700 border-dashed mb-1">
-                <p>{{ budget_entries[index].operator }}</p>
+                <p class="text-ellipsis overflow-hidden ...">{{ budget_entries[index].operator }}</p>
                 <p class="text-center">{{ budget_entries[index].banner }}</p>
                 <p class="text-right">{{ budget_entries[index].pulls }}</p>
             </div>
             <hr>
-            <div v-for="entry, index in budget_entries" :key="entry" class="w-full grid grid-cols-10 gap-3 mb-2 border-b border-white/30 pb-2">
-                <div class="col-span-3">
+            <div v-for="entry, index in budget_entries" :key="entry" class="w-full grid grid-cols-4 sm:grid-cols-10 gap-3 mb-2 border-b border-white/30 pb-2">
+                <div class="col-span-4 sm:col-span-3">
                     <label class="block mb-2 text-sm font-medium text-white">{{ $t('budget.operator_field') }} #{{ index+1 }}</label>
-                    <input type="text" v-model="budget_entries[index].operator" maxlength="30"
+                    <input type="text" v-model="budget_entries[index].operator" maxlength="50"
                         class="rounded-lg block flex-1 min-w-0 w-full text-sm p-2.5 bg-gray-700 border-gray-600 text-white outline-none">
                 </div>
-                <ArkDropdown class="col-span-3" label="budget.banner_type" :options="banner_types"
+                <ArkDropdown class="col-span-4 sm:col-span-3" label="budget.banner_type" :options="banner_types"
                     v-model:selectvalue="budget_entries[index].banner" />
                 <ArkInput class="w-full col-span-3" id="expected_pulls" min="0"
                     v-model:inputvalue="budget_entries[index].pulls" label="budget.pulls_expected">
