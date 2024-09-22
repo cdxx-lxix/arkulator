@@ -67,6 +67,10 @@ import { usePullsStore } from '#imports';
 import { useAdvancedStore } from '#imports';
 import { useCalendarStore } from '~/stores/calendar';
 import { useMaybeStore } from '~/stores/maybe';
+defineOgImageComponent('NuxtSeo', {
+    theme: '#ff0000',
+    colorMode: 'dark'
+})
 const viewport = useViewport()
 
 const pullStore = usePullsStore()

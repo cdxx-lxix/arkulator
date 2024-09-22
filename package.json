@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/seo": "^2.0.0-rc.21",
     "@pinia/nuxt": "^0.5.1",
     "@samk-dev/nuxt-vcalendar": "^1.0.3",
     "nuxt": "^3.11.2",

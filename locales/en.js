@@ -1,8 +1,8 @@
 export default {
-  lang: "en",
-  title: "Arkulator",
-  description: "A tool to calculate your resources up to a certain date and budget your pulls in Arknights",
-  keywords: "Arknights, mobile game, calculator, tool, operator, pull, luck, resources, management",
+  nuxtSiteConfig: {
+    name: 'Arkulator',
+    description: 'A tool to calculate your resources up to a certain date and budget your pulls in Arknights',
+  },
   calendar: "Magic calendar",
 
   controls: {

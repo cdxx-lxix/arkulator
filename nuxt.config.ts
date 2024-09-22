@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@samk-dev/nuxt-vcalendar",
     '@nuxtjs/i18n',
     'nuxt-viewport',
+    '@nuxtjs/seo',
   ],
   i18n: {
     locales: [
@@ -19,6 +20,13 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: 'locales',
     defaultLocale: 'en'
+  },
+  site: { 
+    // SEO (Lang setting inferred from i18n integration, no need to setup)
+    // https://nuxtseo.com/site-config/integrations/i18n
+    url: 'https://example.com',
+    name: 'Arkulator',
+    description: 'A tool to calculate your resources up to a certain date and budget your pulls in Arknights'
   },
   viewport: {
     breakpoints: {
