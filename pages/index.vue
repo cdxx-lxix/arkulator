@@ -1,4 +1,5 @@
 <template>
+    <AppHeader />
     <main class="grid grid-cols-1 xl:grid-cols-2 bg-mirage-950">
         <section id="calculationform">
             <div class="flex flex-col gap-2 p-2">
