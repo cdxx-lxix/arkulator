@@ -8,10 +8,6 @@
         <link rel="manifest" href="/site.webmanifest">
     </head>
 
-    <Body>
-        <slot />
-    </Body>
-
     </Html>
 </template>
 
