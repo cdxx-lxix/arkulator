@@ -1,7 +1,7 @@
 export default {
   nuxtSiteConfig: {
     name: "Arkulator",
-    description: "A tool to calculate your resources up to a certain date and manage your gacha budget in Arknights",
+    description: "A tool to calculate your resources for pulling up to a certain date and manage your gacha budget in Arknights",
   },
   calendar: "Magic Calendar",
 
