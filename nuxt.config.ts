@@ -7,8 +7,7 @@ export default defineNuxtConfig({
     "@samk-dev/nuxt-vcalendar",
     '@nuxtjs/i18n',
     'nuxt-viewport',
-    '@nuxtjs/seo',
-    'nuxt-gtag',
+    '@nuxtjs/seo'
   ],
   i18n: {
     locales: [
@@ -29,9 +28,6 @@ export default defineNuxtConfig({
     url: 'https://arkulator.ojisan.cc',
     name: 'Arkulator',
     description: 'A tool to calculate your resources for pulling up to a certain date and manage your gacha budget in Arknights'
-  },
-  gtag: {
-    id: 'G-SX9XJ91MFF'
   },
   viewport: {
     breakpoints: {
