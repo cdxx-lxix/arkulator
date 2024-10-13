@@ -4,7 +4,8 @@
             Arkulator
         </div>
         <nav class="text-white">
-            TBA
+            <NuxtLink to="/">Home</NuxtLink>
+            <NuxtLink to="/wiki">Wiki</NuxtLink>
         </nav>
         <div class="inline-flex gap-2">
             <a href="https://t.me/cdxx_lxix" target="_blank"

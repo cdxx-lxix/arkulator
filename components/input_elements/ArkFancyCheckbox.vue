@@ -25,6 +25,18 @@
             </label>
         </div>
     </template>
+    <template v-if="variant === 'dummy'">
+        <div class="h-full">
+            <input type="checkbox" :id class="hidden peer" disabled="true">
+            <label :for="id"
+                class="inline-flex items-center justify-center w-full h-full p-2 border-2 rounded-lg pointer-events-none border-gray-700 text-gray-200 ">
+                <div class="flex flex-col items-center justify-between text-center select-none">
+                    <slot />
+                    <div class="w-full text-lg font-semibold">{{ $t(label) }}</div>
+                </div>
+            </label>
+        </div>
+    </template>
 </template>
 
 <script setup>
