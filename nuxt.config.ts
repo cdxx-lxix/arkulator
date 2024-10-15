@@ -15,8 +15,24 @@ export default defineNuxtConfig({
         code: 'en',
         name: 'English',
         files: ['en.js']
+      },
+      {
+        code: 'ja',
+        name: '日语',
+        files: ['ja.js']
+      },
+      {
+        code: 'zh',
+        name: '中文',
+        files: ['zh.js']
+      },
+      {
+        code: 'ko',
+        name: '朝鲜语',
+        files: ['ko.js']
       }
     ],
+    strategy: 'no_prefix',
     lazy: true,
     langDir: 'locales',
     defaultLocale: 'en'

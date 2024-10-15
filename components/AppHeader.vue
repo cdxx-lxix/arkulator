@@ -1,30 +1,75 @@
 <template>
-    <header class="bg-mirage-950 flex flex-row items-center justify-between h-8 w-full px-2 pt-2">
-        <div class="font-bold text-white text-2xl">
-            Arkulator
-        </div>
-        <nav class="text-white">
-            <NuxtLink to="/">Home</NuxtLink>
-            <NuxtLink to="/wiki">Wiki</NuxtLink>
-        </nav>
-        <div class="inline-flex gap-2">
-            <a href="https://t.me/cdxx_lxix" target="_blank"
-                class="rounded-full fill-blue-ribbon-700 hover:fill-white transition delay-100 duration-300 ease-in-out p-1">
-                <svg viewBox="0 0 15 15" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
-                    <path d="m14.5 1.5-14 5 4 2 6-4-4 5 6 4z" />
-                </svg>
-            </a>
-            <a href="https://discordapp.com/users/277388752018604032" target="_blank"
-                class="rounded-full fill-blue-ribbon-700 hover:fill-white transition delay-100 duration-300 ease-in-out p-1">
-                <svg viewBox="0 0 24 24" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M18.894 4.344A17.4 17.4 0 0 0 14.532 3c-.192.33-.406.779-.555 1.13a16.7 16.7 0 0 0-4.833 0c-.15-.351-.373-.8-.555-1.13a17.2 17.2 0 0 0-4.363 1.344C1.463 8.419.716 12.397 1.09 16.323A17.8 17.8 0 0 0 6.435 19a13 13 0 0 0 1.14-1.845 11 11 0 0 1-1.802-.864 7 7 0 0 0 .438-.342c3.477 1.59 7.243 1.59 10.678 0 .15.118.288.235.437.342a11 11 0 0 1-1.802.864A13 13 0 0 0 16.665 19a17.7 17.7 0 0 0 5.345-2.677c.459-4.544-.726-8.491-3.116-11.979ZM8.056 13.901c-1.045 0-1.899-.949-1.899-2.112 0-1.162.832-2.112 1.899-2.112 1.056 0 1.92.95 1.899 2.112 0 1.163-.843 2.112-1.9 2.112Zm7.009 0c-1.045 0-1.9-.949-1.9-2.112 0-1.162.833-2.112 1.9-2.112 1.056 0 1.92.95 1.899 2.112 0 1.163-.832 2.112-1.899 2.112Z" />
-                </svg>
-            </a>
+    <header class="bg-mirage-950 w-full px-2 pt-2">
+        <div class="flex flex-row items-center justify-between">
+            <div class="font-bold text-white text-2xl">
+                Arkulator
+            </div>
+            <div class="inline-flex">
+                <button @click="isMenuVisible">
+                    <BurgerMenu v-if="!show_menu"
+                        class="w-6 h-6 stroke-white hover:stroke-blue-ribbon-700 ark-smooth-animation" />
+                    <CloseButtonIcon v-if="show_menu"
+                        class="w-6 h-6 stroke-white hover:stroke-blue-ribbon-700 ark-smooth-animation" />
+                </button>
+            </div>
         </div>
     </header>
+    <div v-show="show_menu" class="bg-mirage-950 absolute right-0 min-w-64 max-w-96 min-h-screen border-l-2 z-10">
+        <nav class="text-white flex flex-col justify-center items-center text-2xl">
+            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/">Home</NuxtLink>
+            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/wiki">Wiki</NuxtLink>
+            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/contact">Contact</NuxtLink>
+            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link"
+                to="https://github.com/cdxx-lxix/arkulator/blob/master/CHANGELOG.md" external target="_blank">Changelog
+            </NuxtLink>
+        </nav>
+        <div class="text-white mt-4 border-t flex flex-col">
+            <span class="text-center text-xl py-2">Change language:</span>
+            <br>
+            <NuxtLink class="ark-link-scoped cursor-pointer" :class="locale === lang.code ? 'text-[#E4572E]' : ''"
+                v-for="lang in availableLocales" :key="lang.code" @click="changeLanguage(lang.code)">
+                {{ lang.name }}
+            </NuxtLink>
+        </div>
+    </div>
 </template>
 
 <script setup>
+const show_menu = ref(false)
+const isMenuVisible = () => {
+    return show_menu.value = !show_menu.value
+}
 
+const { locale, locales, setLocale } = useI18n()
+
+const availableLocales = computed(() => {
+    return locales.value
+})
+
+const changeLanguage = (choice) => {
+    setLocale(choice)
+    reloadNuxtApp()
+}
 </script>
+
+<style scoped>
+.ark-link-scoped {
+    @apply hover:ark-hover-link ark-smooth-animation uppercase p-2 flex justify-center items-center border-b border-black w-full;
+}
+
+.ark-active-link {
+    @apply text-[#E4572E];
+}
+
+.ark-active-link::after {
+    content: "";
+    transform: translateY(0.25rem);
+    @apply bg-white flex-grow ml-2 h-px;
+}
+
+.ark-active-link::before {
+    content: "";
+    transform: translateY(0.25rem);
+    @apply bg-white flex-grow mr-2 h-px;
+}
+</style>
