@@ -176,13 +176,13 @@ export default {
   hopium: {
     header: "Additional Hope",
     subtext: "This section covers random bonuses that might happen and net you some extra pulls. Just info here, since it’s impossible to know when or how much you'll get.",
-    textone: "Maintenance Compensation",
-    texttwo: "Mail Delivery (For some achievements or events)",
-    textthree: "Codes (They’ve got a system, but no one really uses it... yet.)",
-    textfour: "Web Events",
-    textfive: "Discord Events and Competition Rewards (if you join in, of course)",
-    textsix: "Your Donations (Thank you for your service, Doctor Whale)",
-    textseven: "YC from duplicates to buy HH permits",
+    1: "Maintenance Compensation",
+    2: "Mail Delivery (For some achievements or events)",
+    3: "Codes (They’ve got a system, but no one really uses it... yet.)",
+    4: "Web Events",
+    5: "Discord Events and Competition Rewards (if you join in, of course)",
+    6: "Your Donations (Thank you for your service, Doctor Whale)",
+    7: "YC from duplicates to buy HH permits",
   },
 
   budget: {
