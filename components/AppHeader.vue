@@ -16,17 +16,17 @@
     </header>
     <div v-show="show_menu" class="bg-mirage-950 absolute right-0 min-w-64 max-w-96 min-h-screen border-l-2 z-10">
         <nav class="text-white flex flex-col justify-center items-center text-2xl">
-            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/">Home</NuxtLink>
-            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/wiki">Wiki</NuxtLink>
-            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/contact">Contact</NuxtLink>
+            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/">{{ $t('menu.home') }}</NuxtLink>
+            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/wiki">{{ $t('menu.wiki') }}</NuxtLink>
+            <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/contact">{{ $t('menu.contact') }}</NuxtLink>
             <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link"
-                to="https://github.com/cdxx-lxix/arkulator/blob/master/CHANGELOG.md" external target="_blank">Changelog
+                to="https://github.com/cdxx-lxix/arkulator/blob/master/CHANGELOG.md" external target="_blank">{{ $t('menu.changelog') }}
             </NuxtLink>
         </nav>
         <div class="text-white mt-4 border-t flex flex-col">
-            <span class="text-center text-xl py-2">Change language:</span>
+            <span class="text-center text-xl py-2">{{ $t('menu.language') }}</span>
             <br>
-            <NuxtLink class="ark-link-scoped cursor-pointer" :class="locale === lang.code ? 'text-[#E4572E]' : ''"
+            <NuxtLink class="ark-link-scoped cursor-pointer" :class="locale === lang.code ? 'text-[#E4572E] pointer-events-none' : ''"
                 v-for="lang in availableLocales" :key="lang.code" @click="changeLanguage(lang.code)">
                 {{ lang.name }}
             </NuxtLink>

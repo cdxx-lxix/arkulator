@@ -211,4 +211,12 @@ export default {
   help: {
     modaltitle: "Help",
   },
+
+  menu: {
+    home: "home",
+    wiki: "wiki",
+    contact: "contact",
+    changelog: "changelog",
+    language: "Change language:"
+  }
 };
