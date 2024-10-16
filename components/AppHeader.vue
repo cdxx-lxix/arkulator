@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-mirage-950 w-full px-2 pt-2">
+    <header class="bg-mirage-900 w-full px-2 pt-2 border-b border-black shadow-md pb-2">
         <div class="flex flex-row items-center justify-between">
             <div class="font-bold text-white text-2xl">
                 Arkulator

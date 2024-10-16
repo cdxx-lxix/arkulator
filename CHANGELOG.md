@@ -3,9 +3,16 @@
 [Arkulator website](https://arkulator.ojisan.cc/)
 
 ###### Updates:
-###### Fixes:
-###### New features:
-###### Known bugs:
+###### Fixed:
+- September's iOS UI displacement on older iOS versions.
+###### New:
+- Menu. Now Arkulator is multipage app. Navigation + language selection
+- Wiki page. Contains information regarding gacha. General info, advises and OP purchase effectiveness calculation
+- Contact page.
+- Changelog page (external)
+- Language selection (English [ original ], Chinese [AI translated], Japanese [AI translated], Korean [AI translated])
+###### Known problems:
+- Chinese, Japanese, Korean translations most likely low quality because they were translated by ChatGPT.
 ###### WIP & Future plans:
 
 # September 2024
@@ -25,7 +32,7 @@
 - Help window for each seaction
 - Two contact options (Discord and Telegram)
 
-###### Known bugs:
+###### Known problems:
 
 - Some dates may be displayed as duplicates. This has no effect on calculations, just visual annoyance
 - Some modules may be displaced on iOS especially older versions (iOS 15 and older)

@@ -1,12 +1,11 @@
 <template>
-    <AppHeader />
-    <main class="grid grid-cols-1 lg:grid-cols-2 gap-2 px-2 bg-mirage-950 text-gray-300">
-        <section>
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2 bg-mirage-950 text-gray-300 pt-2">
+        <section class="flex flex-col gap-2">
             <ArkFrame legend="wiki.basics.legend">
                 <div class="w-full">
                     <div>
                         <div class="mb-3">{{ $t('wiki.basics.header') }}</div>
-                        <ul class="grid grid-cols-2 gap-3">
+                        <ul class="grid grid-cols-2 xl:grid-cols-4 gap-3">
                             <li class="flex flex-col items-center gap-3">
                                 <div>{{ $t('wiki.basics.or') }}</div>
                                 <OrundumIcon class="w-full sm:w-24" />
@@ -87,7 +86,7 @@
 
         </section>
 
-        <section>
+        <section class="flex flex-col gap-2">
             <ArkFrame legend="wiki.orundum.legend">
                 <div>
                     <div>{{ $t('wiki.orundum.header') }}</div>
