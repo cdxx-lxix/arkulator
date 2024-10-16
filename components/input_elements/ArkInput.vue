@@ -1,6 +1,6 @@
 <template>
     <div class="mx-auto flex flex-col h-full justify-end">
-        <label :for="id" class="block mb-2 text-sm font-medium text-white">{{ $t(label) }}</label>
+        <label v-if="label" :for="id" class="block mb-2 text-sm font-medium text-white">{{ $t(label) }}</label>
         <div class="flex">
             <span v-if="$slots.default"
                 class="inline-flex items-center px-3 text-sm border border-e-0 rounded-s-md bg-gray-600 text-gray-400 border-gray-600">
