@@ -3,7 +3,7 @@
         <div class="h-full">
             <input type="checkbox" :id v-model="boxValue" class="hidden peer" :disabled>
             <label :for="id"
-                class="inline-flex items-center justify-center w-full h-full p-2 border-2 rounded-lg cursor-pointer hover:text-gray-300 border-gray-700 peer-checked:border-blue-ribbon-700 peer-checked:bg-blue-ribbon-700/30 peer-checked:text-gray-300 text-gray-200 hover:bg-gray-700 transition delay-100 duration-300 ease-in-out"
+                class="inline-flex items-center justify-center w-full h-full p-2 border-2 rounded-lg cursor-pointer hover:text-gray-300 border-gray-700 peer-checked:border-blue-ribbon-700 peer-checked:bg-blue-ribbon-700/30 peer-checked:text-gray-300 text-gray-200 hover:bg-gray-700 ark-smooth-animation"
                 :class="disabled ? 'bg-gray-400 pointer-events-none' : 'bg-gray-800'">
                 <div class="block text-center select-none">
                     <slot />
@@ -16,7 +16,7 @@
         <div class="h-full">
             <input type="checkbox" :id v-model="boxValue" class="hidden peer" :disabled>
             <label :for="id"
-                class="inline-flex items-center w-full h-full px-2 border-2 rounded-lg cursor-pointer hover:text-gray-300 border-gray-700 peer-checked:border-blue-ribbon-700 peer-checked:bg-blue-ribbon-700/30 peer-checked:text-gray-300 text-gray-200 hover:bg-gray-700 transition delay-100 duration-300 ease-in-out"
+                class="inline-flex items-center w-full h-full px-2 border-2 rounded-lg cursor-pointer hover:text-gray-300 border-gray-700 peer-checked:border-blue-ribbon-700 peer-checked:bg-blue-ribbon-700/30 peer-checked:text-gray-300 text-gray-200 hover:bg-gray-700 ark-smooth-animation"
                 :class="disabled ? 'bg-gray-400 pointer-events-none' : 'bg-gray-800'">
                 <div class="flex flex-row gap-2 w-full items-center justify-start pl-2 select-none">
                     <slot />

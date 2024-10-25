@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-mirage-900 w-full px-2 pt-2 border-b border-black shadow-md pb-2">
+    <header class="w-full px-2 pt-2 pb-2">
         <div class="flex flex-row items-center justify-between">
             <div class="font-bold text-white text-2xl">
                 Arkulator
@@ -7,14 +7,14 @@
             <div class="inline-flex">
                 <button @click="isMenuVisible">
                     <BurgerMenu v-if="!show_menu"
-                        class="w-6 h-6 stroke-white hover:stroke-blue-ribbon-700 ark-smooth-animation" />
+                        class="w-6 h-6 ark-svg-button-stroke ark-smooth-animation" />
                     <CloseButtonIcon v-if="show_menu"
-                        class="w-6 h-6 stroke-white hover:stroke-blue-ribbon-700 ark-smooth-animation" />
+                        class="w-6 h-6 ark-svg-button-stroke ark-smooth-animation" />
                 </button>
             </div>
         </div>
     </header>
-    <div v-show="show_menu" class="bg-mirage-950 absolute right-0 min-w-64 max-w-96 min-h-screen border-l-2 z-10">
+    <div v-show="show_menu" class="bg-mirage-950 absolute right-0 min-w-64 max-w-96 min-h-max h-[95%] shadow-lg border-l-2 z-10">
         <nav class="text-white flex flex-col justify-center items-center text-2xl">
             <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/">{{ $t('menu.home') }}</NuxtLink>
             <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/wiki">{{ $t('menu.wiki') }}</NuxtLink>
@@ -26,7 +26,7 @@
         <div class="text-white mt-4 border-t flex flex-col">
             <span class="text-center text-xl py-2">{{ $t('menu.language') }}</span>
             <br>
-            <NuxtLink class="ark-link-scoped cursor-pointer" :class="locale === lang.code ? 'text-[#E4572E] pointer-events-none' : ''"
+            <NuxtLink class="ark-link-scoped cursor-pointer" :class="locale === lang.code ? 'ark-active-link pointer-events-none' : ''"
                 v-for="lang in availableLocales" :key="lang.code" @click="changeLanguage(lang.code)">
                 {{ lang.name }}
             </NuxtLink>
@@ -57,9 +57,7 @@ const changeLanguage = (choice) => {
     @apply hover:ark-hover-link ark-smooth-animation uppercase p-2 flex justify-center items-center border-b border-black w-full;
 }
 
-.ark-active-link {
-    @apply text-[#E4572E];
-}
+
 
 .ark-active-link::after {
     content: "";

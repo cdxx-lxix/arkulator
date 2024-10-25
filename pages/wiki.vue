@@ -1,6 +1,6 @@
 <template>
-    <main class="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2 bg-mirage-950 text-gray-300 pt-2">
-        <section class="flex flex-col gap-2">
+    <main class="ark-main-section">
+        <section class="ark-app-section">
             <ArkFrame legend="wiki.basics.legend">
                 <div class="w-full">
                     <div>
@@ -86,7 +86,7 @@
 
         </section>
 
-        <section class="flex flex-col gap-2">
+        <section class="ark-app-section">
             <ArkFrame legend="wiki.orundum.legend">
                 <div>
                     <div>{{ $t('wiki.orundum.header') }}</div>
