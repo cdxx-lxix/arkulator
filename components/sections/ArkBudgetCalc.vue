@@ -30,11 +30,11 @@
                 <button class="col-span-1 flex justify-center flex-col items-center h-full cursor-default">
                     <p class="block mb-2 text-sm font-medium text-transparent">none</p>
                     <RemoveButtonIcon @click="removeEntry(index)"
-                        class="w-6 h-6 fill-blue-ribbon-700 hover:fill-red-600 cursor-pointer" />
+                        class="w-6 h-6 fill-blue-ribbon-700 hover:fill-red-600 ark-smooth-animation cursor-pointer" />
                 </button>
             </div>
             <button
-                class="flex justify-center items-center py-2 rounded-lg transition delay-100 duration-300 ease-in-out hover:bg-blue-ribbon-700 fill-blue-ribbon-700 hover:fill-white"
+                class="flex justify-center items-center py-2 rounded-lg ark-smooth-animation hover:bg-blue-ribbon-700 fill-blue-ribbon-700 hover:fill-white"
                 @click="addNewEntry">
                 <AddButtonIcon class="w-6 h-6 " />
             </button>

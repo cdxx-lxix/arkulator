@@ -1,10 +1,12 @@
 export default {
+  // META DATA
   nuxtSiteConfig: {
     name: "Arkulator",
     description: "A tool to calculate your resources for pulling up to a certain date and manage your gacha budget in Arknights",
   },
   calendar: "Magic Calendar",
 
+  // ARKULATOR (HOME) PAGE
   controls: {
     header: "Controls",
     subtext: "These buttons are responsible for EXCLUDING the specified entities.",
@@ -212,6 +214,7 @@ export default {
     modaltitle: "Help",
   },
 
+  // SIDEBAR MENU
   menu: {
     home: "home",
     wiki: "wiki",
@@ -220,6 +223,7 @@ export default {
     language: "Change language:"
   },
 
+  // WIKI PAGE
   wiki: {
     basics: {
       legend: "Basics",
@@ -326,6 +330,26 @@ export default {
       psanity: "per refresh",
       calculate: "Calculate your expenses",
       ending: "Everything else, like anniversary and special event packs and deals aren't covered in here. They have a lot of additional stuff that adds value to it so calculating them in terms of pulls is incorrect. Plus you can buy them on anniversary events only and just once per event."
+    }
+  },
+
+  // CONTACT PAGE
+  contact: {
+    form: {
+      legend: "Contact form",
+      email: "Email",
+      message: "Message",
+      message_placeholder: "Closure ripped me off again",
+      files: "Attachments",
+      files_help: "Image or .pdf only",
+      submit: "Submit",
+      type: "Message type",
+      types: {
+        1: "Bug",
+        2: "Translation",
+        3: "Request",
+        4: "Other"
+      }
     }
   }
 };

@@ -14,7 +14,7 @@
             </div>
         </div>
     </header>
-    <div v-show="show_menu" class="bg-mirage-950 absolute right-0 min-w-64 max-w-96 min-h-max h-[95%] shadow-lg border-l-2 z-10">
+    <div v-show="show_menu" class="bg-mirage-950 absolute right-0 min-w-64 max-w-96 min-h-max h-full shadow-lg border-l-2 z-10">
         <nav class="text-white flex flex-col justify-center items-center text-2xl">
             <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/">{{ $t('menu.home') }}</NuxtLink>
             <NuxtLink class="ark-link-scoped" exactActiveClass="ark-active-link" to="/wiki">{{ $t('menu.wiki') }}</NuxtLink>
