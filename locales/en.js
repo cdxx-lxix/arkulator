@@ -344,12 +344,21 @@ export default {
       files_help: "Image or .pdf only",
       submit: "Submit",
       type: "Message type",
+      type_placeholder: "Select a topic",
       types: {
         1: "Bug",
         2: "Translation",
         3: "Request",
-        4: "Other"
+        4: "Help",
+        5: "Other"
       }
+    },
+    notice: {
+      1: "Required fields.",
+      2: "Email is optional in case you don't need an answer.",
+      3: "Please use one of these languages: English, Serbian, Ukrainian or Russian. Other languages will be autotranslated.",
+      4: "Regardless of the initial messages reply will be in English.",
+      5: "Except for English version, Arkulator uses GPT translations. Please report any problems."
     }
   }
 };

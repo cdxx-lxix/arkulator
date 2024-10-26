@@ -41,6 +41,9 @@ text-white / text-gray-300 / text-gray-500
   .ark-svg-button-fill {
     @apply fill-blue-ribbon-700 hover:fill-white;
   }
+  .ark-invisible-text {
+    @apply text-transparent outline-none select-none;
+  }
 }
 
 @layer utilities {
