@@ -4,8 +4,8 @@
             <ArkFrame legend="contact.form.legend">
                 <div class="w-full grid sm:grid-cols-4 gap-3">
                     <form class="ark-form-scoped grid grid-cols-1 md:grid-cols-2 gap-3 w-full sm:col-span-3"
-                        action="https://formsubmit.co/6362b0ef65fe09cc4fb75b32c6e69204" method="POST" enctype="multipart/form-data"
-                        target="_blank" ref="contactForm">
+                        action="https://formsubmit.co/6362b0ef65fe09cc4fb75b32c6e69204" method="POST"
+                        enctype="multipart/form-data" target="_blank" ref="contactForm">
                         <div>
                             <label for="email" class="mb-2 ark-form-label">{{ $t('contact.form.email')
                                 }}</label>
@@ -43,7 +43,7 @@
                             <label class="ark-form-label ark-invisible-text">none</label>
                             <button type="submit" @click.prevent="submitAndClear"
                                 class="shadow-md text-sm rounded-lg block w-full p-3 bg-blue-ribbon-700 hover:bg-gray-300 hover:text-black ark-smooth-animation">{{
-                                $t('contact.form.submit') }}</button>
+                                    $t('contact.form.submit') }}</button>
                             <div class="text-sm ark-invisible-text">none</div>
                         </div>
                     </form>
@@ -55,11 +55,28 @@
                     </div>
                 </div>
             </ArkFrame>
+            <ArkFrame legend="contact.socials.legend">
+                <div class="grid grid-cols-4 gap-3 w-full">
+                    <div class="ark-socials">
+                        <img class="w-full h-full object-cover rounded-lg" src="https://media1.tenor.com/m/jbYEgTGnZFEAAAAC/theresa-arknights.gif" alt="Dancing Queen Theresa"/>
+                    </div>
+                    <NuxtLink external target="_blank" to="https://t.me/cdxx_lxix" class="ark-socials">
+                        <TelegramIcon class="w-full ark-svg-button-fill" />
+                    </NuxtLink>
+                    <NuxtLink external target="_blank" to="https://discordapp.com/users/277388752018604032" class="ark-socials">
+                        <DiscordIcon class="w-full ark-svg-button-fill" />
+                    </NuxtLink>
+                    <div class="ark-socials">
+                        <img class="w-full h-full object-cover rounded-lg transform scale-x-[-1]" src="https://media1.tenor.com/m/jbYEgTGnZFEAAAAC/theresa-arknights.gif" alt="Dancing Queen Theresa"/>
+                    </div>
+                </div>
+            </ArkFrame>
         </section>
-        <section id="contact-options" class="ark-app-section">
-            <ArkFrame legend="Form">
-                <div>
-                    div
+        <section id="contact-options" class="ark-app-section order-first xl:order-2">
+            <ArkFrame legend="contact.her_highness.legend">
+                <div class="flex flex-col justify-center items-center">
+                    <img class="w-full h-full object-contain" :src="Theresa" alt="Theresa" />
+                    <div>{{ $t('contact.her_highness.message') }}</div>
                 </div>
             </ArkFrame>
         </section>
@@ -67,6 +84,7 @@
 </template>
 
 <script setup>
+import Theresa from '../assets/images/Theresa.webp';
 const acceptedFilyTypes = "image/*, .pdf"
 const contactType = ref('')
 const contactForm = ref('ark-form')
@@ -94,5 +112,9 @@ textarea {
 
 .ark-form-input {
     @apply shadow-sm text-sm rounded-lg block w-full p-2.5;
+}
+
+.ark-socials {
+    @apply py-1 my-auto hover:border-blue-ribbon-700 hover:text-white rounded-sm flex gap-3;
 }
 </style>

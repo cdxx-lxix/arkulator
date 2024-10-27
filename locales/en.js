@@ -357,8 +357,21 @@ export default {
       1: "Required fields.",
       2: "Email is optional in case you don't need an answer.",
       3: "Please use one of these languages: English, Serbian, Ukrainian or Russian. Other languages will be autotranslated.",
-      4: "Regardless of the initial messages reply will be in English.",
+      4: "Regardless of the initial message reply will be in English.",
       5: "Except for English version, Arkulator uses GPT translations. Please report any problems."
+    },
+    her_highness: {
+      legend: "Theresa's Supremacy",
+      message: "This app was made by a loyalist of Theresa. Enjoy the presense of Her Highness while you seek contact with me."
+    },
+    socials: {
+      legend: "Socials",
+      tg: "Telegram",
+      ds: "Discord"
     }
+  },
+  // FOOTER
+  footer: {
+    hard_truth: "Sponsored by unemployment and excessive free time"
   }
 };

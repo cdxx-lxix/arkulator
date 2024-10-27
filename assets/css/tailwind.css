@@ -60,4 +60,8 @@ text-white / text-gray-300 / text-gray-500
   header {
     @apply bg-mirage-900 border-b border-black shadow-md;
   }
+
+  footer {
+    @apply bg-mirage-900 border-t border-black shadow-md;
+  }
 }
