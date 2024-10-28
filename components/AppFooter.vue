@@ -1,7 +1,7 @@
 <template>
     <footer class="flex flex-col items-center md:items-stretch md:flex-row md:justify-between w-full p-2 mt-4 text-gray-300 text-md font-semibold">
         <div>
-            Arkulator - {{ year }}
+            {{ $t('nuxtSiteConfig.name') }} - {{ year }}
         </div>
         <div>
             {{ $t('footer.hard_truth') }}

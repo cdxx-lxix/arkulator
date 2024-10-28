@@ -2,7 +2,7 @@
     <header class="w-full px-2 pt-2 pb-2">
         <div class="flex flex-row items-center justify-between">
             <div class="font-bold text-white text-2xl">
-                Arkulator
+                {{ $t('nuxtSiteConfig.name') }}
             </div>
             <div class="inline-flex">
                 <button @click="isMenuVisible">

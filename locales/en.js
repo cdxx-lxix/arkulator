@@ -219,11 +219,10 @@ export default {
     home: "arkulator",
     wiki: "knowledge",
     contact: "contact",
-    changelog: "changelog",
-    language: "Change language:"
+    changelog: "changelog"
   },
 
-  // WIKI PAGE
+  // KNOWLEDGE (WIKI) PAGE
   wiki: {
     basics: {
       legend: "Basics",
@@ -236,115 +235,116 @@ export default {
       orundums: "600 Orundums",
       permits: "1 Headhunting Permit",
       primes: "~3.33... Originium Primes",
-      money: "Vary or uncountable $$$"
+      money: "$ Varies or uncountable"
     },
+    
     headhunt: {
       legend: "Headhunting Permits",
-      header: "Precious tickets that you can exchange for your waifu\husbando, meta ultra killer destroyer 9000 or most commonly disappointment. There are 3 types of it:",
-
+      header: "Precious tickets used to try for your waifu/husbando, ultra meta destroyer 9000, or more commonly, disappointment. There are 3 types:",
+  
       regular: "Headhunting Permit",
-      regularsub: "The OG. Can be used anywhere. Does not expire.",
+      regularsub: "The OG permit. Usable anywhere and does not expire.",
       regular_content: {
-        1: "1 rewarded each month on 17th login.",
-        2: "Green Certificate Shop. Each month you can purchase: 2 for 480 GC on the first page, 2 for 900 GC on the second page",
-        3: "Yellow Certificate Shop. Each month you can purchase up to 38 for 258 YC total.",
-        4: "Normal, Anniversary, Collaboration events and their reruns have 3 in the event shop. 150 event currency each.",
-        5: "Trials for Navigator rewards 1 on 15th level.",
-        6: "Login events. There may be some in login event but it's not a 100%.",
-        7: "Web events. They are rare and may contain it, not a 100%.",
-        8: "Store purchase for your local currency. Starting from 10 and only sky is the limit. With the exception of special event packs most of the time it's better to buy OP instead of them. ",
-        9: "Store packs. Some contain Headhunting Permits.",
+        1: "1 awarded on 17th login each month.",
+        2: "Green Certificate Shop: 2 available for 480 GC, and another 2 for 900 GC monthly.",
+        3: "Yellow Certificate Shop: Up to 38 available monthly for 258 YC total.",
+        4: "Normal, Anniversary, Collaboration events, and reruns have 3 available in event shops, costing 150 event currency each.",
+        5: "Trials for Navigator: 1 awarded at level 15.",
+        6: "Login events: Occasionally, though not always, available.",
+        7: "Web events: Rarely offered, so not a guarantee.",
+        8: "Store purchase: Available for local currency; typically better to buy OP instead of these, except for special event packs.",
+        9: "Store packs: Some include Headhunting Permits."
       },
-
+  
       kernel: "Kernel Headhunting Permit",
-      kernelsub: "Can be used only on Kernel banner. Operators from this banner grant ONLY Blue Certificates. Does not expire.",
+      kernelsub: "Usable only on Kernel banners; operators here yield only Blue Certificates. Does not expire.",
       kernel_content: {
-        1: "Purchased from Blue Certificate shop. Each month you can purchase up to 38 for 2580 Blue Certificates total. ",
-        2: "Purchased from Yellow Certificate shop. Each month you can purchase up to 38 for 216 Yellow Certificates total. ",
-        3: "Occasionally used as rewards in the mail or login event.",
+        1: "Available in Blue Certificate shop: up to 38 per month for 2580 Blue Certificates.",
+        2: "Available in Yellow Certificate shop: up to 38 per month for 216 Yellow Certificates.",
+        3: "Occasionally awarded in mail or login events."
       },
-
+  
       exclusive: "Exclusive Headhunting Permit",
-      exclusivesub: "Tied to a specific banner and can be used only on it. Expires when the banner ends.",
+      exclusivesub: "Tied to a specific banner and expires when the banner ends.",
       exclusive_content: {
-        1: "24 given on Anniversary, 10 on login + 1 each day. 20 given on collaboration, 10 on login and 10 on the 7-8th day.",
-        2: "Store purchase (since Babel). You can buy 2 and 10, once each.",
+        1: "24 awarded on Anniversary (10 on login + 1 each day); 20 awarded on Collaboration (10 on login, 10 on 7th-8th day).",
+        2: "Store purchase (since Babel): Limited to 2 and 10 permits, once each."
       }
     },
-
+  
     general: {
-      legend: "General Advise",
-      header: "Just some stuff accumulated in the community through the years.",
-      1: "HG resets OP double deal on yearly anniversary.",
-      2: "To get the most out of your Yellow Certificates buy Headhunting permits in full batch of 38 permits for 258 Yellow Certificates.",
-      3: "Monthly card is the best deal in the store. Can't have more than 90 days.",
-      4: "At the end of anniversary event spend your sparks on a featured 5*, especially if you have them full pot or near it. 5* dupes yeld a good amount of Yellow Certificates. They are rare and useful, you can farm a material any time but you can't farm YC.",
-      5: "Shop operator for 180YC is way cheaper option than pulling for them. 180YC roughly equals to 18 pulls (42YC leftover). Do you think you can get this operator in this amount of pulls? Not to mention that it's a 100% option.",
-      6: "When you are really tight on a budget but still want to test your luck on anniversary event, wait for the last day and then use your resources. That way you've depleted all of the free pulls and got the results of orundum lottery, login event (if present), event shop and other stuff.",
-      7: "Special banners have their own pity so it doesn't matter how many pulls you've spent on standard.",
-      8: "Collaboration banners have 120 pulls pity + 20 free pulls, so you need only 100 pull.",
-      9: "Anniversary banners have 300 pulls pity + 24 free pulls + ~11 orundum lottery, so you need around 265 pulls.",
-      10: "Rate up is a lie"
+      legend: "General Advice",
+      header: "Community-tested tips accumulated over the years.",
+      1: "HG resets the OP double deal on the yearly anniversary.",
+      2: "To maximize Yellow Certificates, buy Headhunting Permits in a batch of 38 for 258 YC.",
+      3: "Monthly card is the best value in the store, limited to 90 days at a time.",
+      4: "At the end of anniversary events, spend your sparks on a featured 5*, especially if you have them nearly maxed out. 5* duplicates yield significant Yellow Certificates.",
+      5: "180 YC shop operator is a better deal than pulling for them. 180 YC roughly equals 18 pulls, making it a guaranteed option.",
+      6: "If you’re on a tight budget but want to try your luck at an anniversary event, wait until the last day. This way, you’ve used all free pulls and gained results from orundum lotteries, login events, and event shops.",
+      7: "Special banners have their own pity counter, so pulls on standard banners don’t count toward it.",
+      8: "Collaboration banners have 120 pull pity with 20 free pulls, so only 100 pulls are needed.",
+      9: "Anniversary banners have 300 pull pity with 24 free pulls + ~11 from orundum lotteries, so around 265 pulls are required.",
+      10: "Rate up is a lie."
     },
-
+  
     orundum: {
       legend: "Orundum",
-      header: "Most common resource for a fellow Doctor. There are a lot of ways to obtain it:",
-      1: "Daily mission yelds you 100",
-      2: "Weekly mission yelds you 500",
-      3: "Monthly card yelds you 200 daily (still have to login)",
-      4: "Annihilation farming yelds you 1200 - 1800 weekly. 1200 For new players and increaces with each map for the first 3 annihilations. Chernobog, Lungmen Outskirts and Lungmen Downtown. ",
-      5: "Annihilation first time completion yelds a total of 1500 once for all of the milestones (400/400 enemies). Except for the first 3.",
-      6: "Paradox Simulation yelds 200",
-      7: "Exchange Originium Prime. 1 OP = 180 Orundums.",
-      8: "Exchange Originium Shard. 2 Shards = 20 Orundums. You can't exchange 1 for 10, only by 2. ",
-      9: "Intelligence Certificate exchange. 20 IC = 100 Orundums. Every rerun HG adds 20 stacks (2000 Orundums) and possibility to obtain ~1700 IC.",
-      10: "Green Certificate Shop. You can buy 600 on the first page each month for 240 GC and unlimited amount on the third page 100 orundums for 50 GC.",
-      11: "Continuous support. Just play Arknights and HG will occasionally send you some in the mailbox. ",
-      12: "Maintenance compensation. Short maintenance usually compensated in for of 200 orundums.",
-      13: "Annivesary's orundum lottery. Usually this lottery lasts for 14 days and yelds approximately ~7000 orundums. That's just a math average and it depends on your luck. ",
-      14: "Login events. There may be some orundum in login event but it's not a 100%.",
-      15: "Web events. They are rare and may contain it, not a 100%.",
-      16: "Store packs. Some contain orundum.",
+      header: "The most common resource for a fellow Doctor, with many ways to obtain it:",
+      1: "Daily missions yield 100 Orundums.",
+      2: "Weekly missions yield 500 Orundums.",
+      3: "Monthly card yields 200 Orundums daily (login required).",
+      4: "Annihilation farming yields 1200 - 1800 weekly. New players start with 1200, increasing with each map for the first 3 Annihilations.",
+      5: "First-time Annihilation completion yields a total of 1500 Orundums for each milestone, except for the first 3 Annihilations.",
+      6: "Paradox Simulation rewards 200 Orundums.",
+      7: "Originium Prime exchange: 1 OP = 180 Orundums.",
+      8: "Originium Shard exchange: 2 Shards = 20 Orundums (only in pairs).",
+      9: "Intelligence Certificate exchange: 20 IC = 100 Orundums. Every rerun adds 2000 Orundums and ~1700 IC.",
+      10: "Green Certificate Shop: 600 Orundums available for 240 GC, with unlimited 100 Orundums for 50 GC.",
+      11: "Continuous play rewards: HG occasionally sends Orundums in the mailbox.",
+      12: "Maintenance compensation: Short maintenance typically gives 200 Orundums.",
+      13: "Anniversary orundum lottery: Lasts ~14 days, yielding around 7000 Orundums on average, though results vary.",
+      14: "Login events: Occasionally include Orundum.",
+      15: "Web events: Rarely offer Orundum.",
+      16: "Store packs: Some contain Orundum."
     },
-
+  
     prime: {
       legend: "Originium Prime",
-      header: "Funny shiny rocks. Not that many ways to obtain not that many ways to spend. You can buy skins, restore sanity and of course spin the gacha wheel for it. New players may purchase pro packs for it and mad lads may use it for furniture.",
-      1: "First time 3 star map completition yelds 1 OP and 1 more for challenge mode. Interludes and tutorials grant 1 OP.",
-      2: "Maintenance compensation. Long maintenance usually compensated in form of 5 OP.",
-      3: "Monthly card yelds 6 OP on each purchase. Limited to 90 days of subscription.",
-      4: "Login events. There may be some OP in login event but it's not a 100% and rarely more than 2. ",
-      5: "Web events. They are rare and may contain it, not a 100%.",
-      6: "OP store purchase for your local currency. Starting from 1 OP and only sky is the limit. ",
-      7: "Store packs. Besides direct OP purchase some packs contain it.",
+      header: "Rare shiny rocks with limited ways to earn and spend. Can be used for skins, sanity restoration, and gacha. New players may use it on pro packs, and some may use it for furniture.",
+      1: "First-time 3-star map completion: 1 OP for normal, 1 more for challenge mode; interludes and tutorials grant 1 OP.",
+      2: "Maintenance compensation: Extended maintenance typically grants 5 OP.",
+      3: "Monthly card: Grants 6 OP with each purchase (limited to 90 days of subscription).",
+      4: "Login events: Occasionally grant OP, though rarely more than 2.",
+      5: "Web events: Rarely grant OP.",
+      6: "Store purchase: Available in local currency, starting from 1 OP.",
+      7: "Store packs: Some packs include OP."
     },
-
+  
     money: {
       legend: "Real Money",
-      header: "It's hard to tell what is the best deal because of local currencies, but here is a general ideas and calculations.",
-      subheader: "Double deals can be purchased only once. Calculations here based on standard deal.",
+      header: "Best deals depend on local currency rates, but here are some general guidelines:",
+      subheader: "Double deals are a one-time purchase. Calculations below are based on standard deals.",
       pulls: "Pulls",
       ppulls: "per pull",
-      sanity: "full sanity",
+      sanity: "Full sanity",
       psanity: "per refresh",
       calculate: "Calculate your expenses",
-      ending: "Everything else, like anniversary and special event packs and deals aren't covered in here. They have a lot of additional stuff that adds value to it so calculating them in terms of pulls is incorrect. Plus you can buy them on anniversary events only and just once per event."
+      ending: "Special event packs, anniversary packs, and other one-time deals are excluded here as they add unique value, making it hard to calculate in terms of pulls. Most are only available during anniversary events and once per event."
     }
   },
 
   // CONTACT PAGE
   contact: {
     form: {
-      legend: "Contact form",
+      legend: "Contact Form",
       email: "Email",
       message: "Message",
       message_placeholder: "Closure ripped me off again",
       files: "Attachments",
-      files_help: "Image or .pdf only",
+      files_help: "Images or PDFs only",
       submit: "Submit",
-      type: "Message type",
-      type_placeholder: "Select a topic",
+      type: "Message Type",
+      type_placeholder: "Select a Topic",
       types: {
         1: "Bug",
         2: "Translation",
@@ -353,25 +353,29 @@ export default {
         5: "Other"
       }
     },
+    
     notice: {
-      1: "Required fields.",
-      2: "Email is optional in case you don't need an answer.",
-      3: "Please use one of these languages: English, Serbian, Ukrainian or Russian. Other languages will be autotranslated.",
-      4: "Regardless of the initial message reply will be in English.",
-      5: "Except for English version, Arkulator uses GPT translations. Please report any problems."
+      1: "Fields marked with * are required.",
+      2: "Email is optional if you don’t need a reply.",
+      3: "Please use one of the following languages: English, Serbian, Ukrainian, or Russian. Other languages will be auto-translated.",
+      4: "Replies will be in English, regardless of the initial message language.",
+      5: "Arkulator uses GPT translations for non-English versions. Report any translation issues."
     },
+    
     her_highness: {
-      legend: "Theresa's Supremacy",
-      message: "This app was made by a loyalist of Theresa. Enjoy the presense of Her Highness while you seek contact with me."
+      legend: "Theresa’s Supremacy",
+      message: "This app was crafted by a loyalist of Theresa. Enjoy the presence of Her Highness while reaching out."
     },
+    
     socials: {
-      legend: "Socials",
+      legend: "Social Media",
       tg: "Telegram",
       ds: "Discord"
     }
   },
-  // FOOTER
+  
+  // FOOTER 
   footer: {
-    hard_truth: "Sponsored by unemployment and excessive free time"
+    hard_truth: "Sponsored by unemployment and excessive free time."
   }
 };
