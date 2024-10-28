@@ -216,8 +216,8 @@ export default {
 
   // SIDEBAR MENU
   menu: {
-    home: "home",
-    wiki: "wiki",
+    home: "arkulator",
+    wiki: "knowledge",
     contact: "contact",
     changelog: "changelog",
     language: "Change language:"
@@ -236,7 +236,7 @@ export default {
       orundums: "600 Orundums",
       permits: "1 Headhunting Permit",
       primes: "~3.33... Originium Primes",
-      money: "Vary or uncountable"
+      money: "Vary or uncountable $$$"
     },
     headhunt: {
       legend: "Headhunting Permits",

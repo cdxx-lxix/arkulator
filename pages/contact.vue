@@ -61,10 +61,10 @@
                         <img class="w-full h-full object-cover rounded-lg" src="https://media1.tenor.com/m/jbYEgTGnZFEAAAAC/theresa-arknights.gif" alt="Dancing Queen Theresa"/>
                     </div>
                     <NuxtLink external target="_blank" to="https://t.me/cdxx_lxix" class="ark-socials">
-                        <TelegramIcon class="w-full ark-svg-button-fill" />
+                        <TelegramIcon class="w-full ark-svg-button-fill ark-smooth-animation" />
                     </NuxtLink>
                     <NuxtLink external target="_blank" to="https://discordapp.com/users/277388752018604032" class="ark-socials">
-                        <DiscordIcon class="w-full ark-svg-button-fill" />
+                        <DiscordIcon class="w-full ark-svg-button-fill ark-smooth-animation" />
                     </NuxtLink>
                     <div class="ark-socials">
                         <img class="w-full h-full object-cover rounded-lg transform scale-x-[-1]" src="https://media1.tenor.com/m/jbYEgTGnZFEAAAAC/theresa-arknights.gif" alt="Dancing Queen Theresa"/>
