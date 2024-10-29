@@ -58,10 +58,6 @@ const props = defineProps({
 })
 const route = useRoute()
 
-onMounted(() => {
-    console.log(route.path)
-})
-
 const isHovered = ref(false)
 </script>
 
