@@ -20,50 +20,34 @@
     <div :class="show_menu ? 'translate-x-0' : '-translate-x-full'"
         class="fixed top-0 left-0 z-40 h-screen px-4 overflow-y-auto transition-transform bg-mirage-950 w-80">
         <div class="w-full flex flex-row justify-center my-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 fill-blue-ribbon-700/30" viewBox="0 0 512 512"
-                xml:space="preserve">
-                <path
-                    d="M507.344 154.765c-7.713-10.283-22.301-12.367-32.582-4.655L256.005 314.182 37.238 150.111c-10.283-7.713-24.869-5.626-32.582 4.655s-5.627 24.871 4.655 32.582l232.732 174.544a23.24 23.24 0 0 0 13.964 4.655c4.912 0 9.826-1.552 13.964-4.655l232.72-174.544c10.28-7.712 12.365-22.3 4.653-32.583" />
-            </svg>
+            <ChevronIcon class="h-10 fill-blue-ribbon-700/30" />
         </div>
         <nav class="text-white flex flex-col justify-start items-start text-2xl ark-nav-menu">
-            <TransitionLink class="ark-menu-link border-y" text="menu.home" link="/">
+            <TransitionLink class="ark-menu-link border-y" text="menu.home" link="/" @click="isMenuVisible">
                 <template #icon>
                     <CalculatorIcon class="ark-menu-icon p-3" />
                 </template>
             </TransitionLink>
-            <TransitionLink class="ark-menu-link border-b" text="menu.wiki" link="/wiki">
+            <TransitionLink class="ark-menu-link border-b" text="menu.wiki" link="/wiki" @click="isMenuVisible">
                 <template #icon>
                     <BookIcon class="ark-menu-icon p-2" />
                 </template>
             </TransitionLink>
-            <TransitionLink class="ark-menu-link border-b" text="menu.contact" link="/contact">
+            <TransitionLink class="ark-menu-link border-b" text="menu.contact" link="/contact" @click="isMenuVisible">
                 <template #icon>
                     <ContactIcon class="ark-menu-icon p-3" />
                 </template>
             </TransitionLink>
             <TransitionLink class="ark-menu-link border-b" text="menu.changelog"
-                link="https://github.com/cdxx-lxix/arkulator/blob/master/CHANGELOG.md" :external="true">
+                link="https://github.com/cdxx-lxix/arkulator/blob/master/CHANGELOG.md" :external="true" @click="isMenuVisible">
                 <template #icon>
                     <ChangelogIcon class="ark-menu-icon p-2" />
                 </template>
             </TransitionLink>
         </nav>
-        <div class="w-full flex flex-row justify-center mt-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 fill-blue-ribbon-700/30" viewBox="0 0 512 512"
-                xml:space="preserve">
-                <path
-                    d="M507.344 154.765c-7.713-10.283-22.301-12.367-32.582-4.655L256.005 314.182 37.238 150.111c-10.283-7.713-24.869-5.626-32.582 4.655s-5.627 24.871 4.655 32.582l232.732 174.544a23.24 23.24 0 0 0 13.964 4.655c4.912 0 9.826-1.552 13.964-4.655l232.72-174.544c10.28-7.712 12.365-22.3 4.653-32.583" />
-            </svg>
+        <div class="w-full flex flex-row justify-center my-4">
+            <ChevronIcon class="h-10 fill-blue-ribbon-700/30" />
         </div>
-        <!-- <div class="text-white flex flex-col ark-lang-menu">
-            <button v-for="lang in availableLocales" :key="lang.code" class="ark-link-scoped cursor-pointer text-left"
-                :class="locale === lang.code ? 'ark-active-link pointer-events-none' : ''"
-                @click="changeLanguage(lang.code)" :disabled="locale === lang.code">
-                {{ lang.name }}
-            </button>
-        </div>
-        <hr class="my-10"> -->
         <div class="text-white flex flex-col ark-lang-menu">
             <LanguageMenu />
         </div>

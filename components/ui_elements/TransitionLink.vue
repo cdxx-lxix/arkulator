@@ -1,7 +1,7 @@
 <template>
     <NuxtLink @mouseenter="isHovered = true" @mouseleave="isHovered = false"
-        class="relative px-8 transition-colors duration-300 overflow-hidden group" 
-        :to="link" :external :class="route.path === link ? 'ark-active-link' : ''">
+        class="relative px-8 transition-colors duration-300 overflow-hidden group" :to="link" :external
+        :class="route.path === link ? 'ark-active-link pointer-events-none' : ''">
 
         <span :class="[
             'absolute inset-0 flex items-center justify-center text-white transition-all',
@@ -10,8 +10,7 @@
         ]" :style="{
             'transition-duration': `${timing}ms`,
             'transition-timing-function': timingFunction
-        }"
-        >
+        }">
             {{ $t(`${text}`) }}
         </span>
 
