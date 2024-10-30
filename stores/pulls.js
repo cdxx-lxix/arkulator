@@ -75,6 +75,7 @@ export const usePullsStore = defineStore("pulls", () => {
 
   return {
     user_data,
+    REWARDS_GUARANTEED,
     getUserDailyRewards,
     getUserMonthlyCardRewards,
     getUserWeeklyRewards,

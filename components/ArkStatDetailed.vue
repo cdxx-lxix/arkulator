@@ -4,7 +4,7 @@
         <div>
             <p>{{ $t(text) }}</p>
             <ul class="text-sm font-light text-gray-400 ml-5 list-disc">
-                <li v-for="detail in details" :key="detail.name">{{ detail.name }} - {{ detail.amount }}</li>
+                <li v-for="detail in details" :key="detail.name">{{ $t(detail.name) }} - {{ detail.amount }}</li>
             </ul>
         </div>
         <p class="flex flex-row items-center">{{ stat }}

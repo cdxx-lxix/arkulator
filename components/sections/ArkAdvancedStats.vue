@@ -26,10 +26,10 @@ const greenShopDetails = computed(() => {
     let weeklies = advancedStore.getUserGreenCertsWeekly()
     let logins = advancedStore.getUserGreenCertsForLogin()
     return [
-        { name: "User's GCs", amount: advancedStore.user_data.gcs_current_certs },
-        { name: "Recruitment GCs", amount: recs },
-        { name: "Weekly rewards GCs", amount: weeklies },
-        { name: "Login on 11th day", amount: logins },
+        { name: "advanced.calculations.detailed.user_gc", amount: advancedStore.user_data.gcs_current_certs },
+        { name: "advanced.calculations.detailed.recruit_gc", amount: recs },
+        { name: "advanced.calculations.detailed.weekly_gc", amount: weeklies },
+        { name: "advanced.calculations.detailed.login_gc", amount: logins },
     ]
 })
 
@@ -37,9 +37,9 @@ const yellowShopDetails = computed(() => {
     let recs = advancedStore.getYellowCertsForRecruitment()
     let logins = advancedStore.getUserYellowCertsForLogin()
     return [
-        { name: "User's YCs", amount: advancedStore.user_data.ycs_current_certs },
-        { name: "Recruitment YCs", amount: recs },
-        { name: "Login on 25th day", amount: logins },
+        { name: "advanced.calculations.detailed.user_gc", amount: advancedStore.user_data.ycs_current_certs },
+        { name: "advanced.calculations.detailed.recruit_gc", amount: recs },
+        { name: "advanced.calculations.detailed.login_gc", amount: logins },
     ]
 })
 </script>

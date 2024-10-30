@@ -49,7 +49,7 @@
                             :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
                         <hr>
                         <ArkMaybeStats />
-                        <ArkResourcesOutput :orundum="maybeStore.getMaybeOrundum" :permits="maybeStore.getMaybePermits"
+                        <ArkResourcesOutput :orundum="maybeStore.getMaybeOrundum + maybeStore.getSequenceRewards.orundum" :permits="maybeStore.getSequenceRewards.permits"
                             variant="subtotal" />
                         <hr>
                         <ArkControlInfo />
@@ -67,8 +67,8 @@
 </template>
 
 <script setup>
-import events from '~/data/events';
-import annihilations from '~/data/annihilations';
+// import events from '~/data/events';
+// import annihilations from '~/data/annihilations';
 import login from '~/data/login';
 import { usePullsStore } from '#imports';
 import { useAdvancedStore } from '#imports';
@@ -84,15 +84,15 @@ const advancedStore = useAdvancedStore()
 const calendarStore = useCalendarStore()
 const maybeStore = useMaybeStore();
 
-const importantDates = ref([...events, ...annihilations, ...login])
+const importantDates = ref([...login])
 const attributes = ref(importantDates)
 
 const total_orundum = computed(() => {
-    return pullStore.getGuaranteedOrundums + advancedStore.getAdvancedOrundum() + maybeStore.getMaybeOrundum
+    return pullStore.getGuaranteedOrundums + advancedStore.getAdvancedOrundum() + maybeStore.getMaybeOrundum + maybeStore.getSequenceRewards.orundum
 })
 
 const total_permits = computed(() => {
-    return pullStore.getGuaranteedPermits + advancedStore.getAdvancedPermits() + maybeStore.getMaybePermits
+    return pullStore.getGuaranteedPermits + advancedStore.getAdvancedPermits() + maybeStore.getSequenceRewards.permits
 })
 
 const calendar_columns = ref(2)
