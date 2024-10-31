@@ -173,6 +173,12 @@ export default {
       paradox: "Paradox Simulation(s) Reward",
       newannih: "Annihilation First-Time Reward",
       shards: "Originium Shards Farming",
+      detailed: {
+        permits: "Event Store",
+        limited: "Exclusive Headhunting",
+        lottery: "Orundum Lottery",
+        prime: "OP conversion"
+      }
     },
     help: {
       full: "This section is for things that are personal, rare, unpredictable—basically, anything that's kinda out there. Inaccurate and speculative, just stuff you wanna throw into the pool for the heck of it.",

@@ -31,34 +31,106 @@ export const useMaybeStore = defineStore("maybe", () => {
   });
 
   const getSequenceRewards = computed(() => {
-    let permits = 0; // Total amount of permits including limited
-    let orundums = 0; // Lotteries + OP to Orundum conversion
-    let statistics = [] // Array to hold detailed statistic for Stats section
+    // Initialize accumulator object with default values
+    const accumulator = {
+      permits: 0,
+      orundum: 0,
+      statistics: [],
+    };
+
+    // Event handler mapping for each event type
+    const eventHandlers = {
+      10: (element, acc) => handleStandardEvent(element, acc),
+      20: (element, acc) => handleAnniversaryEvent(element, acc),
+      30: (element, acc) => handleCollaborationEvent(element, acc),
+      40: (element, acc) => handleTrialsEvent(element, acc),
+    };
+
+    // Process each event using the handler mapping
     user_data.event_stack.forEach((element) => {
-      switch (element.event_type) {
-        case 10: // Standard event or rerun
-          return (permits += REWARDS_MAYBE.event_purchasable_permits), (orundums += element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime);
-        case 20: // Anniversary even
-          return (
-            (permits += REWARDS_MAYBE.event_purchasable_permits),
-            (permits += element.is_free_pulls ? REWARDS_MAYBE.event_limited_permits : 0),
-            (permits_limited += element.is_free_pulls ? REWARDS_MAYBE.event_limited_permits : 0),
-            (orundums += element.is_lottery ? REWARDS_MAYBE.event_orundum_lottery : 0),
-            (orundums += element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime)
-          );
-        case 30: // Collaboration
-          return (
-            (permits += REWARDS_MAYBE.event_purchasable_permits),
-            (permits += element.is_free_pulls ? REWARDS_MAYBE.event_collab_permits : 0),
-            (permits_limited += element.is_free_pulls ? REWARDS_MAYBE.event_collab_permits : 0),
-            (orundums += element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime)
-          );
-        case 40: // Trials for Navigator
-          return (permits += REWARDS_MAYBE.event_trials_permits);
+      const handler = eventHandlers[element.event_type];
+      if (handler) {
+        handler(element, accumulator);
       }
     });
-    return { permits: permits, orundum: orundums };
+
+    return accumulator;
   });
+
+    /** 
+   * 
+   * Helper functions for each event type 
+   * 
+   * */
+
+  function handleStandardEvent(element, acc) {
+    const orundumFromPrime = element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime;
+    const eventPulls = REWARDS_MAYBE.event_purchasable_permits + Math.floor(orundumFromPrime / 600)
+
+    acc.permits += REWARDS_MAYBE.event_purchasable_permits;
+    acc.orundum += orundumFromPrime;
+    acc.statistics.push({
+      event: element.event_name,
+      pulls: eventPulls,
+      details: [
+        { name: "maybe.calculations.detailed.permits", amount: REWARDS_MAYBE.event_purchasable_permits },
+        { name: "maybe.calculations.detailed.prime", amount: orundumFromPrime },
+      ],
+    });
+  }
+
+  function handleAnniversaryEvent(element, acc) {
+    const limitedPermits = element.is_free_pulls ? REWARDS_MAYBE.event_limited_permits : 0;
+    const lotteryOrundum = element.is_lottery ? REWARDS_MAYBE.event_orundum_lottery : 0;
+    const orundumFromPrime = element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime;
+    const eventPulls = REWARDS_MAYBE.event_purchasable_permits + limitedPermits + Math.floor((orundumFromPrime + lotteryOrundum) / 600)
+
+    acc.permits += REWARDS_MAYBE.event_purchasable_permits + limitedPermits;
+    acc.orundum += lotteryOrundum + orundumFromPrime;
+    acc.statistics.push({
+      event: element.event_name,
+      pulls: eventPulls,
+      details: [
+        { name: "maybe.calculations.detailed.permits", amount: REWARDS_MAYBE.event_purchasable_permits },
+        { name: "maybe.calculations.detailed.limited", amount: limitedPermits, special: true },
+        { name: "maybe.calculations.detailed.lottery", amount: lotteryOrundum },
+        { name: "maybe.calculations.detailed.prime", amount: orundumFromPrime },
+      ],
+    });
+  }
+
+  function handleCollaborationEvent(element, acc) {
+    const collabPermits = element.is_free_pulls ? REWARDS_MAYBE.event_collab_permits : 0;
+    const orundumFromPrime = element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime;
+    const eventPulls = REWARDS_MAYBE.event_purchasable_permits + collabPermits + Math.floor(orundumFromPrime / 600)
+
+    acc.permits += REWARDS_MAYBE.event_purchasable_permits + collabPermits;
+    acc.orundum += orundumFromPrime;
+    acc.statistics.push({
+      event: element.event_name,
+      pulls: eventPulls,
+      details: [
+        { name: "maybe.calculations.detailed.permits", amount: REWARDS_MAYBE.event_purchasable_permits },
+        { name: "maybe.calculations.detailed.limited", amount: collabPermits, special: true },
+        { name: "maybe.calculations.detailed.prime", amount: orundumFromPrime },
+      ],
+    });
+  }
+
+  function handleTrialsEvent(element, acc) {
+    acc.permits += REWARDS_MAYBE.event_trials_permits;
+    acc.statistics.push({
+      event: element.event_name,
+      pulls: REWARDS_MAYBE.event_trials_permits,
+      details: [{ name: "maybe.calculations.detailed.permits", amount: REWARDS_MAYBE.event_trials_permits }],
+    });
+  }
+
+  /** 
+   * 
+   * END OF HELPER FUNCTIONS 
+   * 
+   * */
 
   const getParadoxReward = computed(() => {
     return REWARDS_MAYBE.orundum_per_paradox_completed * user_data.potential_paradoxes;

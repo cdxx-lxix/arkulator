@@ -27,23 +27,20 @@
                     v-for="entry, index in maybeStore.user_data.event_stack" :key="index">
                     <div class="w-full grid grid-cols-6 gap-3 mb-2 border-b border-white/30 pb-2">
                         <div class="col-span-2">
-                            <label class="block mb-2 text-sm font-medium text-white">#{{ index + 1 }} {{ $t('maybe.event_name') }}</label>
+                            <label class="block mb-2 text-sm font-medium text-white">#{{ index + 1 }} {{
+                                $t('maybe.event_name') }}</label>
                             <input type="text" v-model="entry.event_name" maxlength="50"
                                 class="rounded-lg block flex-1 min-w-0 w-full text-sm p-2.5 bg-gray-700 border-gray-600 text-white outline-none">
                         </div>
                         <ArkDropdown class="col-span-2" label="maybe.event_type" :options="maybeStore.EVENT_TYPES"
                             v-model:selectvalue="entry.event_type" />
-                        <ArkInput class="w-full col-span-2" min="0"
-                            v-model:inputvalue="entry.event_op"
-                            label="maybe.use_op"
-                            :disabled="entry.event_type === 40">
+                        <ArkInput class="w-full col-span-2" min="0" v-model:inputvalue="entry.event_op"
+                            label="maybe.use_op" :disabled="entry.event_type === 40">
                             <OPIcon class="w-6 h-6" />
                         </ArkInput>
-                        <ArkCheckbox label="maybe.lottery" class="col-span-3"
-                            v-model:boxvalue="entry.is_lottery"
+                        <ArkCheckbox label="maybe.lottery" class="col-span-3" v-model:boxvalue="entry.is_lottery"
                             :disabled="entry.event_type !== 20" />
-                        <ArkCheckbox label="maybe.free_pulls" class="col-span-3"
-                            v-model:boxvalue="entry.is_free_pulls"
+                        <ArkCheckbox label="maybe.free_pulls" class="col-span-3" v-model:boxvalue="entry.is_free_pulls"
                             :disabled="entry.event_type === 20 ? false : entry.event_type === 30 ? false : true" />
                     </div>
                     <div>
@@ -70,7 +67,7 @@ import { useMaybeStore } from '~/stores/maybe';
 const maybeStore = useMaybeStore();
 
 const addNewEntry = () => {
-    return maybeStore.user_data.event_stack.push({ event_name: '', event_type: 0, is_free_pulls: false, is_lottery: false, event_op: 0 })
+    return maybeStore.user_data.event_stack.push({ event_name: `Event ${maybeStore.user_data.event_stack.length + 1}`, event_type: 0, is_free_pulls: false, is_lottery: false, event_op: 0 })
 }
 
 const removeEntry = (index) => {

@@ -6,6 +6,10 @@
         :condition="maybeStore.user_data.potential_annihilations" icon="orundum" />
     <ArkStat text="maybe.calculations.shards" :stat="maybeStore.getShardsForFarm"
         :condition="maybeStore.user_data.potential_shards_daily" icon="orundum" />
+    <ArkStatDetailed v-for="stat in maybeStore.getSequenceRewards.statistics" :text="stat.event"
+        :stat="stat.pulls"
+        :condition="true" icon="bag"
+        :details="stat.details" />
 </template>
 
 <script setup>
