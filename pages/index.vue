@@ -84,8 +84,7 @@ const advancedStore = useAdvancedStore()
 const calendarStore = useCalendarStore()
 const maybeStore = useMaybeStore();
 
-const importantDates = ref([...login])
-const attributes = ref(importantDates)
+const attributes = ref(login)
 
 const total_orundum = computed(() => {
     return pullStore.getGuaranteedOrundums + advancedStore.getAdvancedOrundum() + maybeStore.getMaybeOrundum + maybeStore.getSequenceRewards.orundum
