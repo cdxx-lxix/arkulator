@@ -25,10 +25,12 @@
                     class="flex flex-row flex-wrap w-full px-2 sm:px-6 justify-between font-semibold text-gray-100 text-2xl">
                     <h2 class="w-1/3 text-sm sm:text-lg text-left">{{ $t("calculations.days", {
                         days:
-                        calendarStore.getDays }) }}</h2>
+                            calendarStore.getDays
+                    }) }}</h2>
                     <h2 class="w-1/3 text-sm sm:text-lg text-center">{{ $t("calculations.weeks", {
                         weeks:
-                        calendarStore.getWeeks }) }}
+                            calendarStore.getWeeks
+                    }) }}
                     </h2>
                     <h2 class="w-1/3 text-sm sm:text-lg text-right">{{ $t("calculations.months", {
                         months:
@@ -49,8 +51,9 @@
                             :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
                         <hr>
                         <ArkMaybeStats />
-                        <ArkResourcesOutput :orundum="maybeStore.getMaybeOrundum + maybeStore.getSequenceRewards.orundum" :permits="maybeStore.getSequenceRewards.permits"
-                            variant="subtotal" />
+                        <ArkResourcesOutput
+                            :orundum="maybeStore.getMaybeOrundum + maybeStore.getSequenceRewards.orundum"
+                            :permits="maybeStore.getSequenceRewards.permits" variant="subtotal" />
                         <hr>
                         <ArkControlInfo />
                     </div>

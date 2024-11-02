@@ -23,6 +23,7 @@ export const REWARDS_GUARANTEED = {
   orundum_for_originium_prime: 180, // For 1 OP
   orundum_for_originium_shards: 10, // You have to craft 2 to get 20
   login_on_day_17: 1, // Permit
+  orundum_per_pull: 600, // Current price to pull an operator
 };
 
 export const REWARDS_ADVANCED = {
@@ -80,3 +81,12 @@ export const EVENT_TYPES = [
   { name: "maybe.trials", value: 40 },
   { name: "maybe.story", value: 50 },
 ];
+
+export const PRIME_PACKS = [
+  { primes: 1, price: 0.99 },
+  { primes: 7, price: 4.99 },
+  { primes: 24, price: 14.99 },
+  { primes: 50, price: 29.99 },
+  { primes: 90, price: 49.99 },
+  { primes: 185, price: 99.99 },
+]

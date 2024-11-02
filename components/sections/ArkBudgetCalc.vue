@@ -44,6 +44,7 @@
 
 <script setup>
 import recruit_bag from '../assets/images/recruit_bag.png';
+import { REWARDS_GUARANTEED } from '../stores/commonactions'
 const props = defineProps([
     'orundum',
     'permits'
@@ -79,6 +80,6 @@ const totalPulls = computed(() => {
     budget_entries.value.forEach((entry) => {
         recruit_cost += entry.pulls
     })
-    return Math.floor(props.orundum / 600) + (props.permits - recruit_cost)
+    return Math.floor(props.orundum / REWARDS_GUARANTEED.orundum_per_pull) + (props.permits - recruit_cost)
 })
 </script>

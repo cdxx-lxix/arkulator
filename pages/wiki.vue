@@ -112,7 +112,7 @@
                     <div>
                         <div class="subtext mb-3">{{ $t('wiki.money.subheader') }}</div>
                         <ul class="grid sm:grid-cols-2 sm:gap-2 xl:grid-cols-3 lg:gap-3">
-                            <li class="deal prime" v-for="item, index in prime_packs" :key="index">
+                            <li class="deal prime" v-for="item, index in PRIME_PACKS" :key="index">
                                 <div class="flex flex-row justify-center w-full items-center gap-1">
                                     <span class="text-6xl">{{ item.primes }}</span>
                                     <OPIcon class="h-[3.75rem]" />
@@ -136,7 +136,7 @@
                                     <OrundumIcon class="w-4" />
                                 </div>
                                 <div>{{ getPulls(user_prime) }} {{ $t('wiki.money.pulls') }} | {{ getPerPull(user_prime, user_money) }} {{ $t('wiki.money.ppulls') }}</div>
-                                <div>{{ user_prime }} {{ $t('wiki.money.sanity') }} | {{ getPerSanity(user_prime, user_money) }} {{ $t('wiki.money.psanity') }}</div>
+                                <div>{{ user_prime }} {{ $t('wiki.money.sanity') }} | {{ getPerSanity(user_money, user_prime) }} {{ $t('wiki.money.psanity') }}</div>
                             </li>
                         </ul>
                     </div>
@@ -154,26 +154,18 @@
 import regularhh from '../assets/images/regularhh.webp';
 import specialhh from '../assets/images/specialhh.webp';
 import kernelhh from '../assets/images/kernelhh.webp';
+import { PRIME_PACKS, REWARDS_GUARANTEED } from '../stores/commonactions'
 
 const user_prime = ref(0)
 const user_money = ref(0)
 
-const prime_packs = [
-    { primes: 1, price: 0.99 },
-    { primes: 7, price: 4.99 },
-    { primes: 24, price: 14.99 },
-    { primes: 50, price: 29.99 },
-    { primes: 90, price: 49.99 },
-    { primes: 185, price: 99.99 },
-]
-
 const getOrundums = (primes) => {
-    return primes * 180
+    return primes * REWARDS_GUARANTEED.orundum_for_originium_prime
 }
 
 const getPulls = (primes) => {
     if (!primes) return 0
-    return getOrundums(primes) / 600
+    return getOrundums(primes) / REWARDS_GUARANTEED.orundum_per_pull
 }
 
 const getPerPull = (primes, price) => {
