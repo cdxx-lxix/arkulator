@@ -14,7 +14,7 @@
             :class="[
                 'absolute inset-0 flex items-center justify-center text-white transition-all',
                 isHovered && hoveredLang === lang.code ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100',
-                locale === lang.code ? 'text-flame-pea-600' : ''
+                locale === lang.code ? 'text-[#e4572e]' : ''
             ]"
             :style="{
                 'transition-duration': `${timing}ms`,

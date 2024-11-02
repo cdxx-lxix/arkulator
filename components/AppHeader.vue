@@ -55,10 +55,10 @@
 </template>
 
 <script setup>
-import lang_icon from '../assets/images/languages.svg';
-import menu_icon from '../assets/images/menu.svg';
-const lang_bg = `url(${lang_icon})`
-const menu_bg = `url(${menu_icon})`
+// import lang_icon from '../assets/images/languages.svg';
+// import menu_icon from '../assets/images/menu.svg';
+// const lang_bg = `url(${lang_icon})`
+// const menu_bg = `url(${menu_icon})`
 const show_menu = ref(false)
 const isMenuVisible = () => {
     return show_menu.value = !show_menu.value
@@ -74,32 +74,11 @@ const isMenuVisible = () => {
     @apply w-full h-full fill-blue-ribbon-700;
 }
 
-.ark-link-scoped {
-    @apply hover:ark-hover-link ark-smooth-animation uppercase p-2 flex justify-center items-center border-b border-black w-full;
-}
-
-.ark-active-link::after {
-    content: "";
-    transform: translateY(0.15rem);
-    @apply bg-white flex-grow ml-2 h-px;
-}
-
-.ark-active-link::before {
-    content: "";
-    transform: translateY(0.15rem);
-    @apply bg-white flex-grow mr-2 h-px;
-}
-
-.ark-active-link {
-    @apply text-flame-pea-500;
-}
-
 .ark-lang-menu {
-    /* background-image: v-bind(lang_bg); */
-    background: transparent v-bind(lang_bg) no-repeat fixed center;
+    background: transparent url('assets/images/languages.svg') no-repeat fixed center;
 }
 
 .ark-nav-menu {
-    background: transparent v-bind(menu_bg) no-repeat fixed center;
+    background: transparent url('assets/images/menu.svg') no-repeat fixed center;
 }
 </style>
