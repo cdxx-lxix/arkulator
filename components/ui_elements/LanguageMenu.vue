@@ -5,16 +5,15 @@
         @mouseenter="handleMouseEnter(lang.code)"
         @mouseleave="handleMouseLeave"
         class="h-12 w-full uppercase border-b border-black/40 relative px-8 transition-colors duration-300 overflow-hidden group text-left"
-        :class="locale === lang.code ? 'pointer-events-none' : ''"
+        :class="locale === lang.code ? 'pointer-events-none text-flame-pea-500' : ''"
         :disabled="locale === lang.code"
         @click="changeLanguage(lang.code)"
     >
         <!-- Original language name -->
         <span 
             :class="[
-                'absolute inset-0 flex items-center justify-center text-white transition-all',
-                isHovered && hoveredLang === lang.code ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100',
-                locale === lang.code ? 'text-[#e4572e]' : ''
+                'absolute inset-0 flex items-center justify-center transition-all',
+                isHovered && hoveredLang === lang.code ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100'
             ]"
             :style="{
                 'transition-duration': `${timing}ms`,

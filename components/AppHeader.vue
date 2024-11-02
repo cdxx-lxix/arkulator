@@ -39,7 +39,7 @@
                 </template>
             </TransitionLink>
             <TransitionLink class="ark-menu-link border-b" text="menu.changelog"
-                link="https://github.com/cdxx-lxix/arkulator/blob/master/CHANGELOG.md" :external="true" @click="isMenuVisible">
+                link="https://github.com/cdxx-lxix/arkulator/blob/master/CHANGELOG.md" :external :blank="true" @click="isMenuVisible">
                 <template #icon>
                     <ChangelogIcon class="ark-menu-icon p-2" />
                 </template>
