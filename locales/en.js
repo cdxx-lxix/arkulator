@@ -112,7 +112,7 @@ export default {
         user_yc: "User's Distinctions",
         recruit_yc: "Distinctions for recruitment",
         login_yc: "Distinctions for login on 11th day",
-      }
+      },
     },
     help: {
       full: "This section consists of resources that can't be taken for granted and are most likely out of your control, but it's still possible to calculate them with some degree of accuracy. Some values may vary (due to you or randomness), for example, recruitment.",
@@ -136,10 +136,10 @@ export default {
           "Works only in conjunction with the toggled Commendation Shop and chosen strategy. Yields certificates only with 'average' and 'maximum' strategies. Adds potential Distinction Certificates from recruitment to your possession and uses them for calculations. OPTIONAL.",
         strategy:
           "GREEDY - tries to purchase as fast as possible and uses up your certificates. STRICT - or 'smart' strategy tries to purchase as much as possible and saves certificates if it can't buy the chosen set in full.",
-        condition: "EXAMPLE // Condition: 3-month duration, starting YC - 546, no recruitment, 15 YC for daily login x3.",
-        exampleone: "GREEDY + Phase 5 will result in 79 HH permits, 17 YC left. x2 full sets for 258 YC and 3 extra HH for 28 YC.",
-        exampletwo: "STRICT + Phase 5 will result in 76 HH permits, 45 YC left. x2 full sets for 258 YC.",
-        phases: "PHASES: #1 - 1 HH for 10 YC, #2 - 2 HH for 18 YC, #3 - 5 HH for 40 YC, #4 - 10 HH for 70 YC, #5 - 20 HH for 120 YC. Total: 38 HH for 258 YC.",
+        condition: "EXAMPLE // Condition: 3-month duration, starting DC - 546, no recruitment, 15 DC for daily login x3.",
+        exampleone: "GREEDY + Phase 5 will result in 79 HH permits, 17 DC left. x2 full sets for 258 DC and 3 extra HH for 28 DC.",
+        exampletwo: "STRICT + Phase 5 will result in 76 HH permits, 45 DC left. x2 full sets for 258 DC.",
+        phases: "PHASES: #1 - 1 HH for 10 DC, #2 - 2 HH for 18 DC, #3 - 5 HH for 40 DC, #4 - 10 HH for 70 DC, #5 - 20 HH for 120 DC. Total: 38 HH for 258 DC.",
       },
       rerun: {
         toggle: "Toggle this if you have some Intelligence Certificates or expect a rerun during the calculation dates.",
@@ -178,8 +178,8 @@ export default {
         permits: "Event Store",
         limited: "Exclusive Headhunting",
         lottery: "Orundum Lottery",
-        prime: "OP conversion"
-      }
+        prime: "OP conversion",
+      },
     },
     help: {
       full: "This section is for things that can't be calculated in a repeating way as 'Guaranteed' and 'Certificate Stores' do and it has more fluctuations. Things here are less predictable thus 'Speculations.'",
@@ -188,10 +188,13 @@ export default {
       shards: "Exchange rate is 2 shards for 20 orundums. You can only exchange them in pairs, so any odd numbers get rounded down.",
       sequence: "You can create a chain of events that you want to rely on. Each event will be displayed individually in the 'Calculations' section with detailed stats on each option provided.",
       event_name: "By default each event is given a name 'Event #it's number in the chain' but you can change it for readability. Purely cosmetical for your convenience when reading 'Calculations'",
-      event_type: "There are only 4 types of events with pulls. Event store Headhunting Permits assigned by default (Except for Story/Episode). Affects active input fields (e.g. in Trials for Navigator all field are disabled because the only thing there is 1 Headhunting Permit).",
-      use_op: "If you want to spend OP which can be earned during event, type there how many of them. 1 Week events (Story events) - 14-18, 2 Week events (Most of Standard events and Collaborations) - 27-30 OP, 3 Week events (Some Standard events and most of Anniversaries) - 38-41 OP. Episodes vary a lot, check individually.",
+      event_type:
+        "There are only 4 types of events with pulls. Event store Headhunting Permits assigned by default (Except for Story/Episode). Affects active input fields (e.g. in Trials for Navigator all field are disabled because the only thing there is 1 Headhunting Permit).",
+      use_op:
+        "If you want to spend OP which can be earned during event, type there how many of them. 1 Week events (Story events) - 14-18, 2 Week events (Most of Standard events and Collaborations) - 27-30 OP, 3 Week events (Some Standard events and most of Anniversaries) - 38-41 OP. Episodes vary a lot, check individually.",
       lottery: "Orundum lottery adds 7000 orundums. 500 is an arithmetic mean of 200 ... 800 * 14 days of lottery. Pity isn't accounted for.",
-      free_pulls: "Exclusive Headhunting marked with orange color in detailed stats to remind you about its limited lifespan. Anniversaries have 10-pull on 1st login and 14 days of 1 free pull => 24 pulls. Collabs have 10-pull on 1st login and 10-pull on 7-8th day login => 20 pulls."
+      free_pulls:
+        "Exclusive Headhunting marked with orange color in detailed stats to remind you about its limited lifespan. Anniversaries have 10-pull on 1st login and 14 days of 1 free pull => 24 pulls. Collabs have 10-pull on 1st login and 10-pull on 7-8th day login => 20 pulls.",
     },
   },
 
@@ -239,7 +242,7 @@ export default {
     home: "arkulator",
     wiki: "knowledge",
     contact: "contact",
-    changelog: "changelog"
+    changelog: "changelog",
   },
 
   // KNOWLEDGE (WIKI) PAGE
@@ -252,11 +255,11 @@ export default {
       hh: "Headhunting Permit",
       rm: "Real Money",
     },
-    
+
     headhunt: {
       legend: "Headhunting Permits",
       header: "Precious tickets used to try for your waifu/husbando, ultra meta destroyer 9000, or more commonly, disappointment. There are 3 types:",
-  
+
       regular: "Headhunting Permit",
       regularsub: "The OG permit. Usable anywhere and does not expire.",
       regular_content: {
@@ -268,25 +271,25 @@ export default {
         6: "Login events: Occasionally, though not always, available.",
         7: "Web events: Rarely offered, so not a guarantee.",
         8: "Store purchase: Available for local currency; typically better to buy OP instead of these, except for special event packs.",
-        9: "Store packs: Some include Headhunting Permits."
+        9: "Store packs: Some include Headhunting Permits.",
       },
-  
+
       kernel: "Kernel Headhunting Permit",
       kernelsub: "Usable only on Kernel banners; operators here yield only Universal Certificates. Does not expire.",
       kernel_content: {
         1: "Available in Universal Certificate shop: up to 38 per month for 2580 Universal Certificates.",
         2: "Available in Distinction Certificate shop: up to 38 per month for 216 Distinction Certificates.",
-        3: "Occasionally awarded in mail or login events."
+        3: "Occasionally awarded in mail or login events.",
       },
-  
+
       exclusive: "Exclusive Headhunting Permit",
       exclusivesub: "Tied to a specific banner and expires when the banner ends.",
       exclusive_content: {
         1: "24 awarded on Anniversary (10 on login + 1 each day); 20 awarded on Collaboration (10 on login, 10 on 7th-8th day).",
-        2: "Store purchase (since Babel): Limited to 2 and 10 permits, once each."
-      }
+        2: "Store purchase (since Babel): Limited to 2 and 10 permits, once each.",
+      },
     },
-  
+
     general: {
       legend: "General Advice",
       header: "Community-tested tips accumulated over the years.",
@@ -299,9 +302,9 @@ export default {
       7: "Special banners have their own pity counter, so pulls on standard banners don’t count toward it.",
       8: "Collaboration banners have 120 pull pity with 20 free pulls, so only 100 pulls are needed.",
       9: "Anniversary banners have 300 pull pity with 24 free pulls + ~11 from orundum lotteries, so around 265 pulls are required.",
-      10: "Rate up is a lie."
+      10: "Rate up is a lie.",
     },
-  
+
     orundum: {
       legend: "Orundum",
       header: "The most common resource for a fellow Doctor, with many ways to obtain it:",
@@ -320,9 +323,9 @@ export default {
       13: "Anniversary orundum lottery: Lasts ~14 days, yielding around 7000 Orundums on average, though results vary.",
       14: "Login events: Occasionally include Orundum.",
       15: "Web events: Rarely offer Orundum.",
-      16: "Store packs: Some contain Orundum."
+      16: "Store packs: Some contain Orundum.",
     },
-  
+
     prime: {
       legend: "Originium Prime",
       header: "Rare shiny rocks with limited ways to earn and spend. Can be used for skins, sanity restoration, and gacha. New players may use it on pro packs, and some may use it for furniture.",
@@ -332,9 +335,9 @@ export default {
       4: "Login events: Occasionally grant OP, though rarely more than 2.",
       5: "Web events: Rarely grant OP.",
       6: "Store purchase: Available in local currency, starting from 1 OP.",
-      7: "Store packs: Some packs include OP."
+      7: "Store packs: Some packs include OP.",
     },
-  
+
     money: {
       legend: "Real Money",
       header: "Best deals depend on local currency rates, but here are some general guidelines:",
@@ -344,8 +347,9 @@ export default {
       sanity: "Full sanity",
       psanity: "per refresh",
       calculate: "Calculate your expenses",
-      ending: "Special event packs, anniversary packs, and other one-time deals are excluded here as they add unique value, making it hard to calculate in terms of pulls. Most are only available during anniversary events and once per event."
-    }
+      ending:
+        "Special event packs, anniversary packs, and other one-time deals are excluded here as they add unique value, making it hard to calculate in terms of pulls. Most are only available during anniversary events and once per event.",
+    },
   },
 
   // CONTACT PAGE
@@ -365,32 +369,32 @@ export default {
         2: "Translation",
         3: "Request",
         4: "Help",
-        5: "Other"
-      }
+        5: "Other",
+      },
     },
-    
+
     notice: {
       1: "Fields marked with * are required.",
       2: "Email is optional if you don’t need a reply.",
       3: "Please use one of the following languages: English, Serbian, Ukrainian, or Russian. Other languages will be auto-translated.",
       4: "Replies will be in English, regardless of the initial message language.",
-      5: "Arkulator uses GPT translations for non-English versions. Report any translation issues."
+      5: "Arkulator uses GPT translations for non-English versions. Report any translation issues.",
     },
-    
+
     her_highness: {
       legend: "Theresa’s Supremacy",
-      message: "This app was crafted by a loyalist of Theresa. Enjoy the presence of Her Highness while reaching out."
+      message: "This app was crafted by a loyalist of Theresa. Enjoy the presence of Her Highness while reaching out.",
     },
-    
+
     socials: {
       legend: "Social Media",
       tg: "Telegram",
-      ds: "Discord"
-    }
+      ds: "Discord",
+    },
   },
-  
-  // FOOTER 
+
+  // FOOTER
   footer: {
-    hard_truth: "Sponsored by unemployment and excessive free time."
-  }
+    hard_truth: "Sponsored by unemployment and excessive free time.",
+  },
 };

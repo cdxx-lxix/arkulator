@@ -2,7 +2,8 @@
     <div v-if="condition"
         class="flex flex-row items-center justify-between border-b border-gray-700 border-dashed mb-1">
         <div>
-            <p>{{ $t(text) }}</p>
+            <p v-if="text">{{ $t(text) }}</p>
+            <p v-else>{{ freetext }}</p>
             <ul class="text-sm font-light text-gray-400 ml-5 list-disc">
                 <li v-for="detail in details" :key="detail.name" :class="detail.special ? 'text-flame-pea-500' : ''">{{ $t(detail.name) }} - {{ detail.amount }}</li>
             </ul>
@@ -21,6 +22,7 @@ import recruit_bag from '../assets/images/recruit_bag.png';
 const props = defineProps([
     'condition',
     'text',
+    'freetext',
     'stat',
     'icon',
     'details'
