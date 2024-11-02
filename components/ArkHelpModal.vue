@@ -24,7 +24,7 @@
 
                 <div class="flex justify-center p-4 md:p-5 border-t rounded-b border-gray-600">
                     <button type="button" @click="showmodal = false"
-                        class="text-white w-1/4 font-semibold rounded-lg text-sm px-5 py-2.5 text-center bg-blue-ribbon-700 hover:bg-blue-ribbon-950">Close</button>
+                        class="text-white w-1/4 font-semibold rounded-lg text-sm px-5 py-2.5 text-center bg-blue-ribbon-700 hover:bg-blue-ribbon-950 ark-smooth-animation">Close</button>
                 </div>
             </div>
         </div>

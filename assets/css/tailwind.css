@@ -2,6 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer {
-    
+/* 
+-- APP COLORS: --
+blue-ribbon-700 main accent color 
+mirage-950 main body color
+mirage-900 secondary color
+flame-pea-500 - (previously known as [#E4572E] ) - active elements (links, langs, etc)
+red-600 - secondary (warning) accent color
+text-white / text-gray-300 / text-gray-500 
+*/
+
+@layer components {
+  .ark-smooth-animation {
+    @apply transition delay-100 duration-300 ease-in-out;
+    /* I want everything to feel like you have a fucking stroke :> */
+  }
+  .ark-hover-link {
+    @apply text-blue-ribbon-700;
+    /* Why is this class here?  ark-hover-link
+    The hover:ark-hover-link class does not exist. If hover:ark-hover-link is a custom class, make sure it is defined within a @layer directive. 
+    Look into AppHeader.vue for more details
+    */
+  }
+
+  .ark-main-section {
+    @apply grid grid-cols-1 xl:grid-cols-2 gap-4 px-2 pt-2 text-gray-300;
+  }
+  .ark-app-section {
+    @apply flex flex-col gap-2;
+  }
+
+  .ark-svg-button-stroke {
+    @apply stroke-white hover:stroke-blue-ribbon-700;
+  }
+  .ark-svg-button-fill {
+    @apply fill-blue-ribbon-700 hover:fill-white;
+  }
+  .ark-invisible-text {
+    @apply text-transparent outline-none select-none;
+  }
+}
+
+@layer utilities {
+  html,
+  body {
+    @apply bg-mirage-950;
+  }
+
+  * {
+    scrollbar-color: #0066ff #0f172a;
+    scrollbar-width: thin;
+  }
+
+  header {
+    @apply bg-mirage-900 border-b border-black shadow-md;
+  }
+
+  footer {
+    @apply bg-mirage-900 border-t border-black shadow-md;
+  }
 }

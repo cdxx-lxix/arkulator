@@ -15,19 +15,39 @@ export default defineNuxtConfig({
         code: 'en',
         name: 'English',
         files: ['en.js']
+      },
+      {
+        code: 'ja',
+        name: '日语',
+        files: ['ja.js']
+      },
+      {
+        code: 'zh',
+        name: '中文',
+        files: ['zh.js']
+      },
+      {
+        code: 'ko',
+        name: '朝鲜语',
+        files: ['ko.js']
       }
     ],
+    strategy: 'no_prefix',
     lazy: true,
     langDir: 'locales',
-    defaultLocale: 'en'
+    defaultLocale: 'en',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    },
+    // This ensures translations are loaded before rendering
+    skipSettingLocaleOnNavigate: false
   },
   site: { 
     // SEO (Lang setting inferred from i18n integration, no need to setup)
     // https://nuxtseo.com/site-config/integrations/i18n
-    
-    url: 'https://arkulator.ojisan.cc',
-    name: 'Arkulator',
-    description: 'A tool to calculate your resources for pulling up to a certain date and manage your gacha budget in Arknights'
+    url: 'https://arkulator.ojisan.cc'
   },
   viewport: {
     breakpoints: {

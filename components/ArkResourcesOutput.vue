@@ -23,29 +23,10 @@
                 { pulls: totalPulls }) }}</p>
         </div>
     </template>
-    <!-- <template v-if="variant === 'budget'">
-        <div class="flex flex-row flex-wrap gap-3 w-full justify-start text-lg font-bold">
-            <p class="flex flex-row gap-2 items-center justify-center">
-                <OrundumIcon class="w-6 h-6" /> {{ orundum }}
-            </p>
-            <p class="flex flex-row gap-2 items-center justify-center">
-                +
-            </p>
-            <p class="flex flex-row gap-2 items-center justify-center">
-                <PermitIcon class="w-6 h-6" /> {{ permits }}
-            </p>
-            <p class="flex flex-row gap-2 items-center justify-center">
-                =
-            </p>
-            <p class="flex flex-row gap-2 items-center justify-center">
-                <img :src="recruit_bag" alt="recruitment bag" class="w-6 h-6"> {{ totalPulls }}
-            </p>
-        </div>
-    </template> -->
 </template>
 
 <script setup>
-// import recruit_bag from '../assets/images/recruit_bag.png';
+import { REWARDS_GUARANTEED } from '../stores/commonactions'
 const props = defineProps([
     'orundum',
     'permits',
@@ -53,10 +34,10 @@ const props = defineProps([
 ])
 
 const totalPulls = computed(() => {
-    if ((Math.floor(props.orundum / 600) + props.permits) < 0) {
+    if ((Math.floor(props.orundum / REWARDS_GUARANTEED.orundum_per_pull) + props.permits) < 0) {
         return 0
     } else {
-        return Math.floor(props.orundum / 600) + props.permits
+        return Math.floor(props.orundum / REWARDS_GUARANTEED.orundum_per_pull) + props.permits
     }
 })
 </script>
