@@ -1,27 +1,10 @@
 import { defineStore } from "pinia";
 import { reactive, computed } from "vue";
 import { useCalendarStore } from "./calendar";
+import { REWARDS_MAYBE, EVENT_TYPES, REWARDS_GUARANTEED } from "./commonactions";
 
 export const useMaybeStore = defineStore("maybe", () => {
-  const REWARDS_MAYBE = {
-    // mini events that last a week have nothing of value
-    event_purchasable_permits: 3, // Normal, reruns and limited give you an option to buy 3 permits
-    event_limited_permits: 24, // 10 HH on login and 1 everyday for 2 weeks
-    event_collab_permits: 20, // Collabs like MH and R6 gave us 10 permits on login and 10 on 8th day
-    event_orundum_lottery: 7000, // 14 * 500. 500 is an arithmetic mean of 200 ... 800 * 14 days of lottery. Pity isn't accounted for.
-    event_trials_permits: 1, // You get 1 HH at some lvl
-    orundum_per_paradox_completed: 200, // They often add some paradoxes with events which may give you an additional pull
-    orundum_per_annihilations_firsttime: 1500, // Except for the first 3 annih's every new one gives you a 1.5k orundums for a first time full clear 400\400
-    orundum_for_originium_shards: 10, // You have to craft 2 to get 20
-  };
-  const EVENT_TYPES = [
-    { name: "maybe.standard", value: 10 },
-    { name: "maybe.anniversary", value: 20 },
-    { name: "maybe.collab", value: 30 },
-    { name: "maybe.trials", value: 40 },
-  ];
   const calendarStore = useCalendarStore();
-  const pullsStore = usePullsStore();
 
   const user_data = reactive({
     potential_paradoxes: 0,
@@ -44,6 +27,7 @@ export const useMaybeStore = defineStore("maybe", () => {
       20: (element, acc) => handleAnniversaryEvent(element, acc),
       30: (element, acc) => handleCollaborationEvent(element, acc),
       40: (element, acc) => handleTrialsEvent(element, acc),
+      50: (element, acc) => handleStoryEvent(element, acc),
     };
 
     // Process each event using the handler mapping
@@ -64,7 +48,7 @@ export const useMaybeStore = defineStore("maybe", () => {
    * */
 
   function handleStandardEvent(element, acc) {
-    const orundumFromPrime = element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime;
+    const orundumFromPrime = element.event_op * REWARDS_GUARANTEED.orundum_for_originium_prime;
     const eventPulls = REWARDS_MAYBE.event_purchasable_permits + Math.floor(orundumFromPrime / 600)
 
     acc.permits += REWARDS_MAYBE.event_purchasable_permits;
@@ -82,7 +66,7 @@ export const useMaybeStore = defineStore("maybe", () => {
   function handleAnniversaryEvent(element, acc) {
     const limitedPermits = element.is_free_pulls ? REWARDS_MAYBE.event_limited_permits : 0;
     const lotteryOrundum = element.is_lottery ? REWARDS_MAYBE.event_orundum_lottery : 0;
-    const orundumFromPrime = element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime;
+    const orundumFromPrime = element.event_op * REWARDS_GUARANTEED.orundum_for_originium_prime;
     const eventPulls = REWARDS_MAYBE.event_purchasable_permits + limitedPermits + Math.floor((orundumFromPrime + lotteryOrundum) / 600)
 
     acc.permits += REWARDS_MAYBE.event_purchasable_permits + limitedPermits;
@@ -101,7 +85,7 @@ export const useMaybeStore = defineStore("maybe", () => {
 
   function handleCollaborationEvent(element, acc) {
     const collabPermits = element.is_free_pulls ? REWARDS_MAYBE.event_collab_permits : 0;
-    const orundumFromPrime = element.event_op * pullsStore.REWARDS_GUARANTEED.orundum_for_originium_prime;
+    const orundumFromPrime = element.event_op * REWARDS_GUARANTEED.orundum_for_originium_prime;
     const eventPulls = REWARDS_MAYBE.event_purchasable_permits + collabPermits + Math.floor(orundumFromPrime / 600)
 
     acc.permits += REWARDS_MAYBE.event_purchasable_permits + collabPermits;
@@ -123,6 +107,18 @@ export const useMaybeStore = defineStore("maybe", () => {
       event: element.event_name,
       pulls: REWARDS_MAYBE.event_trials_permits,
       details: [{ name: "maybe.calculations.detailed.permits", amount: REWARDS_MAYBE.event_trials_permits }],
+    });
+  }
+
+  function handleStoryEvent(element, acc) {
+    const orundumFromPrime = element.event_op * REWARDS_GUARANTEED.orundum_for_originium_prime;
+    const eventPulls = Math.floor(orundumFromPrime / 600)
+
+    acc.orundum += orundumFromPrime;
+    acc.statistics.push({
+      event: element.event_name,
+      pulls: eventPulls,
+      details: [{ name: "maybe.calculations.detailed.prime", amount: orundumFromPrime }],
     });
   }
 

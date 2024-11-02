@@ -159,6 +159,7 @@ export default {
     anniversary: "Anniversary",
     collab: "Collaboration",
     trials: "Trials for Navigator",
+    story: "Story/Episode",
     paradox: "Paradox Simulations",
     newannih: "New Annihilations",
     shards: "Shards/Day",
@@ -181,15 +182,16 @@ export default {
       }
     },
     help: {
-      full: "This section is for things that are personal, rare, unpredictable—basically, anything that's kinda out there. Inaccurate and speculative, just stuff you wanna throw into the pool for the heck of it.",
-      limited: "Check this if there's a limited event happening. INCLUDES ONLY ONE EVENT.",
-      annicolab:
-        "Can’t have both at the same time. Anniversary gives 24 free pulls—10 on login, 1 a day. Collab gives 20 pulls: 10 on login, 10 on the 8th day. THESE PULLS ARE FOR LIMITED BANNERS ONLY, AND THEY EXPIRE AFTERWARD.",
-      lottery: "Adds 7000 orundums to your calculations (average winnings). Only available during anniversaries, so it's turned off if you pick collab.",
+      full: "This section is for things that can't be calculated in a repeating way as 'Guaranteed' and 'Certificate Stores' do and it has more fluctuations. Things here are less predictable thus 'Speculations.'",
       paradox: "Enter how many operators are getting a paradox update. Each paradox gives you 200 orundums.",
-      events: "Each normal event puts 3 HH permits up for grabs in the shop.",
       newannih: "Except for the first three (Chernobog, Lungmen Downtown, Outskirts), every new annihilation’s first full completion gives 1500 orundums.",
       shards: "Exchange rate is 2 shards for 20 orundums. You can only exchange them in pairs, so any odd numbers get rounded down.",
+      sequence: "You can create a chain of events that you want to rely on. Each event will be displayed individually in the 'Calculations' section with detailed stats on each option provided.",
+      event_name: "By default each event is given a name 'Event #it's number in the chain' but you can change it for readability. Purely cosmetical for your convenience when reading 'Calculations'",
+      event_type: "There are only 4 types of events with pulls. Event store Headhunting Permits assigned by default (Except for Story/Episode). Affects active input fields (e.g. in Trials for Navigator all field are disabled because the only thing there is 1 Headhunting Permit).",
+      use_op: "If you want to spend OP which can be earned during event, type there how many of them. 1 Week events (Story events) - 14-18, 2 Week events (Most of Standard events and Collaborations) - 27-30 OP, 3 Week events (Some Standard events and most of Anniversaries) - 38-41 OP. Episodes vary a lot, check individually.",
+      lottery: "Orundum lottery adds 7000 orundums. 500 is an arithmetic mean of 200 ... 800 * 14 days of lottery. Pity isn't accounted for.",
+      free_pulls: "Exclusive Headhunting marked with orange color in detailed stats to remind you about its limited lifespan. Anniversaries have 10-pull on 1st login and 14 days of 1 free pull => 24 pulls. Collabs have 10-pull on 1st login and 10-pull on 7-8th day login => 20 pulls."
     },
   },
 

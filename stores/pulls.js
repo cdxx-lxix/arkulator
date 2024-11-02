@@ -1,18 +1,10 @@
 import { reactive } from "vue";
 import { defineStore } from "pinia";
-import { preventNegative, getRewardsForSpecificDate } from "./commonactions";
+import { preventNegative, getRewardsForSpecificDate, REWARDS_GUARANTEED } from "./commonactions";
 import { useCalendarStore } from "./calendar";
 
 export const usePullsStore = defineStore("pulls", () => {
   const calendarStore = useCalendarStore();
-  const REWARDS_GUARANTEED = {
-    daily_missions_orundum: 100, // Orundum
-    monthly_card_orundum: 200, // Orundum
-    weekily_missions_orundum: 500, // Orundum
-    orundum_for_originium_prime: 180, // For 1 OP
-    orundum_for_originium_shards: 10, // You have to craft 2 to get 20
-    login_on_day_17: 1, // Permit
-  };
   const user_data = reactive({
     current_orundums: 0,
     current_permits: 0,
@@ -75,7 +67,6 @@ export const usePullsStore = defineStore("pulls", () => {
 
   return {
     user_data,
-    REWARDS_GUARANTEED,
     getUserDailyRewards,
     getUserMonthlyCardRewards,
     getUserWeeklyRewards,
