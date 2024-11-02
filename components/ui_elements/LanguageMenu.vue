@@ -14,7 +14,7 @@
             :class="[
                 'absolute inset-0 flex items-center justify-center text-white transition-all',
                 isHovered && hoveredLang === lang.code ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100',
-                locale === lang.code ? 'text-flame-pea-500' : ''
+                locale === lang.code ? 'text-flame-pea-600' : ''
             ]"
             :style="{
                 'transition-duration': `${timing}ms`,
@@ -111,9 +111,5 @@ button {
 }
 button:first-child {
     @apply border-t;
-}
-
-button:not(.ark-active-link):hover {
-    @apply text-flame-pea-400;
 }
 </style>

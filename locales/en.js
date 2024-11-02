@@ -251,11 +251,6 @@ export default {
       op: "Originium Prime",
       hh: "Headhunting Permit",
       rm: "Real Money",
-      pull: "One pull equals:",
-      orundums: "600 Orundums",
-      permits: "1 Headhunting Permit",
-      primes: "~3.33... Originium Primes",
-      money: "$ Varies or uncountable"
     },
     
     headhunt: {
@@ -266,8 +261,8 @@ export default {
       regularsub: "The OG permit. Usable anywhere and does not expire.",
       regular_content: {
         1: "1 awarded on 17th login each month.",
-        2: "Commendation Certificate Shop: 2 available for 480 GC, and another 2 for 900 GC monthly.",
-        3: "Distinction Certificate Shop: Up to 38 available monthly for 258 YC total.",
+        2: "Commendation Certificate Shop: 2 available for 480 CC, and another 2 for 900 CC monthly.",
+        3: "Distinction Certificate Shop: Up to 38 available monthly for 258 DC total.",
         4: "Normal, Anniversary, Collaboration events, and reruns have 3 available in event shops, costing 150 event currency each.",
         5: "Trials for Navigator: 1 awarded at level 15.",
         6: "Login events: Occasionally, though not always, available.",
@@ -277,9 +272,9 @@ export default {
       },
   
       kernel: "Kernel Headhunting Permit",
-      kernelsub: "Usable only on Kernel banners; operators here yield only Blue Certificates. Does not expire.",
+      kernelsub: "Usable only on Kernel banners; operators here yield only Universal Certificates. Does not expire.",
       kernel_content: {
-        1: "Available in Blue Certificate shop: up to 38 per month for 2580 Blue Certificates.",
+        1: "Available in Universal Certificate shop: up to 38 per month for 2580 Universal Certificates.",
         2: "Available in Distinction Certificate shop: up to 38 per month for 216 Distinction Certificates.",
         3: "Occasionally awarded in mail or login events."
       },
@@ -296,10 +291,10 @@ export default {
       legend: "General Advice",
       header: "Community-tested tips accumulated over the years.",
       1: "HG resets the OP double deal on the yearly anniversary.",
-      2: "To maximize Distinction Certificates, buy Headhunting Permits in a batch of 38 for 258 YC.",
+      2: "To maximize Distinction Certificates, buy Headhunting Permits in a batch of 38 for 258 DCs.",
       3: "Monthly card is the best value in the store, limited to 90 days at a time.",
-      4: "At the end of anniversary events, spend your sparks on a featured 5*, especially if you have them nearly maxed out. 5* duplicates yield significant Yellow Certificates.",
-      5: "180 YC shop operator is a better deal than pulling for them. 180 YC roughly equals 18 pulls, making it a guaranteed option.",
+      4: "At the end of anniversary events, spend your leftover sparks on a featured 5*, especially if you have them nearly maxed out. 5* duplicates yield significant Distinction Certificates.",
+      5: "180 DC shop operator is a better deal than pulling for them. 180 DC roughly equals 18 pulls, making it a guaranteed option.",
       6: "If you’re on a tight budget but want to try your luck at an anniversary event, wait until the last day. This way, you’ve used all free pulls and gained results from orundum lotteries, login events, and event shops.",
       7: "Special banners have their own pity counter, so pulls on standard banners don’t count toward it.",
       8: "Collaboration banners have 120 pull pity with 20 free pulls, so only 100 pulls are needed.",
@@ -319,7 +314,7 @@ export default {
       7: "Originium Prime exchange: 1 OP = 180 Orundums.",
       8: "Originium Shard exchange: 2 Shards = 20 Orundums (only in pairs).",
       9: "Intelligence Certificate exchange: 20 IC = 100 Orundums. Every rerun adds 2000 Orundums and ~1700 IC.",
-      10: "Commendation Certificate Shop: 600 Orundums available for 240 GC, with unlimited 100 Orundums for 50 GC.",
+      10: "Commendation Certificate Shop: 600 Orundums available for 240 CC, with unlimited 100 Orundums for 50 CC.",
       11: "Continuous play rewards: HG occasionally sends Orundums in the mailbox.",
       12: "Maintenance compensation: Short maintenance typically gives 200 Orundums.",
       13: "Anniversary orundum lottery: Lasts ~14 days, yielding around 7000 Orundums on average, though results vary.",

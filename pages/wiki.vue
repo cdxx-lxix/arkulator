@@ -5,33 +5,36 @@
                 <div class="w-full">
                     <div>
                         <div class="mb-3">{{ $t('wiki.basics.header') }}</div>
-                        <ul class="grid grid-cols-2 xl:grid-cols-4 gap-3">
-                            <li class="flex flex-col items-center gap-3">
-                                <div>{{ $t('wiki.basics.or') }}</div>
+                        <ul class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <li class="flex justify-center items-center cursor-pointer hover:bg-slate-950/30 relative"
+                                @click="moveFocus(orundum_element)">
+                                <div
+                                    class="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/5 rounded-b-lg z-10 bg-slate-950/70 w-full text-center text-white font-semibold py-1">
+                                    {{ $t('wiki.basics.or') }}
+                                </div>
                                 <OrundumIcon class="w-full sm:w-24" />
                             </li>
-                            <li class="flex flex-col items-center gap-3">
-                                <div>{{ $t('wiki.basics.op') }}</div>
+                            <li class="flex justify-center items-center cursor-pointer hover:bg-slate-950/30 relative"
+                                @click="moveFocus(prime_element)">
+                                <div
+                                    class="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/5 rounded-b-lg z-10 bg-slate-950/70 w-full text-center text-white font-semibold py-1">
+                                    {{ $t('wiki.basics.op') }}</div>
                                 <OPIcon class="w-full sm:w-24" />
                             </li>
-                            <li class="flex flex-col items-center gap-3">
-                                <div>{{ $t('wiki.basics.hh') }}</div>
-                                <PermitIcon class="w-full sm:w-24" />
+                            <li class="flex justify-center items-center cursor-pointer hover:bg-slate-950/30 relative"
+                                @click="moveFocus(headhunt_element)">
+                                <div
+                                    class="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/5 rounded-b-lg z-10 bg-slate-950/70 w-full text-center text-white font-semibold py-1">
+                                    {{ $t('wiki.basics.hh') }}</div>
+                                <PermitIcon class="w-full sm:w-28" />
                             </li>
-                            <li class="flex flex-col items-center gap-3">
-                                <div>{{ $t('wiki.basics.rm') }}</div>
-                                <MoneyIcon class="fill-white w-full sm:w-24" />
+                            <li class="flex justify-center items-center cursor-pointer hover:bg-slate-950/30 relative"
+                                @click="moveFocus(money_element)">
+                                <div
+                                    class="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/5 rounded-b-lg z-10 bg-slate-950/70 w-full text-center text-white font-semibold py-1">
+                                    {{ $t('wiki.basics.rm') }}</div>
+                                <MoneyIcon class="fill-white w-full sm:w-28" />
                             </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <div class="mb-3">{{ $t('wiki.basics.pull') }}</div>
-                        <ul class="grid grid-cols-2 gap-3 text-center">
-                            <li class="flex flex-col justify-center gap-3">{{ $t('wiki.basics.orundums') }}</li>
-                            <li class="flex flex-col justify-center gap-3">{{ $t('wiki.basics.permits') }}</li>
-                            <li class="flex flex-col justify-center gap-3">{{ $t('wiki.basics.primes') }}</li>
-                            <li class="flex flex-col justify-center gap-3">{{ $t('wiki.basics.money') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -41,13 +44,13 @@
                 <div class="w-full">
                     <div>{{ $t('wiki.general.header') }}</div>
                     <ul>
-                        <li v-for="i in 10" :key="i">{{ $t(`wiki.general.${i}`) }}</li>
+                        <li v-for="i in 10" :key="i" class="ark-list-element">{{ $t(`wiki.general.${i}`) }}</li>
                     </ul>
                 </div>
             </ArkFrame>
 
-            <ArkFrame legend="wiki.headhunt.legend">
-                <div>
+            <ArkFrame legend="wiki.headhunt.legend" id="headhunt" :ref="el => headhunt_element = el">
+                <div class="w-full">
                     <div>{{ $t('wiki.headhunt.header') }}</div>
                     <ul class="grid grid-cols-3 gap-3">
                         <li class="flex flex-col justify-between items-center gap-3">
@@ -67,19 +70,22 @@
                     <div class="header-text">{{ $t('wiki.headhunt.exclusive') }}</div>
                     <div class="subtext">{{ $t('wiki.headhunt.exclusivesub') }}</div>
                     <ul>
-                        <li v-for="i in 2" :key="i">{{ $t(`wiki.headhunt.exclusive_content.${i}`) }}</li>
+                        <li v-for="i in 2" :key="i" class="ark-list-element">{{
+                            $t(`wiki.headhunt.exclusive_content.${i}`) }}</li>
                     </ul>
 
                     <div class="header-text">{{ $t('wiki.headhunt.kernel') }}</div>
                     <div class="subtext">{{ $t('wiki.headhunt.kernelsub') }}</div>
                     <ul>
-                        <li v-for="i in 3" :key="i">{{ $t(`wiki.headhunt.kernel_content.${i}`) }}</li>
+                        <li v-for="i in 3" :key="i" class="ark-list-element">{{ $t(`wiki.headhunt.kernel_content.${i}`)
+                            }}</li>
                     </ul>
 
                     <div class="header-text">{{ $t('wiki.headhunt.regular') }}</div>
                     <div class="subtext">{{ $t('wiki.headhunt.regularsub') }}</div>
                     <ul>
-                        <li v-for="i in 9" :key="i">{{ $t(`wiki.headhunt.regular_content.${i}`) }}</li>
+                        <li v-for="i in 9" :key="i" class="ark-list-element">{{ $t(`wiki.headhunt.regular_content.${i}`)
+                            }}</li>
                     </ul>
                 </div>
             </ArkFrame>
@@ -87,25 +93,25 @@
         </section>
 
         <section class="ark-app-section">
-            <ArkFrame legend="wiki.orundum.legend">
-                <div>
+            <ArkFrame legend="wiki.orundum.legend" id="orundum" :ref="el => orundum_element = el">
+                <div class="w-full">
                     <div>{{ $t('wiki.orundum.header') }}</div>
                     <ul>
-                        <li v-for="i in 16" :key="i">{{ $t(`wiki.orundum.${i}`) }}</li>
+                        <li v-for="i in 16" :key="i" class="ark-list-element">{{ $t(`wiki.orundum.${i}`) }}</li>
                     </ul>
                 </div>
             </ArkFrame>
 
-            <ArkFrame legend="wiki.prime.legend">
-                <div>
+            <ArkFrame legend="wiki.prime.legend" id="prime" :ref="el => prime_element = el">
+                <div class="w-full">
                     <div>{{ $t('wiki.prime.header') }}</div>
                     <ul>
-                        <li v-for="i in 7" :key="i">{{ $t(`wiki.prime.${i}`) }}</li>
+                        <li v-for="i in 7" :key="i" class="ark-list-element">{{ $t(`wiki.prime.${i}`) }}</li>
                     </ul>
                 </div>
             </ArkFrame>
 
-            <ArkFrame legend="wiki.money.legend">
+            <ArkFrame legend="wiki.money.legend" id="money" :ref="el => money_element = el">
                 <div class="w-full">
                     <div>{{ $t('wiki.money.header') }}</div>
 
@@ -121,22 +127,28 @@
                                 <div class="inline-flex gap-1">{{ getOrundums(item.primes) }}
                                     <OrundumIcon class="w-4" />
                                 </div>
-                                <div>{{ getPulls(item.primes) }} {{ $t('wiki.money.pulls') }} | {{ getPerPull(item.primes, item.price) }}$ {{ $t('wiki.money.ppulls') }}</div>
-                                <div>{{ item.primes }} {{ $t('wiki.money.sanity') }} | {{ getPerSanity(item.price, item.primes) }}$ {{ $t('wiki.money.psanity') }}</div>
+                                <div>{{ getPulls(item.primes) }} {{ $t('wiki.money.pulls') }} | {{
+                                    getPerPull(item.primes, item.price) }}$ {{ $t('wiki.money.ppulls') }}</div>
+                                <div>{{ item.primes }} {{ $t('wiki.money.sanity') }} | {{ getPerSanity(item.price,
+                                    item.primes) }}$ {{ $t('wiki.money.psanity') }}</div>
                             </li>
                             <li class="deal prime">
                                 <div>{{ $t('wiki.money.calculate') }}</div>
-                                <ArkInput class="w-1/2 md:w-8/12" id="usersprime" min="0" v-model:inputvalue="user_prime">
+                                <ArkInput class="w-1/2 md:w-8/12" id="usersprime" min="0"
+                                    v-model:inputvalue="user_prime">
                                     <OPIcon class="w-6 h-6" />
                                 </ArkInput>
-                                <ArkInput class="w-1/2 md:w-8/12" id="usersprime" min="0" v-model:inputvalue="user_money">
+                                <ArkInput class="w-1/2 md:w-8/12" id="usersprime" min="0"
+                                    v-model:inputvalue="user_money">
                                     <MoneyIcon class="w-6 h-6 fill-white" />
                                 </ArkInput>
                                 <div class="inline-flex gap-1">{{ getOrundums(user_prime) }}
                                     <OrundumIcon class="w-4" />
                                 </div>
-                                <div>{{ getPulls(user_prime) }} {{ $t('wiki.money.pulls') }} | {{ getPerPull(user_prime, user_money) }} {{ $t('wiki.money.ppulls') }}</div>
-                                <div>{{ user_prime }} {{ $t('wiki.money.sanity') }} | {{ getPerSanity(user_money, user_prime) }} {{ $t('wiki.money.psanity') }}</div>
+                                <div>{{ getPulls(user_prime) }} {{ $t('wiki.money.pulls') }} | {{ getPerPull(user_prime,
+                                    user_money) }} {{ $t('wiki.money.ppulls') }}</div>
+                                <div>{{ user_prime }} {{ $t('wiki.money.sanity') }} | {{ getPerSanity(user_money,
+                                    user_prime) }} {{ $t('wiki.money.psanity') }}</div>
                             </li>
                         </ul>
                     </div>
@@ -154,10 +166,25 @@
 import regularhh from '../assets/images/regularhh.webp';
 import specialhh from '../assets/images/specialhh.webp';
 import kernelhh from '../assets/images/kernelhh.webp';
+import recruit_bag from '../assets/images/recruit_bag_big.png';
 import { PRIME_PACKS, REWARDS_GUARANTEED } from '../stores/commonactions'
 
 const user_prime = ref(0)
 const user_money = ref(0)
+const orundum_element = ref(null)
+const headhunt_element = ref(null)
+const prime_element = ref(null)
+const money_element = ref(null)
+
+const moveFocus = (element) => {
+    const targetEl = element?.$el || element || null
+    if (targetEl) {
+        targetEl.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+    }
+}
 
 const getOrundums = (primes) => {
     return primes * REWARDS_GUARANTEED.orundum_for_originium_prime
@@ -189,7 +216,11 @@ const getPerSanity = (primes, price) => {
 }
 
 li {
-    @apply border border-gray-300 px-2 py-1 my-2 hover:border-blue-ribbon-700 hover:text-white rounded-sm;
+    @apply border border-gray-300/30 px-2 py-1 my-2 hover:border-blue-ribbon-700 hover:text-white rounded-lg;
+}
+
+.ark-list-element:nth-child(2n) {
+    @apply bg-slate-950 hover:border-blue-ribbon-900;
 }
 
 .deal {

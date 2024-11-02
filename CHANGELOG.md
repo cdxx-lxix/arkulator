@@ -3,8 +3,14 @@
 [Arkulator website](https://arkulator.ojisan.cc/)
 
 ###### Updates:
+- Section "Advanced" renamed to "Certificate Stores"
+- Section "Maybe" renamed to "Speculations"
+- Event Sequence functionality added. Replacing previous checkboxes in "Maybe" section
+- Input boxes now have an upper limit of 100000000
+- My non-standard item names changed to the official (e.g. Yellow Certificate/YC => Distinction Certificate/DC)
 ###### Fixed:
 - September's iOS UI displacement on older iOS versions.
+- Event dupes in the calendar (finally omg)
 ###### New:
 - Menu. Now Arkulator is multipage app. Navigation + language selection
 - Wiki page. Contains information regarding gacha. General info, advises and OP purchase effectiveness calculation
