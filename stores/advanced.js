@@ -103,6 +103,15 @@ export const useAdvancedStore = defineStore("advanced", () => {
     let total_gc_in_range = getUserGreenCertsForLogin() + getUserGreenCertsWeekly() + getGreenCertsForRecruitment() + user_data.gcs_current_certs;
     let times_can_buy = 0;
     let duration = calendarStore.getMonths - Number(calendarStore.calendar_data.is_excluded_month);
+
+    // Early return if duration is 0 or negative
+    if (duration <= 0) {
+      return {
+        orundum: 0,
+        permits: 0,
+      };
+    }
+
     switch (user_data.gcs_selected_plan) {
       case 10:
         // In this case user wants to buy only orundum and HHs on the first page
@@ -113,7 +122,8 @@ export const useAdvancedStore = defineStore("advanced", () => {
           } else {
             break;
           }
-        } while (times_can_buy != duration);
+        } while (times_can_buy < duration); // Changed != to <
+
         return {
           orundum: REWARDS_ADVANCED.gcs_phaseone_orundums * times_can_buy,
           permits: REWARDS_ADVANCED.gcs_phaseone_permits * times_can_buy,
@@ -123,10 +133,8 @@ export const useAdvancedStore = defineStore("advanced", () => {
         // In this case user wants to buy 1 page fully + HHs on the second
         let first_page = 0;
         let second_page = 0;
+
         do {
-          /** It ensures purchase of the first page then goes to the second page and again. So in case when user is able to buy
-           * 1 time both the first page and the HHs on the second but fails to purchase whole 1p+HHs it tries to calculate the purchase
-           * of at least the first page on budget (orundum and HHs only) to make calculations more precise */
           if (total_gc_in_range - REWARDS_ADVANCED.gcs_phaseone_total_cost > 0) {
             total_gc_in_range -= REWARDS_ADVANCED.gcs_phaseone_total_cost;
             first_page++;
@@ -145,13 +153,14 @@ export const useAdvancedStore = defineStore("advanced", () => {
           }
 
           times_can_buy++;
-        } while (times_can_buy != duration);
+        } while (times_can_buy < duration); // Changed != to <
+
         return {
           orundum: REWARDS_ADVANCED.gcs_phaseone_orundums * first_page,
           permits: REWARDS_ADVANCED.gcs_phaseone_permits * first_page + REWARDS_ADVANCED.gcs_phasetwo_permits * second_page,
         };
+
       default:
-        // If plan selection is ignored it returns 0
         return {
           orundum: 0,
           permits: 0,
@@ -240,17 +249,18 @@ export const useAdvancedStore = defineStore("advanced", () => {
   });
 
   const getOrundumForReruns = computed(() => {
-    let ic = user_data.rerun_current_certs + REWARDS_ADVANCED.rcs_minimal_event_currency_gain
-    let stock = user_data.rerun_orundum_stock + (REWARDS_ADVANCED.rcs_stock_update_per_rerun * user_data.rerun_encounters)
-    let purchase = ic / REWARDS_ADVANCED.rcs_price_per_orundum
+    // Add rerun reward only if there are reruns expected and rely on user's stock otherwise
+    let ic = user_data.rerun_encounters ? user_data.rerun_current_certs + REWARDS_ADVANCED.rcs_minimal_event_currency_gain : user_data.rerun_current_certs;
+    let stock = user_data.rerun_orundum_stock + REWARDS_ADVANCED.rcs_stock_update_per_rerun * user_data.rerun_encounters;
+    let purchase = ic >= REWARDS_ADVANCED.rcs_price_per_orundum ? ic / REWARDS_ADVANCED.rcs_price_per_orundum : 0; // Check if a user has enough IC to have a purchase at all
     // If you can purchase less than stock returns maximum purchase and if you can buy more than in stock just return stock. Always maximun. Pretty logical, eh?
-    return purchase < stock ? (purchase * REWARDS_ADVANCED.rcs_orundums_gain_per_purchase) : (stock * REWARDS_ADVANCED.rcs_orundums_gain_per_purchase)
-  })
+    return purchase < stock ? purchase * REWARDS_ADVANCED.rcs_orundums_gain_per_purchase : stock * REWARDS_ADVANCED.rcs_orundums_gain_per_purchase;
+  });
 
   const getAdvancedOrundum = () => {
     let green_shop = getPermitsAndOrundumByPage();
     let temp = green_shop.orundum;
-    temp += getOrundumForReruns.value
+    temp += getOrundumForReruns.value;
     return preventNegative(temp);
   };
 
