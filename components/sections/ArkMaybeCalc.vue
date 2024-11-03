@@ -1,6 +1,6 @@
 <template>
     <ArkFrame legend="maybe.header">
-        <ArkFrameHelp description="maybe.subtext" :isbutton="true" modalid="maybe-help" />
+        <LazyArkFrameHelp description="maybe.subtext" :isbutton="true" modalid="maybe-help" />
         <div class="w-full px-2 sm:px-6">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-3 w-full max-h-64">
                 <ArkInput class="w-full" id="paradoxes" min="0" label="maybe.paradox"

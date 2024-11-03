@@ -1,6 +1,6 @@
 <template>
     <ArkFrame legend="advanced.header">
-        <ArkFrameHelp description="advanced.subtext" :isbutton="true" modalid="advanced-help" />
+        <LazyArkFrameHelp description="advanced.subtext" :isbutton="true" modalid="advanced-help" />
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-2 sm:px-6 gap-4 mb-8 md:mb-4 w-full">
             <ArkFancyCheckbox label="advanced.gcs" id="green-shop"
                 v-model:boxvalue="advancedStore.user_data.is_included_gcs" variant="sqr">
@@ -19,12 +19,12 @@
                 </ArkInput>
             </div>
             <div class="flex flex-col justify-between">
-                <ArkDropdown label="advanced.strategy"
+                <ArkDropdown label="advanced.strategy" id="store-strategy"
                     v-model:selectvalue="advancedStore.user_data.gcs_selected_strategy"
                     :options="advancedStore.user_recruitment_strategies"
                     :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three" />
                 <ArkDropdown label="advanced.phase" v-model:selectvalue="advancedStore.user_data.gcs_selected_plan"
-                    :options="advancedStore.user_gcs_phases"
+                    :options="advancedStore.user_gcs_phases" id="store-pages"
                     :disabled="!advancedStore.user_data.is_included_gcs || advancedStore.user_data.is_phase_three" />
             </div>
             <ArkFancyCheckbox label="advanced.infinite" id="green-infinity"
@@ -47,7 +47,7 @@
                 <ArkCheckbox label="advanced.ycsrecs" id="yellow-recruitment" :integrate="true"
                     :disabled="!advancedStore.user_data.is_included_ycs || !advancedStore.user_data.gcs_selected_strategy"
                     v-model:boxvalue="advancedStore.user_data.is_included_ycs_recruitment" />
-                <ArkDropdown label="advanced.ycsbuys" v-model:selectvalue="advancedStore.user_data.ycs_phase"
+                <ArkDropdown label="advanced.ycsbuys" id="store-phases" v-model:selectvalue="advancedStore.user_data.ycs_phase"
                     :options="advancedStore.user_ycs_phases" :disabled="!advancedStore.user_data.is_included_ycs" />
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 px-2 sm:px-6 gap-4 items-center mb-3">
