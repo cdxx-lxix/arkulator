@@ -44,7 +44,7 @@
                             :disabled="entry.event_type === 20 ? false : entry.event_type === 30 ? false : true" />
                     </div>
                     <div>
-                        <button
+                        <button id="remove-from-sequence" aria-label="Remove Event From Sequence"
                             class="col-span-1 row-span-2 flex justify-center flex-col items-center h-full cursor-default">
                             <RemoveButtonIcon @click="removeEntry(index)"
                                 class="w-6 h-6 mt-3 fill-blue-ribbon-700 hover:fill-red-600 ark-smooth-animation cursor-pointer" />
@@ -54,7 +54,7 @@
 
                 <button
                     class="flex justify-center items-center w-full py-2 rounded-lg ark-smooth-animation hover:bg-blue-ribbon-700 fill-blue-ribbon-700 hover:fill-white"
-                    @click="addNewEntry">
+                    @click="addNewEntry" id="add-event-to-sequence" aria-label="Add New Event To Sequence">
                     <AddButtonIcon class="w-6 h-6 " />
                 </button>
             </div>

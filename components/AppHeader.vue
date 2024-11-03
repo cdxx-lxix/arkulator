@@ -5,7 +5,7 @@
                 {{ $t('nuxtSiteConfig.name') }}
             </div>
             <div class="inline-flex">
-                <button @click="isMenuVisible">
+                <button @click="isMenuVisible" id="menu-button" aria-label="Open/Close Menu Button">
                     <BurgerMenu v-if="!show_menu" class="w-6 h-6 ark-svg-button-stroke ark-smooth-animation" />
                     <CloseButtonIcon v-if="show_menu" class="w-6 h-6 ark-svg-button-stroke ark-smooth-animation" />
                 </button>

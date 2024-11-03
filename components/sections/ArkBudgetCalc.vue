@@ -27,7 +27,7 @@
                 <ArkInput class="w-full col-span-3" id="expected_pulls" min="0"
                     v-model:inputvalue="entry.pulls" label="budget.pulls_expected">
                 </ArkInput>
-                <button class="col-span-1 flex justify-center flex-col items-center h-full cursor-default">
+                <button class="col-span-1 flex justify-center flex-col items-center h-full cursor-default" id="remove-operator-from-list" aria-label="Remove Operator From List">
                     <p class="block mb-2 text-sm font-medium text-transparent">none</p>
                     <RemoveButtonIcon @click="removeEntry(index)"
                         class="w-6 h-6 fill-blue-ribbon-700 hover:fill-red-600 ark-smooth-animation cursor-pointer" />
@@ -35,7 +35,7 @@
             </div>
             <button
                 class="flex justify-center items-center py-2 rounded-lg ark-smooth-animation hover:bg-blue-ribbon-700 fill-blue-ribbon-700 hover:fill-white"
-                @click="addNewEntry">
+                @click="addNewEntry" id="add-new-operator" aria-label="Add New Operator">
                 <AddButtonIcon class="w-6 h-6 " />
             </button>
         </div>

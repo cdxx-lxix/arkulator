@@ -2,7 +2,7 @@
     <template v-if="isbutton">
         <div class="mb-4 px-2 sm:px-6 w-full flex flex-row justify-between">
             <p class="text-white pr-4">{{ $t(description) }}</p>
-            <button @click="showModal">
+            <button @click="showModal" :id="`${modalid}-button`" aria-label="Open Help window">
                 <HelpButtonIcon class="w-6 h-6 ark-svg-button-fill ark-smooth-animation" />
             </button>
         </div>

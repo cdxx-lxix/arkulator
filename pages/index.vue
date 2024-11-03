@@ -4,19 +4,19 @@
 
             <LazyArkCalendar />
 
-            <ArkControls />
+            <LazyArkControls />
 
-            <ArkGuarantCalc />
+            <LazyArkGuarantCalc />
 
-            <ArkAdvancedCalc />
+            <LazyArkAdvancedCalc />
 
-            <ArkMaybeCalc />
+            <LazyArkMaybeCalc />
 
         </section>
 
         <section id="calculations" class="ark-app-section">
 
-            <ArkFrame legend="calculations.header">
+            <LazyArkFrame legend="calculations.header">
                 <div
                     class="flex flex-row flex-wrap w-full px-2 sm:px-6 justify-between font-semibold text-gray-100 text-2xl">
                     <h2 class="w-1/3 text-sm sm:text-lg text-left">{{ $t("calculations.days", {
@@ -38,27 +38,27 @@
                 <div
                     class="flex flex-col gap-2 w-full px-2 sm:px-6 justify-start font-light min-h-32 text-gray-100 text-md">
                     <div>
-                        <ArkGuarantStats :days="calendarStore.getDays" :weeks="calendarStore.getWeeks" />
-                        <ArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums"
+                        <LazyArkGuarantStats :days="calendarStore.getDays" :weeks="calendarStore.getWeeks" />
+                        <LazyArkResourcesOutput :orundum="pullStore.getGuaranteedOrundums"
                             :permits="pullStore.getGuaranteedPermits" variant="subtotal" />
                         <hr>
-                        <ArkAdvancedStats />
-                        <ArkResourcesOutput :orundum="advancedStore.getAdvancedOrundum()"
+                        <LazyArkAdvancedStats />
+                        <LazyArkResourcesOutput :orundum="advancedStore.getAdvancedOrundum()"
                             :permits="advancedStore.getAdvancedPermits()" variant="subtotal" />
                         <hr>
-                        <ArkMaybeStats />
-                        <ArkResourcesOutput
+                        <LazyArkMaybeStats />
+                        <LazyArkResourcesOutput
                             :orundum="maybeStore.getMaybeOrundum + maybeStore.getSequenceRewards.orundum"
                             :permits="maybeStore.getSequenceRewards.permits" variant="subtotal" />
                         <hr>
-                        <ArkControlInfo />
+                        <LazyArkControlInfo />
                     </div>
                     <hr>
                     <ArkResourcesOutput :orundum="total_orundum" :permits="total_permits" variant="total" />
                 </div>
-            </ArkFrame>
-            <ArkBudgetCalc :orundum="total_orundum" :permits="total_permits" />
-            <ArkHopium />
+            </LazyArkFrame>
+            <LazyArkBudgetCalc :orundum="total_orundum" :permits="total_permits" />
+            <LazyArkHopium />
 
         </section>
 
@@ -68,7 +68,6 @@
 <script setup>
 // import events from '~/data/events';
 // import annihilations from '~/data/annihilations';
-import login from '~/data/login';
 import { usePullsStore } from '#imports';
 import { useAdvancedStore } from '#imports';
 import { useCalendarStore } from '~/stores/calendar';
