@@ -55,14 +55,16 @@
 </template>
 
 <script setup>
-// import lang_icon from '../assets/images/languages.svg';
-// import menu_icon from '../assets/images/menu.svg';
-// const lang_bg = `url(${lang_icon})`
-// const menu_bg = `url(${menu_icon})`
+const { initialize, enableAnalytics } = useGtag()
 const show_menu = ref(false)
 const isMenuVisible = () => {
     return show_menu.value = !show_menu.value
 }
+
+onMounted(async() => {
+    initialize()
+    enableAnalytics()
+}) 
 </script>
 
 <style scoped>

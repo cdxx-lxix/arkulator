@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     "@samk-dev/nuxt-vcalendar",
     '@nuxtjs/i18n',
     'nuxt-viewport',
-    '@nuxtjs/seo'
+    '@nuxtjs/seo',
+    'nuxt-gtag',
   ],
   i18n: {
     locales: [
@@ -48,6 +49,10 @@ export default defineNuxtConfig({
     // SEO (Lang setting inferred from i18n integration, no need to setup)
     // https://nuxtseo.com/site-config/integrations/i18n
     url: 'https://arkulator.ojisan.cc'
+  },
+  gtag: {
+    initMode: 'manual',
+    id: 'G-SX9XJ91MFF'
   },
   viewport: {
     breakpoints: {
