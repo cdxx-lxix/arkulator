@@ -1,3 +1,11 @@
+# November 2024
+### Arkulator hotfix november update
+[Arkulator website](https://arkulator.ojisan.cc/)
+
+###### Hotfix to october update
+- Fixed a critical miscalculation when excluding a month with a duration of just 1 month. Previously, if a user sets a range within one month exclusion actually multiplied rewards by 3 instead of excluding. 
+- Fixed a major miscalculation with orundums from reruns. Previously, there were no check so when a user sets any amount of stock orundum even without IC or expected reruns 2000 orundums were added. 
+
 # October 2024
 ### Arkulator general october update
 [Arkulator website](https://arkulator.ojisan.cc/)
