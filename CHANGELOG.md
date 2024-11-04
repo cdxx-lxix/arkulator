@@ -5,6 +5,8 @@
 ###### Hotfix to october update
 - Fixed a critical miscalculation when excluding a month with a duration of just 1 month. Previously, if a user sets a range within one month exclusion actually multiplied rewards by 3 instead of excluding. 
 - Fixed a major miscalculation with orundums from reruns. Previously, there were no check so when a user sets any amount of stock orundum even without IC or expected reruns 2000 orundums were added. 
+- Fixed a major miscalculation where month exclusion didn't exclude yellow certificate store purchases.
+- Fixed a problem with controls section where buttons state was saved after date range have been changed resulting in disabled button(s) but deducted rewards. Now all the buttons reset their state on any date change. 
 
 # October 2024
 ### Arkulator general october update

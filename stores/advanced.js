@@ -196,6 +196,7 @@ export const useAdvancedStore = defineStore("advanced", () => {
      */
     let times_can_buy = 0;
     let permits_purchased = 0;
+    if (months === 0) return 0;
     do {
       let temp_permits = 0;
       let phase;
@@ -224,25 +225,26 @@ export const useAdvancedStore = defineStore("advanced", () => {
     if (user_data.is_included_ycs_recruitment) {
       total_yc_in_range += getYellowCertsForRecruitment();
     }
+    let duration = calendarStore.getMonths - Number(calendarStore.calendar_data.is_excluded_month);
     switch (user_data.ycs_phase) {
       case 10:
-        return tryPurchasePermits(1, total_yc_in_range, calendarStore.getMonths, true);
+        return tryPurchasePermits(1, total_yc_in_range, duration, true);
       case 20:
-        return tryPurchasePermits(2, total_yc_in_range, calendarStore.getMonths, true);
+        return tryPurchasePermits(2, total_yc_in_range, duration, true);
       case 25:
-        return tryPurchasePermits(2, total_yc_in_range, calendarStore.getMonths, false); // Strict
+        return tryPurchasePermits(2, total_yc_in_range, duration, false); // Strict
       case 30:
-        return tryPurchasePermits(3, total_yc_in_range, calendarStore.getMonths, true);
+        return tryPurchasePermits(3, total_yc_in_range, duration, true);
       case 35:
-        return tryPurchasePermits(3, total_yc_in_range, calendarStore.getMonths, false); // Strict
+        return tryPurchasePermits(3, total_yc_in_range, duration, false); // Strict
       case 40:
-        return tryPurchasePermits(4, total_yc_in_range, calendarStore.getMonths, true);
+        return tryPurchasePermits(4, total_yc_in_range, duration, true);
       case 45:
-        return tryPurchasePermits(4, total_yc_in_range, calendarStore.getMonths, false); // Strict
+        return tryPurchasePermits(4, total_yc_in_range, duration, false); // Strict
       case 50:
-        return tryPurchasePermits(5, total_yc_in_range, calendarStore.getMonths, true);
+        return tryPurchasePermits(5, total_yc_in_range, duration, true);
       case 55:
-        return tryPurchasePermits(5, total_yc_in_range, calendarStore.getMonths, false); // Strict
+        return tryPurchasePermits(5, total_yc_in_range, duration, false); // Strict
       default:
         return 0;
     }
